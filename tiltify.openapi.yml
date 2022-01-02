@@ -1,0 +1,121 @@
+openapi: '3.0.2'
+info:
+  title: Tiltify API
+  version: '1.0'
+servers:
+  - url: https://tiltify.com/api/v3/
+paths:
+  /campaigns/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'    
+
+components:
+  responses:
+    BadRequest:
+      description: This error describes when the request could not be fulfilled. This often happens because of a missing request parameter
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotAuthorized:
+      description: This error describes when the user needs to be authorized before accessing this resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: This error describes when the user accessing a resource does not have permission to do so
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: This error describes when a given resource cannot be found. The ID or slug given is most likely incorrect or has changed. For this reason, we recommend using the ID if you have access to it.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unprocessable:
+      description: This error describes when submitted params are invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ServerError:
+      description: This error describes when a something bad happened on our end. You should rarely see these. We'll do our best to fix them, but feel free to bug our CM.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+            
+            
+  schemas:
+    Pagination:
+      description: We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
+      type: object
+      properties:
+        prev:
+          type: string
+        next:
+          type: string
+        self:
+          type: string
+
+      
+    Meta:
+      description: This is the HTTP status code that is also sent with the request
+      type: object
+      properties:
+        status:
+          type: integer
+    Error:
+      description: error response body. Only included in Post and Patch requests.
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/Meta'
+        error:
+          description: An object describing the error that occurred
+          type: object
+          properties: 
+            title:
+              type: string
+            detial:
+              type: string
+        errors:
+          description: An object pointing to fields that are incorrect in a submitted model
+          type: object
+          
+          
+          
