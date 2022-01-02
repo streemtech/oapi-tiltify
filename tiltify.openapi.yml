@@ -883,6 +883,145 @@ paths:
           $ref: '#/components/responses/Unprocessable'
         '5XX':
           $ref: '#/components/responses/ServerError'
+  /teams:
+    get:
+      tags: 
+        - Teams
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /teams/{id}:
+    get:
+      tags: 
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /teams/{id}/campaigns:
+    get:
+      tags: 
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /teams/{id}/campaigns/{cid}:
+    get:
+      tags: 
+        - Teams
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+        - name: cid
+          in: path
+          description: The ID of the campaign 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
   /user:
     get:
       tags: 
