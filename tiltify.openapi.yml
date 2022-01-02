@@ -7,6 +7,417 @@ servers:
 paths:
   /campaigns/{id}:
     get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/donations:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/rewards:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/polls:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/challenges:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/schedule:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /campaigns/{id}/supporting-campaigns:
+    get:
+      tags: 
+        - Campaigns
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}:
+    get:
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}/campaigns:
+    get:
+      
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}/fundraising-events:
+    get:
+      
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}/leaderboards:
+    get:
+      
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}/visibility-options:
+    get:
+      tags: 
+        - Causes
       parameters:
         - name: id
           in: path
@@ -38,7 +449,608 @@ paths:
         '422':
           $ref: '#/components/responses/Unprocessable'
         '5XX':
-          $ref: '#/components/responses/ServerError'    
+          $ref: '#/components/responses/ServerError'
+    patch:
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /causes/{id}/permissions:
+    get:
+      tags: 
+        - Causes
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events:
+    get:
+      tags: 
+        - Fundraising
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/campaigns:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/incentives:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/leaderboards:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/registrations:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/registration-fields:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/schedule:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: array
+                    items:
+                      type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /fundraising-events/{id}/visibility-options:
+    get:
+      tags: 
+        - Fundraising
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /user:
+    get:
+      tags: 
+        - Users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}/campaigns:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}/campaigns/{cid}:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+        - name: cid
+          in: path
+          description: The ID of the campaign 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}/owned-teams:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+  /users/{id}/teams:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    type: object
+                  links:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
 
 components:
   responses:
@@ -84,12 +1096,20 @@ components:
     Pagination:
       description: We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
       type: object
+      required:
+        - prev
+        - next
+        - self
       properties:
         prev:
           type: string
         next:
           type: string
         self:
+          type: string
+        first:
+          type: string
+        last:
           type: string
 
       
