@@ -27,6 +27,47 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     type: object
+                    properties:
+                      avatar:
+                        $ref: "#/components/schemas/Avatar"
+                      user:
+                        $ref: "#/components/schemas/User"
+                      team:
+                        $ref: "#/components/schemas/Team"
+                      livestream:
+                        $ref: "#/components/schemas/Livestream"
+                      amountRaised:
+                        type: integer
+                      causeId:
+                        type: integer
+                      description:
+                        type: string
+                      endsAt:
+                        type: integer
+                      fundraiserGoalAmount:
+                        type: integer
+                      fundraisingEventId:
+                        type: integer
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      originalGoalAmount:
+                        type: integer
+                      slug:
+                        type: string
+                      startsAt:
+                        type: integer
+                      status:
+                        type: string
+                      supportable:
+                        type: boolean
+                      supportingAmountRaised:
+                        type: integer
+                      totalAmountRaised:
+                        type: integer
+                      url:
+                        type: string
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1137,5 +1178,48 @@ components:
           description: An object pointing to fields that are incorrect in a submitted model
           type: object
           
-          
-          
+#Stuff Used In Responses.
+    Avatar:
+      type: object
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+    Livestream:
+      type: object
+      properties:
+        channel:
+          type: string
+        type:
+          type: string
+    Team:
+      type: object  
+      properties:
+        avatar:
+          $ref: "#/components/schemas/Avatar"
+        id:
+          type: integer
+        slug:
+          type: string
+        url:
+          type: string
+        username:
+          type: string
+    User:
+      type: object
+      properties:
+        avatar:
+          $ref: "#/components/schemas/Avatar"
+        id:
+          type: integer
+        slug:
+          type: string
+        url:
+          type: string
+        username:
+          type: string
