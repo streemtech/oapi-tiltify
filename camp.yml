@@ -1,29 +1,54 @@
 
 properties:
-  individual:
-    items:
-      properties:
-        amount_raised:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        userId:
-          type: integer
-      type: object
-    type: array
-  team:
-    items:
-      properties:
-        amount_raised:
-          type: integer
-        name:
-          type: string
-        teamId:
-          type: integer
-        url:
-          type: string
-      type: object
-    type: array
+  donate:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  donorLeaderboard:
+    properties:
+      type:
+        type: string
+      visible:
+        type: boolean
+    type: object
+  endsAt:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  fundraiserGoalAmount:
+    properties:
+      type:
+        type: string
+      visible:
+        type: boolean
+    type: object
+  individualLeaderboard:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  preventDonationsBeforeStart:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  registration:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  startsAt:
+    properties:
+      visible:
+        type: boolean
+    type: object
+  teamLeaderboard:
+    properties:
+      type:
+        type: string
+      visible:
+        type: boolean
+    type: object
 
