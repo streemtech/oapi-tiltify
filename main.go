@@ -82,7 +82,7 @@ func main() {
 
 func jsonExampleToYamlProperties(data []byte) (out []byte, err error) {
 
-	var dest map[string]any
+	var dest any
 
 	err = json.Unmarshal(data, &dest)
 	if err != nil {
@@ -91,15 +91,14 @@ func jsonExampleToYamlProperties(data []byte) (out []byte, err error) {
 
 	// fmt.Printf("%+v\n", dest)
 
-	s := kin.NewSchema()
-	s.Properties = mapToSchemas(dest)
+	s := anyToSchema(dest)
 
 	d, err := s.MarshalJSON()
 	if err != nil {
 		return []byte{}, fmt.Errorf("Unable to marshal results to JSON: %w", err)
 	}
 
-	dest = make(map[string]any)
+	dest = *new(any)
 	err = json.Unmarshal(d, &dest)
 	if err != nil {
 		return []byte{}, fmt.Errorf("Unable to Unmarshal output json to map: %w", err)
