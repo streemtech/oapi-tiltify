@@ -1,0 +1,12 @@
+items:
+  properties:
+    description:
+      type: string
+    id:
+      type: integer
+    name:
+      type: string
+    startsAt:
+      type: integer
+  type: object
+type: array

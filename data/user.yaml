@@ -1,0 +1,29 @@
+properties:
+  data:
+    properties:
+      id:
+        type: integer
+      slug:
+        type: string
+      status:
+        type: string
+      thumbnail:
+        properties:
+          alt:
+            type: string
+          height:
+            type: integer
+          src:
+            type: string
+          width:
+            type: integer
+        type: object
+      username:
+        type: string
+    type: object
+  meta:
+    properties:
+      status:
+        type: integer
+    type: object
+type: object

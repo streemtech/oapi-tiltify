@@ -1,0 +1,47 @@
+items:
+  properties:
+    amountRaised:
+      type: integer
+    causeId:
+      type: integer
+    currency:
+      type: string
+    description:
+      type: string
+    endsOn:
+      type: string
+    fundraisingEventId:
+      type: integer
+    goal:
+      type: integer
+    name:
+      type: string
+    originalGoal:
+      type: integer
+    slug:
+      type: string
+    startsOn:
+      type: string
+    supportingCampaignId:
+      type: integer
+    teamId:
+      type: object
+    thumbnail:
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+      type: object
+    totalAmountRaised:
+      type: integer
+    url:
+      type: string
+    userId:
+      type: integer
+  type: object
+type: array

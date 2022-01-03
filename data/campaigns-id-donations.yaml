@@ -1,0 +1,14 @@
+properties:
+  amount:
+    type: number
+  comment:
+    type: string
+  completedAt:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  rewardId:
+    type: integer
+type: object

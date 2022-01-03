@@ -1,0 +1,22 @@
+properties:
+  activatesOn:
+    type: integer
+  active:
+    type: boolean
+  amount:
+    type: integer
+  campaignId:
+    type: integer
+  createdAt:
+    type: integer
+  endsAt:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  totalAmountRaised:
+    type: integer
+  updatedAt:
+    type: integer
+type: object

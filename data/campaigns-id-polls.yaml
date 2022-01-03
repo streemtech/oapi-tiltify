@@ -1,0 +1,31 @@
+properties:
+  active:
+    type: boolean
+  campaignId:
+    type: integer
+  createdAt:
+    type: integer
+  id:
+    type: integer
+  name:
+    type: string
+  options:
+    items:
+      properties:
+        createdAt:
+          type: integer
+        id:
+          type: integer
+        name:
+          type: string
+        pollId:
+          type: integer
+        totalAmountRaised:
+          type: integer
+        updatedAt:
+          type: integer
+      type: object
+    type: array
+  updatedAt:
+    type: integer
+type: object

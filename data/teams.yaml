@@ -1,0 +1,42 @@
+items:
+  properties:
+    avatar:
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+      type: object
+    bio:
+      type: string
+    disbanded:
+      type: boolean
+    id:
+      type: integer
+    inviteOnly:
+      type: boolean
+    name:
+      type: string
+    slug:
+      type: string
+    social:
+      properties:
+        facebook:
+          type: string
+        twitch:
+          type: string
+        twitter:
+          type: string
+        website:
+          type: string
+        youtube:
+          type: string
+      type: object
+    url:
+      type: string
+  type: object
+type: array

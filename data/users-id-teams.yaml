@@ -1,0 +1,23 @@
+items:
+  properties:
+    avatar:
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+      type: object
+    id:
+      type: integer
+    name:
+      type: string
+    slug:
+      type: string
+    url:
+      type: string
+  type: object
+type: array

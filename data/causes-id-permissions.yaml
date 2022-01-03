@@ -1,0 +1,72 @@
+properties:
+  activated:
+    type: boolean
+  adminApiEnabled:
+    type: boolean
+  adminBrandingColors:
+    type: boolean
+  adminBrandingDetails:
+    type: boolean
+  adminBrandingEnabled:
+    type: boolean
+  adminBrandingImages:
+    type: boolean
+  adminEnabled:
+    type: boolean
+  adminFinanceEnabled:
+    type: boolean
+  adminGeneralEnabled:
+    type: boolean
+  adminIntegrationsEnabled:
+    type: boolean
+  adminVisibilityEnabled:
+    type: boolean
+  causeLeaderboard:
+    type: boolean
+  dashboardChart:
+    type: boolean
+  dashboardEnabled:
+    type: boolean
+  fundraisingEventsEnabled:
+    type: boolean
+  fundraisingEventsGeneralColors:
+    type: boolean
+  fundraisingEventsGeneralDetails:
+    type: boolean
+  fundraisingEventsGeneralEnabled:
+    type: boolean
+  fundraisingEventsGeneralImages:
+    type: boolean
+  fundraisingEventsIncentives:
+    type: boolean
+  fundraisingEventsLeaderboard:
+    type: boolean
+  fundraisingEventsRegistrationEnabled:
+    type: boolean
+  fundraisingEventsReporting:
+    type: boolean
+  fundraisingEventsReportingCampaigns:
+    type: boolean
+  fundraisingEventsReportingDonations:
+    type: boolean
+  fundraisingEventsReportingFundraisers:
+    type: boolean
+  fundraisingEventsSchedule:
+    type: boolean
+  fundraisingEventsVisibilityDetails:
+    type: boolean
+  fundraisingEventsVisibilityEnabled:
+    type: boolean
+  fundraisingEventsVisibilityLeaderboards:
+    type: boolean
+  reportingCampaigns:
+    type: boolean
+  reportingChart:
+    type: boolean
+  reportingDonations:
+    type: boolean
+  reportingEnabled:
+    type: boolean
+  reportingFundraisers:
+    type: boolean
+type: object

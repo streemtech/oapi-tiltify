@@ -26,48 +26,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      avatar:
-                        $ref: "#/components/schemas/Image"
-                      user:
-                        $ref: "#/components/schemas/User"
-                      team:
-                        $ref: "#/components/schemas/Campaign"
-                      livestream:
-                        $ref: "#/components/schemas/Livestream"
-                      amountRaised:
-                        type: integer
-                      causeId:
-                        type: integer
-                      description:
-                        type: string
-                      endsAt:
-                        type: integer
-                      fundraiserGoalAmount:
-                        type: integer
-                      fundraisingEventId:
-                        type: integer
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      originalGoalAmount:
-                        type: integer
-                      slug:
-                        type: string
-                      startsAt:
-                        type: integer
-                      status:
-                        type: string
-                      supportable:
-                        type: boolean
-                      supportingAmountRaised:
-                        type: integer
-                      totalAmountRaised:
-                        type: integer
-                      url:
-                        type: string
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':

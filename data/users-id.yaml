@@ -1,0 +1,38 @@
+properties:
+  about:
+    type: string
+  avatar:
+    properties:
+      alt:
+        type: string
+      height:
+        type: integer
+      src:
+        type: string
+      width:
+        type: integer
+    type: object
+  id:
+    type: integer
+  slug:
+    type: string
+  social:
+    properties:
+      facebook:
+        type: object
+      twitch:
+        type: string
+      twitter:
+        type: object
+      website:
+        type: object
+      youtube:
+        type: object
+    type: object
+  totalAmountRaised:
+    type: number
+  url:
+    type: string
+  username:
+    type: string
+type: object

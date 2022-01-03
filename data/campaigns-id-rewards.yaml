@@ -1,0 +1,45 @@
+items:
+  properties:
+    active:
+      type: boolean
+    amount:
+      type: integer
+    createdAt:
+      type: integer
+    currency:
+      type: string
+    description:
+      type: string
+    fairMarketValue:
+      type: integer
+    id:
+      type: integer
+    image:
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+      type: object
+    kind:
+      type: string
+    name:
+      type: string
+    quantity:
+      type: object
+    remaining:
+      type: object
+    shippingAddressRequired:
+      type: boolean
+    shippingNote:
+      type: object
+    startsAt:
+      type: integer
+    updatedAt:
+      type: integer
+  type: object
+type: array
