@@ -33,7 +33,7 @@ paths:
                       user:
                         $ref: "#/components/schemas/User"
                       team:
-                        $ref: "#/components/schemas/Team"
+                        $ref: "#/components/schemas/Campaign"
                       livestream:
                         $ref: "#/components/schemas/Livestream"
                       amountRaised:
@@ -1316,7 +1316,9 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1386,7 +1388,9 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Campaign'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1428,7 +1432,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: '#/components/schemas/Campaign'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1455,7 +1459,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: '#/components/schemas/User'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1489,7 +1493,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: '#/components/schemas/User'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1523,7 +1527,9 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Campaign'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1565,7 +1571,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: '#/components/schemas/Campaign'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1599,7 +1605,9 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1635,7 +1643,9 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Team'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1711,8 +1721,6 @@ components:
           type: string
         last:
           type: string
-
-      
     Meta:
       description: This is the HTTP status code that is also sent with the request
       type: object
@@ -1746,7 +1754,7 @@ components:
           type: string
         type:
           type: string
-    Team:
+    CampaignTeam:
       type: object  
       properties:
         avatar:
@@ -1937,3 +1945,24 @@ components:
           type: string
         startsAt:
           type: integer
+    Team:
+      type: object
+      properties:
+        avatar:
+          $ref: '#/components/schemas/Image'
+        bio:
+          type: string
+        disbanded:
+          type: boolean
+        id:
+          type: integer
+        inviteOnly:
+          type: boolean
+        name:
+          type: string
+        slug:
+          type: string
+        social:
+          $ref: '#/components/schemas/Social'
+        url:
+          type: string

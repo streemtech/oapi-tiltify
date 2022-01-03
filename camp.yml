@@ -1,54 +1,41 @@
 
 properties:
-  donate:
+  avatar:
     properties:
-      visible:
-        type: boolean
-    type: object
-  donorLeaderboard:
-    properties:
-      type:
+      alt:
         type: string
-      visible:
-        type: boolean
-    type: object
-  endsAt:
-    properties:
-      visible:
-        type: boolean
-    type: object
-  fundraiserGoalAmount:
-    properties:
-      type:
+      height:
+        type: integer
+      src:
         type: string
-      visible:
-        type: boolean
+      width:
+        type: integer
     type: object
-  individualLeaderboard:
+  bio:
+    type: string
+  disbanded:
+    type: boolean
+  id:
+    type: integer
+  inviteOnly:
+    type: boolean
+  name:
+    type: string
+  slug:
+    type: string
+  social:
     properties:
-      visible:
-        type: boolean
-    type: object
-  preventDonationsBeforeStart:
-    properties:
-      visible:
-        type: boolean
-    type: object
-  registration:
-    properties:
-      visible:
-        type: boolean
-    type: object
-  startsAt:
-    properties:
-      visible:
-        type: boolean
-    type: object
-  teamLeaderboard:
-    properties:
-      type:
+      facebook:
         type: string
-      visible:
-        type: boolean
+      twitch:
+        type: string
+      twitter:
+        type: string
+      website:
+        type: string
+      youtube:
+        type: string
     type: object
+  url:
+    type: string
 

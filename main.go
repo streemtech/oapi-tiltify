@@ -9,36 +9,26 @@ import (
 )
 
 var testJSON = `{
-    "startsAt": {
-      "visible": true
-    },
-    "endsAt": {
-      "visible": true
-    },
-    "fundraiserGoalAmount": {
-      "visible": true,
-      "type": "BOTH"
-    },
-    "individualLeaderboard": {
-      "visible": true
-    },
-    "teamLeaderboard": {
-      "visible": true,
-      "type": "ALL"
-    },
-    "donorLeaderboard": {
-      "visible": true,
-      "type": "ALL"
-    },
-    "preventDonationsBeforeStart": {
-      "visible": false
-    },
-    "registration": {
-      "visible": false
-    },
-    "donate": {
-      "visible": true
-    }
+	"id": 387,
+	"name": "DerpSquad",
+	"slug": "derpsquad",
+	"url": "https://tiltify.com/+derpsquad",
+	"bio": "",
+	"inviteOnly": true,
+	"disbanded": false,
+	"social": {
+	  "facebook": "tradechatonyoutube",
+	  "twitch": "tradechat",
+	  "twitter": "tradechat",
+	  "website": "",
+	  "youtube": "tradechat"
+	},
+	"avatar": {
+	  "src": "https://asdf.cloudfront.net/asdf.jpg",
+	  "alt": "",
+	  "width": 200,
+	  "height": 200
+	}
   }`
 
 //convert json data to an openapi schema.
