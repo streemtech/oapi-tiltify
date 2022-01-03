@@ -26,7 +26,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -60,7 +60,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -96,7 +96,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -132,7 +132,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -168,7 +168,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -204,7 +204,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -240,7 +240,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -276,7 +276,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
 
 
         '400':
@@ -313,7 +313,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -350,7 +350,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -387,7 +387,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -421,7 +421,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -456,7 +456,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -490,7 +490,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
 
 
         '400':
@@ -519,7 +519,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -555,7 +555,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -589,7 +589,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -625,7 +625,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -661,7 +661,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -697,7 +697,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -733,7 +733,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -769,7 +769,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -805,7 +805,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -834,7 +834,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -870,7 +870,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -904,7 +904,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -946,7 +946,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -973,7 +973,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1007,7 +1007,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1041,7 +1041,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1083,7 +1083,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1117,7 +1117,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1153,7 +1153,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: './data/campaigns-id.yaml#'
+                    $ref: './data/campaigns-id.yaml#/'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
