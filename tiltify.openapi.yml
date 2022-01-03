@@ -1770,12 +1770,26 @@ components:
     User:
       type: object
       properties:
+        about:
+          type: string
         avatar:
           $ref: "#/components/schemas/Image"
+        confirmed:
+          type: boolean
+        email:
+          type: string
+        firstName:
+          type: string
         id:
           type: integer
+        lastName:
+          type: string
+        newsletter:
+          type: object
         slug:
           type: string
+        social:
+          $ref: "#/components/schemas/Social"
         url:
           type: string
         username:
@@ -1838,6 +1852,10 @@ components:
           type: string
         youtube:
           type: string
+        mixer:
+          type: string
+        discord:
+          type: string
     FundraisingEvent:
       type: object
       properties:
@@ -1882,6 +1900,8 @@ components:
       properties:
         amountRaised:
           type: integer
+        avatar:
+          $ref: '#/components/schemas/Image'
         causeId:
           type: integer
         currency:
@@ -1890,18 +1910,36 @@ components:
           type: string
         endsOn:
           type: string
+        fundraiserGoalAmount:
+          type: integer
         fundraisingEventId:
           type: integer
         goal:
           type: integer
+        id:
+          type: number
+        livestream:
+          $ref: '#/components/schemas/Livestream'
         name:
           type: string
         originalGoal:
           type: integer
+        originalGoalAmount:
+          type: integer
         slug:
           type: string
-        startsOn:
+        startsAt:
           type: string
+        startsOn:
+          type: string  
+        status:
+          type: string
+        supportable:
+          type: boolean
+        supportingAmountRaised:
+          type: integer
+        team:
+          $ref: '#/components/schemas/Team'
         teamId:
           type: object
         thumbnail:
@@ -1910,6 +1948,8 @@ components:
           type: integer
         url:
           type: string
+        user: 
+          $ref: '#/components/schemas/User'
         userId:
           type: integer
     DonationIndividual:
@@ -1966,3 +2006,4 @@ components:
           $ref: '#/components/schemas/Social'
         url:
           type: string
+        

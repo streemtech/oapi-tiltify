@@ -1,5 +1,7 @@
 
 properties:
+  about:
+    type: string
   avatar:
     properties:
       alt:
@@ -11,22 +13,28 @@ properties:
       width:
         type: integer
     type: object
-  bio:
-    type: string
-  disbanded:
+  confirmed:
     type: boolean
+  email:
+    type: string
+  firstName:
+    type: string
   id:
     type: integer
-  inviteOnly:
-    type: boolean
-  name:
+  lastName:
     type: string
+  newsletter:
+    type: object
   slug:
     type: string
   social:
     properties:
+      discord:
+        type: object
       facebook:
-        type: string
+        type: object
+      mixer:
+        type: object
       twitch:
         type: string
       twitter:
@@ -34,8 +42,10 @@ properties:
       website:
         type: string
       youtube:
-        type: string
+        type: object
     type: object
   url:
+    type: string
+  username:
     type: string
 
