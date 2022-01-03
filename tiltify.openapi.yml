@@ -30,16 +30,7 @@ paths:
                       amountRaised:
                         type: integer
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       causeId:
                         type: integer
                       description:
@@ -53,12 +44,7 @@ paths:
                       id:
                         type: integer
                       livestream:
-                        properties:
-                          channel:
-                            type: string
-                          type:
-                            type: string
-                        type: object
+                        $ref: "#/components/schemas/Livestream"
                       name:
                         type: string
                       originalGoalAmount:
@@ -76,16 +62,7 @@ paths:
                       team:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -102,16 +79,7 @@ paths:
                       user:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -223,16 +191,7 @@ paths:
                         id:
                           type: integer
                         image:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         kind:
                           type: string
                         name:
@@ -486,16 +445,7 @@ paths:
                         teamId:
                           type: object
                         thumbnail:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         totalAmountRaised:
                           type: integer
                         url:
@@ -559,27 +509,9 @@ paths:
                             type: string
                         type: object
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       banner:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       contactEmail:
                         type: string
                       currency:
@@ -587,29 +519,11 @@ paths:
                       id:
                         type: integer
                       image:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       legalName:
                         type: string
                       logo:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       mailchimpConnected:
                         type: boolean
                       name:
@@ -639,16 +553,7 @@ paths:
                       slug:
                         type: string
                       social:
-                        properties:
-                          facebook:
-                            type: string
-                          instagram:
-                            type: string
-                          twitter:
-                            type: string
-                          youtube:
-                            type: string
-                        type: object
+                        $ref: "#/components/schemas/Social"
                       status:
                         type: string
                       stripeConnected:
@@ -719,16 +624,7 @@ paths:
                         teamId:
                           type: object
                         thumbnail:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         totalAmountRaised:
                           type: integer
                         url:
@@ -780,27 +676,9 @@ paths:
                         amountRaised:
                           type: integer
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         banner:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         bannerIntro:
                           type: string
                         bannerTitle:
@@ -818,27 +696,9 @@ paths:
                         id:
                           type: integer
                         image:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         logo:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         name:
                           type: string
                         slug:
@@ -848,16 +708,7 @@ paths:
                         url:
                           type: string
                         video:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                       type: object
                     type: array
 
@@ -902,27 +753,9 @@ paths:
                         amountRaised:
                           type: integer
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         banner:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         bannerIntro:
                           type: string
                         bannerTitle:
@@ -940,27 +773,9 @@ paths:
                         id:
                           type: integer
                         image:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         logo:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         name:
                           type: string
                         slug:
@@ -970,16 +785,7 @@ paths:
                         url:
                           type: string
                         video:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                       type: object
                     type: array
 
@@ -1296,27 +1102,9 @@ paths:
                         amountRaised:
                           type: integer
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         banner:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         bannerIntro:
                           type: string
                         bannerTitle:
@@ -1334,27 +1122,9 @@ paths:
                         id:
                           type: integer
                         image:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         logo:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         name:
                           type: string
                         slug:
@@ -1364,16 +1134,7 @@ paths:
                         url:
                           type: string
                         video:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                       type: object
                     type: array
 
@@ -1416,27 +1177,9 @@ paths:
                       amountRaised:
                         type: integer
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       banner:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       bannerIntro:
                         type: string
                       bannerTitle:
@@ -1454,27 +1197,9 @@ paths:
                       id:
                         type: integer
                       image:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       logo:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       name:
                         type: string
                       slug:
@@ -1484,16 +1209,7 @@ paths:
                       url:
                         type: string
                       video:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                     type: object
 
         '400':
@@ -1556,16 +1272,7 @@ paths:
                         teamId:
                           type: object
                         thumbnail:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         totalAmountRaised:
                           type: integer
                         url:
@@ -1619,16 +1326,7 @@ paths:
                         id:
                           type: integer
                         image:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         title:
                           type: string
                       type: object
@@ -1986,16 +1684,7 @@ paths:
                     items:
                       properties:
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         bio:
                           type: string
                         disbanded:
@@ -2009,18 +1698,7 @@ paths:
                         slug:
                           type: string
                         social:
-                          properties:
-                            facebook:
-                              type: string
-                            twitch:
-                              type: string
-                            twitter:
-                              type: string
-                            website:
-                              type: string
-                            youtube:
-                              type: string
-                          type: object
+                          $ref: "#/components/schemas/Social"
                         url:
                           type: string
                       type: object
@@ -2063,16 +1741,7 @@ paths:
                   data:
                     properties:
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       bio:
                         type: string
                       disbanded:
@@ -2086,18 +1755,7 @@ paths:
                       slug:
                         type: string
                       social:
-                        properties:
-                          facebook:
-                            type: string
-                          twitch:
-                            type: string
-                          twitter:
-                            type: string
-                          website:
-                            type: string
-                          youtube:
-                            type: string
-                        type: object
+                        $ref: "#/components/schemas/Social"
                       url:
                         type: string
                     type: object
@@ -2162,16 +1820,7 @@ paths:
                         teamId:
                           type: integer
                         thumbnail:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         totalAmountRaised:
                           type: integer
                         url:
@@ -2226,16 +1875,7 @@ paths:
                       amountRaised:
                         type: integer
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       causeId:
                         type: integer
                       description:
@@ -2249,12 +1889,7 @@ paths:
                       id:
                         type: integer
                       livestream:
-                        properties:
-                          channel:
-                            type: string
-                          type:
-                            type: string
-                        type: object
+                        $ref: "#/components/schemas/Livestream"
                       name:
                         type: string
                       originalGoalAmount:
@@ -2272,16 +1907,7 @@ paths:
                       team:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -2298,16 +1924,7 @@ paths:
                       user:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -2346,33 +1963,16 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     properties:
-                      data:
-                        properties:
-                          id:
-                            type: integer
-                          slug:
-                            type: string
-                          status:
-                            type: string
-                          thumbnail:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
-                          username:
-                            type: string
-                        type: object
-                      meta:
-                        properties:
-                          status:
-                            type: integer
-                        type: object
+                      id:
+                        type: integer
+                      slug:
+                        type: string
+                      status:
+                        type: string
+                      thumbnail:
+                        $ref: "#/components/schemas/Image"
+                      username:
+                        type: string
                     type: object
 
         '400':
@@ -2412,33 +2012,13 @@ paths:
                       about:
                         type: string
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       id:
                         type: integer
                       slug:
                         type: string
                       social:
-                        properties:
-                          facebook:
-                            type: object
-                          twitch:
-                            type: string
-                          twitter:
-                            type: object
-                          website:
-                            type: object
-                          youtube:
-                            type: object
-                        type: object
+                        $ref: "#/components/schemas/Social"
                       totalAmountRaised:
                         type: number
                       url:
@@ -2509,16 +2089,7 @@ paths:
                         teamId:
                           type: object
                         thumbnail:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         totalAmountRaised:
                           type: integer
                         url:
@@ -2573,16 +2144,7 @@ paths:
                       amountRaised:
                         type: integer
                       avatar:
-                        properties:
-                          alt:
-                            type: string
-                          height:
-                            type: integer
-                          src:
-                            type: string
-                          width:
-                            type: integer
-                        type: object
+                        $ref: "#/components/schemas/Image"
                       causeId:
                         type: integer
                       description:
@@ -2596,12 +2158,7 @@ paths:
                       id:
                         type: integer
                       livestream:
-                        properties:
-                          channel:
-                            type: string
-                          type:
-                            type: string
-                        type: object
+                        $ref: "#/components/schemas/Livestream"
                       name:
                         type: string
                       originalGoalAmount:
@@ -2619,16 +2176,7 @@ paths:
                       team:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -2645,16 +2193,7 @@ paths:
                       user:
                         properties:
                           avatar:
-                            properties:
-                              alt:
-                                type: string
-                              height:
-                                type: integer
-                              src:
-                                type: string
-                              width:
-                                type: integer
-                            type: object
+                            $ref: "#/components/schemas/Image"
                           id:
                             type: integer
                           slug:
@@ -2702,16 +2241,7 @@ paths:
                     items:
                       properties:
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         bio:
                           type: string
                         disbanded:
@@ -2725,18 +2255,7 @@ paths:
                         slug:
                           type: string
                         social:
-                          properties:
-                            facebook:
-                              type: string
-                            twitch:
-                              type: string
-                            twitter:
-                              type: string
-                            website:
-                              type: string
-                            youtube:
-                              type: string
-                          type: object
+                          $ref: "#/components/schemas/Social"
                         url:
                           type: string
                       type: object
@@ -2780,16 +2299,7 @@ paths:
                     items:
                       properties:
                         avatar:
-                          properties:
-                            alt:
-                              type: string
-                            height:
-                              type: integer
-                            src:
-                              type: string
-                            width:
-                              type: integer
-                          type: object
+                          $ref: "#/components/schemas/Image"
                         id:
                           type: integer
                         name:
@@ -2900,3 +2410,40 @@ components:
           description: An object pointing to fields that are incorrect in a submitted model
           type: object
           
+    Image:
+      type: object
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+    Livestream:
+      type: object
+      properties:
+        channel:
+          type: string
+        type:
+          type: string
+    Social:
+      type: object
+      properties:
+        facebook:
+          type: string
+        instagram:
+          type: string
+        discord:
+          type: string
+        mixer:
+          type: string
+        twitter:
+          type: string
+        twitch: 
+          type: string
+        website: 
+          type: string
+        youtube:
+          type: string
