@@ -1,7 +1,5 @@
 output:
-  openapi.gen.go
+  openapi.client.gen.go
 package: tiltifyApi
 generate:
-  - types
-  - server
   - client

@@ -142,21 +142,22 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    properties:
-                      amount:
-                        type: number
-                      comment:
-                        type: string
-                      completedAt:
-                        type: integer
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      rewardId:
-                        type: integer
-                    type: object
-
+                    type: array
+                    items: 
+                      properties:
+                        amount:
+                          type: number
+                        comment:
+                          type: string
+                        completedAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        rewardId:
+                          type: integer
+                      type: object
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -300,37 +301,39 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    properties:
-                      active:
-                        type: boolean
-                      campaignId:
-                        type: integer
-                      createdAt:
-                        type: integer
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      options:
-                        items:
-                          properties:
-                            createdAt:
-                              type: integer
-                            id:
-                              type: integer
-                            name:
-                              type: string
-                            pollId:
-                              type: integer
-                            totalAmountRaised:
-                              type: integer
-                            updatedAt:
-                              type: integer
-                          type: object
-                        type: array
-                      updatedAt:
-                        type: integer
-                    type: object
+                    type: array
+                    items: 
+                      properties:
+                        active:
+                          type: boolean
+                        campaignId:
+                          type: integer
+                        createdAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        options:
+                          items:
+                            properties:
+                              createdAt:
+                                type: integer
+                              id:
+                                type: integer
+                              name:
+                                type: string
+                              pollId:
+                                type: integer
+                              totalAmountRaised:
+                                type: integer
+                              updatedAt:
+                                type: integer
+                            type: object
+                          type: array
+                        updatedAt:
+                          type: integer
+                      type: object
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -384,28 +387,30 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    properties:
-                      activatesOn:
-                        type: integer
-                      active:
-                        type: boolean
-                      amount:
-                        type: integer
-                      campaignId:
-                        type: integer
-                      createdAt:
-                        type: integer
-                      endsAt:
-                        type: integer
-                      id:
-                        type: integer
-                      name:
-                        type: string
-                      totalAmountRaised:
-                        type: integer
-                      updatedAt:
-                        type: integer
-                    type: object
+                    type: array
+                    items: 
+                      properties:
+                        activatesOn:
+                          type: integer
+                        active:
+                          type: boolean
+                        amount:
+                          type: integer
+                        campaignId:
+                          type: integer
+                        createdAt:
+                          type: integer
+                        endsAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        totalAmountRaised:
+                          type: integer
+                        updatedAt:
+                          type: integer
+                      type: object
 
                   links:
                     $ref: '#/components/schemas/Pagination'

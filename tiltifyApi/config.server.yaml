@@ -1,0 +1,5 @@
+output:
+  openapi.server.gen.go
+package: tiltifyApi
+generate:
+  - server
