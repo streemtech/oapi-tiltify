@@ -114,6 +114,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -163,6 +181,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -236,6 +272,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -302,6 +356,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -360,6 +432,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -407,6 +497,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -587,6 +695,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -660,6 +786,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -811,6 +955,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -1085,6 +1247,25 @@ paths:
           $ref: '#/components/responses/ServerError'
   /fundraising-events:
     get:
+      parameters: 
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       tags: 
         - Fundraising
       responses:
@@ -1235,6 +1416,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -1307,6 +1506,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -1356,6 +1573,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -1420,6 +1655,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -1488,6 +1741,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -1541,6 +1812,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -1588,6 +1877,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -1671,6 +1978,25 @@ paths:
     get:
       tags: 
         - Teams
+      parameters: 
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -1782,6 +2108,24 @@ paths:
           description: The ID of the user 
           required: true
           schema:
+            type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
             type: integer
       responses:
         '200':
@@ -2050,6 +2394,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -2228,6 +2590,24 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
       responses:
         '200':
           description: OK
@@ -2286,6 +2666,25 @@ paths:
           required: true
           schema:
             type: integer
+        - name: count
+          in: query
+          description: This is the amount of results to return for the page. This number must be between 1 and 100. Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: before
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+        - name: after
+          in: query
+          description: Used in Pagination.
+          required: false
+          schema: 
+            type: integer
+
       responses:
         '200':
           description: OK
