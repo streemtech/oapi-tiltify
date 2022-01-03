@@ -9,55 +9,66 @@ import (
 )
 
 var testJSON = `{
-    "id": 1,
-    "name": "My Awesome Campaign",
-    "slug": "my-awesome-campaign",
-    "url": "/@username/my-awesome-campaign",
-    "startsAt": 1493355600000,
-    "endsAt": 1496206800000,
-    "description": "My awesome weekend campaign.",
+    "id": 35,
+    "name": "Good Cause",
+    "legalName": "Good Cause Inc",
+    "slug": "goodcause",
+    "currency": "USD",
+    "about": "We do good stuff",
+    "video": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "image": {
+      "src": "https://asdf.cloudfront.net/asdf.jpg",
+      "alt": "",
+      "width": 640,
+      "height": 360
+    },
     "avatar": {
       "src": "https://asdf.cloudfront.net/asdf.jpg",
       "alt": "",
-      "width": 200,
-      "height": 200
+      "width": 64,
+      "height": 64
     },
-    "causeId": 17,
-    "fundraisingEventId": 39,
-    "fundraiserGoalAmount": 10000,
-    "originalGoalAmount": 5000,
-    "amountRaised": 3402.00,
-    "supportingAmountRaised": 8923.00,
-    "totalAmountRaised": 12325.00,
-    "supportable": true,
+    "logo": {
+      "src": "https://asdf.cloudfront.net/asdf.jpg",
+      "alt": "",
+      "width": 100,
+      "height": 64
+    },
+    "banner": {
+      "src": "https://asdf.cloudfront.net/asdf.jpg",
+      "alt": "",
+      "width": 530,
+      "height": 1440
+    },
+    "contactEmail": "asdf@example.org",
+    "paypalEmail": "asdf@example.org",
+    "paypalCurrencyCode": "USD",
+    "social": {
+      "twitter": "stjude",
+      "youtube": "",
+      "facebook": "stjude",
+      "instagram": "stjude"
+    },
+    "settings": {
+      "colors": {
+        "background": "#fff",
+        "highlight": "#ce2f40"
+      },
+      "headerIntro": "Start a fundraising campaign to help us do good things.",
+      "headerTitle": "Good Cause",
+      "footerCopyright": "© Copyright 2017. Good Cause Inc",
+      "findOutMoreLink": "https://www.example.com/find-out-more"
+    },
     "status": "published",
-    "user": {
-      "id": 1,
-      "username": "UserName",
-      "slug": "username",
-      "url": "/@username",
-      "avatar": {
-        "src": "https://asdf.cloudfront.net/asdf.jpg",
-        "alt": "",
-        "width": 200,
-        "height": 200
-      }
-    },
-    "team": {
-      "id": 1,
-      "username": "Team Name",
-      "slug": "teamslug",
-      "url": "/+teamslug",
-      "avatar": {
-        "src": "https://asdf.cloudfront.net/asdf.jpg",
-        "alt": "",
-        "width": 200,
-        "height": 200
-      }
-    },
-    "livestream": {
-      "type": "twitch",
-      "channel": "tiltify"
+    "stripeConnected": true,
+    "mailchimpConnected": false,
+    "address": {
+      "addressLine1": "123 Some St",
+      "addressLine2": "",
+      "city": "Houston",
+      "region": "TX",
+      "postalCode": "77008",
+      "country": "US"
     }
   }`
 

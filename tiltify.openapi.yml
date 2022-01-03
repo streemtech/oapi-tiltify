@@ -29,7 +29,7 @@ paths:
                     type: object
                     properties:
                       avatar:
-                        $ref: "#/components/schemas/Avatar"
+                        $ref: "#/components/schemas/Image"
                       user:
                         $ref: "#/components/schemas/User"
                       team:
@@ -104,6 +104,19 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        amount:
+                          type: number
+                        comment:
+                          type: string
+                        completedAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        rewardId:
+                          type: integer
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -142,6 +155,39 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        active:
+                          type: boolean
+                        amount:
+                          type: integer
+                        createdAt:
+                          type: integer
+                        currency:
+                          type: string
+                        description:
+                          type: string
+                        fairMarketValue:
+                          type: integer
+                        id:
+                          type: integer
+                        image:
+                          $ref: '#/components/schemas/Image'
+                        kind:
+                          type: string
+                        name:
+                          type: string
+                        quantity:
+                          type: object
+                        remaining:
+                          type: object
+                        shippingAddressRequired:
+                          type: boolean
+                        shippingNote:
+                          type: object
+                        startsAt:
+                          type: integer
+                        updatedAt:
+                          type: integer
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -180,6 +226,21 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        active:
+                          type: boolean
+                        campaignId:
+                          type: integer
+                        createdAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        options:
+                          $ref: '#/components/schemas/PollOption'
+                        updatedAt:
+                          type: integer
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -218,6 +279,27 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        activatesOn:
+                          type: integer
+                        active:
+                          type: boolean
+                        amount:
+                          type: integer
+                        campaignId:
+                          type: integer
+                        createdAt:
+                          type: integer
+                        endsAt:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        totalAmountRaised:
+                          type: integer
+                        updatedAt:
+                          type: integer
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -256,6 +338,15 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        description:
+                          type: string
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        startsAt:
+                          type: integer
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -294,6 +385,40 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        amountRaised:
+                          type: integer
+                        causeId:
+                          type: integer
+                        description:
+                          type: string
+                        endsOn:
+                          type: string
+                        fundraisingEventId:
+                          type: integer
+                        goal:
+                          type: integer
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        originalGoal:
+                          type: integer
+                        slug:
+                          type: string
+                        startsOn:
+                          type: string
+                        teamId:
+                          type: object
+                        thumbnail:
+                          $ref: '#/components/schemas/Image'
+                        totalAmountRaised:
+                          type: integer
+                        url:
+                          type: string
+                        userId:
+                          type: integer
+
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -330,6 +455,65 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     type: object
+                    properties:
+                      about:
+                        type: string
+                      address:
+                        $ref: "#/components/schemas/Address"
+                      avatar:
+                        $ref: "#/components/schemas/Image"
+                      banner:
+                        $ref: "#/components/schemas/Image"
+                      contactEmail:
+                        type: string
+                      currency:
+                        type: string
+                      id:
+                        type: integer
+                      image:
+                        $ref: "#/components/schemas/Image"
+                      legalName:
+                        type: string
+                      logo:
+                        $ref: "#/components/schemas/Image"
+                      mailchimpConnected:
+                        type: boolean
+                      name:
+                        type: string
+                      paypalCurrencyCode:
+                        type: string
+                      paypalEmail:
+                        type: string
+                      settings:
+                        properties:
+                          colors:
+                            properties:
+                              background:
+                                type: string
+                              highlight:
+                                type: string
+                            type: object
+                          findOutMoreLink:
+                            type: string
+                          footerCopyright:
+                            type: string
+                          headerIntro:
+                            type: string
+                          headerTitle:
+                            type: string
+                        type: object
+                      slug:
+                        type: string
+                      social:
+                        $ref: '#/components/schemas/Social'
+                      status:
+                        type: string
+                      stripeConnected:
+                        type: boolean
+                      video:
+                        type: string
+
+
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1232,6 +1416,7 @@ paths:
         '5XX':
           $ref: '#/components/responses/ServerError'
 
+
 components:
   responses:
     BadRequest:
@@ -1318,17 +1503,7 @@ components:
           type: object
           
 #Stuff Used In Responses.
-    Avatar:
-      type: object
-      properties:
-        alt:
-          type: string
-        height:
-          type: integer
-        src:
-          type: string
-        width:
-          type: integer
+
     Livestream:
       type: object
       properties:
@@ -1340,7 +1515,7 @@ components:
       type: object  
       properties:
         avatar:
-          $ref: "#/components/schemas/Avatar"
+          $ref: "#/components/schemas/Image"
         id:
           type: integer
         slug:
@@ -1353,7 +1528,7 @@ components:
       type: object
       properties:
         avatar:
-          $ref: "#/components/schemas/Avatar"
+          $ref: "#/components/schemas/Image"
         id:
           type: integer
         slug:
@@ -1361,4 +1536,62 @@ components:
         url:
           type: string
         username:
+          type: string
+    Image:
+      type: object
+      properties:
+        alt:
+          type: string
+        height:
+          type: integer
+        src:
+          type: string
+        width:
+          type: integer
+    PollOption:
+      type: array
+      items:
+        type: object
+        properties:
+          createdAt:
+            type: integer
+          id:
+            type: integer
+          name:
+            type: string
+          pollId:
+            type: integer
+          totalAmountRaised:
+            type: integer
+          updatedAt:
+            type: integer
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+        region:
+          type: string
+    Social:
+      type: object
+      properties:
+        facebook:
+          type: string
+        instagram:
+          type: string
+        twitter:
+          type: string
+        twitch: 
+          type: string
+        website: 
+          type: string
+        youtube:
           type: string
