@@ -550,7 +550,7 @@ paths:
                   data:
                     type: array
                     items:
-                      type: object
+                      $ref: '#/components/schemas/Campaign'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -590,6 +590,43 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        amountRaised:
+                          type: integer
+                        avatar:
+                          $ref: '#/components/schemas/Image'
+                        banner:
+                          $ref: '#/components/schemas/Image'
+                        bannerIntro:
+                          type: string
+                        bannerTitle:
+                          type: string
+                        causeId:
+                          type: integer
+                        currency:
+                          type: string
+                        description:
+                          type: string
+                        endsOn:
+                          type: string
+                        goal:
+                          type: integer
+                        id:
+                          type: integer
+                        image:
+                          $ref: '#/components/schemas/Image'
+                        logo:
+                          $ref: '#/components/schemas/Image'
+                        name:
+                          type: string
+                        slug:
+                          type: string
+                        startsOn:
+                          type: string
+                        url:
+                          type: string
+                        video:
+                          $ref: '#/components/schemas/Image'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -627,6 +664,33 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     type: object
+                    properties:
+                      individual:
+                        items:
+                          properties:
+                            amount_raised:
+                              type: integer
+                            name:
+                              type: string
+                            url:
+                              type: string
+                            userId:
+                              type: integer
+                          type: object
+                        type: array
+                      team:
+                        items:
+                          properties:
+                            amount_raised:
+                              type: integer
+                            name:
+                              type: string
+                            teamId:
+                              type: integer
+                            url:
+                              type: string
+                          type: object
+                        type: array
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -661,6 +725,26 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     type: object
+                    properties:
+                      donate:
+                        properties:
+                          visible:
+                            type: boolean
+                        type: object
+                      individual_leaderboard:
+                        properties:
+                          type:
+                            type: string
+                          visible:
+                            type: boolean
+                        type: object
+                      team_leaderboard:
+                        properties:
+                          type:
+                            type: string
+                          visible:
+                            type: boolean
+                        type: object
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -730,6 +814,79 @@ paths:
                     $ref: '#/components/schemas/Meta'
                   data:
                     type: object
+                    properties:
+                      activated:
+                        type: boolean
+                      adminApiEnabled:
+                        type: boolean
+                      adminBrandingColors:
+                        type: boolean
+                      adminBrandingDetails:
+                        type: boolean
+                      adminBrandingEnabled:
+                        type: boolean
+                      adminBrandingImages:
+                        type: boolean
+                      adminEnabled:
+                        type: boolean
+                      adminFinanceEnabled:
+                        type: boolean
+                      adminGeneralEnabled:
+                        type: boolean
+                      adminIntegrationsEnabled:
+                        type: boolean
+                      adminVisibilityEnabled:
+                        type: boolean
+                      causeLeaderboard:
+                        type: boolean
+                      dashboardChart:
+                        type: boolean
+                      dashboardEnabled:
+                        type: boolean
+                      fundraisingEventsEnabled:
+                        type: boolean
+                      fundraisingEventsGeneralColors:
+                        type: boolean
+                      fundraisingEventsGeneralDetails:
+                        type: boolean
+                      fundraisingEventsGeneralEnabled:
+                        type: boolean
+                      fundraisingEventsGeneralImages:
+                        type: boolean
+                      fundraisingEventsIncentives:
+                        type: boolean
+                      fundraisingEventsLeaderboard:
+                        type: boolean
+                      fundraisingEventsRegistrationEnabled:
+                        type: boolean
+                      fundraisingEventsReporting:
+                        type: boolean
+                      fundraisingEventsReportingCampaigns:
+                        type: boolean
+                      fundraisingEventsReportingDonations:
+                        type: boolean
+                      fundraisingEventsReportingFundraisers:
+                        type: boolean
+                      fundraisingEventsSchedule:
+                        type: boolean
+                      fundraisingEventsVisibilityDetails:
+                        type: boolean
+                      fundraisingEventsVisibilityEnabled:
+                        type: boolean
+                      fundraisingEventsVisibilityLeaderboards:
+                        type: boolean
+                      reportingCampaigns:
+                        type: boolean
+                      reportingChart:
+                        type: boolean
+                      reportingDonations:
+                        type: boolean
+                      reportingEnabled:
+                        type: boolean
+                      reportingFundraisers:
+                        type: boolean
+
+
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -758,7 +915,7 @@ paths:
                   data:
                     type: array
                     items:
-                      type: object
+                      $ref: '#/components/schemas/FundraisingEvent'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -794,7 +951,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: '#/components/schemas/FundraisingEvent'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -830,7 +987,7 @@ paths:
                   data:
                     type: array
                     items:
-                      type: object
+                      $ref: '#/components/schemas/Campaign'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -869,6 +1026,17 @@ paths:
                     type: array
                     items:
                       type: object
+                      properties:
+                        createdAt:
+                          type: integer
+                        description:
+                          type: string
+                        id:
+                          type: integer
+                        image:
+                          $ref: '#/components/schemas/Image'
+                        title:
+                          type: string
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1595,3 +1763,77 @@ components:
           type: string
         youtube:
           type: string
+    FundraisingEvent:
+      type: object
+      properties:
+        amountRaised:
+          type: integer
+        avatar:
+          $ref: '#/components/schemas/Image'
+        banner:
+          $ref: '#/components/schemas/Image'
+        bannerIntro:
+          type: string
+        bannerTitle:
+          type: string
+        causeId:
+          type: integer
+        currency:
+          type: string
+        description:
+          type: string
+        endsOn:
+          type: string
+        goal:
+          type: integer
+        id:
+          type: integer
+        image:
+          $ref: '#/components/schemas/Image'
+        logo:
+          $ref: '#/components/schemas/Image'
+        name:
+          type: string
+        slug:
+          type: string
+        startsOn:
+          type: string
+        url:
+          type: string
+        video:
+          $ref: '#/components/schemas/Image'
+    Campaign:
+      type: object
+      properties:
+        amountRaised:
+          type: integer
+        causeId:
+          type: integer
+        currency:
+          type: string
+        description:
+          type: string
+        endsOn:
+          type: string
+        fundraisingEventId:
+          type: integer
+        goal:
+          type: integer
+        name:
+          type: string
+        originalGoal:
+          type: integer
+        slug:
+          type: string
+        startsOn:
+          type: string
+        teamId:
+          type: object
+        thumbnail:
+          $ref: '#/components/schemas/Image'
+        totalAmountRaised:
+          type: integer
+        url:
+          type: string
+        userId:
+          type: integer

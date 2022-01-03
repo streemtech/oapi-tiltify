@@ -1,0 +1,29 @@
+
+properties:
+  individual:
+    items:
+      properties:
+        amount_raised:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        userId:
+          type: integer
+      type: object
+    type: array
+  team:
+    items:
+      properties:
+        amount_raised:
+          type: integer
+        name:
+          type: string
+        teamId:
+          type: integer
+        url:
+          type: string
+      type: object
+    type: array
+
