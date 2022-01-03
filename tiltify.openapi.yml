@@ -60,22 +60,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        amount:
-                          type: number
-                        comment:
-                          type: string
-                        completedAt:
-                          type: integer
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        rewardId:
-                          type: integer
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -111,42 +96,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        active:
-                          type: boolean
-                        amount:
-                          type: integer
-                        createdAt:
-                          type: integer
-                        currency:
-                          type: string
-                        description:
-                          type: string
-                        fairMarketValue:
-                          type: integer
-                        id:
-                          type: integer
-                        image:
-                          $ref: '#/components/schemas/Image'
-                        kind:
-                          type: string
-                        name:
-                          type: string
-                        quantity:
-                          type: object
-                        remaining:
-                          type: object
-                        shippingAddressRequired:
-                          type: boolean
-                        shippingNote:
-                          type: object
-                        startsAt:
-                          type: integer
-                        updatedAt:
-                          type: integer
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -182,24 +132,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        active:
-                          type: boolean
-                        campaignId:
-                          type: integer
-                        createdAt:
-                          type: integer
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        options:
-                          $ref: '#/components/schemas/PollOption'
-                        updatedAt:
-                          type: integer
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -235,30 +168,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        activatesOn:
-                          type: integer
-                        active:
-                          type: boolean
-                        amount:
-                          type: integer
-                        campaignId:
-                          type: integer
-                        createdAt:
-                          type: integer
-                        endsAt:
-                          type: integer
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        totalAmountRaised:
-                          type: integer
-                        updatedAt:
-                          type: integer
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -294,9 +204,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Schedule'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -332,43 +240,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        amountRaised:
-                          type: integer
-                        causeId:
-                          type: integer
-                        description:
-                          type: string
-                        endsOn:
-                          type: string
-                        fundraisingEventId:
-                          type: integer
-                        goal:
-                          type: integer
-                        id:
-                          type: integer
-                        name:
-                          type: string
-                        originalGoal:
-                          type: integer
-                        slug:
-                          type: string
-                        startsOn:
-                          type: string
-                        teamId:
-                          type: object
-                        thumbnail:
-                          $ref: '#/components/schemas/Image'
-                        totalAmountRaised:
-                          type: integer
-                        url:
-                          type: string
-                        userId:
-                          type: integer
-
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -404,64 +276,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      about:
-                        type: string
-                      address:
-                        $ref: "#/components/schemas/Address"
-                      avatar:
-                        $ref: "#/components/schemas/Image"
-                      banner:
-                        $ref: "#/components/schemas/Image"
-                      contactEmail:
-                        type: string
-                      currency:
-                        type: string
-                      id:
-                        type: integer
-                      image:
-                        $ref: "#/components/schemas/Image"
-                      legalName:
-                        type: string
-                      logo:
-                        $ref: "#/components/schemas/Image"
-                      mailchimpConnected:
-                        type: boolean
-                      name:
-                        type: string
-                      paypalCurrencyCode:
-                        type: string
-                      paypalEmail:
-                        type: string
-                      settings:
-                        properties:
-                          colors:
-                            properties:
-                              background:
-                                type: string
-                              highlight:
-                                type: string
-                            type: object
-                          findOutMoreLink:
-                            type: string
-                          footerCopyright:
-                            type: string
-                          headerIntro:
-                            type: string
-                          headerTitle:
-                            type: string
-                        type: object
-                      slug:
-                        type: string
-                      social:
-                        $ref: '#/components/schemas/Social'
-                      status:
-                        type: string
-                      stripeConnected:
-                        type: boolean
-                      video:
-                        type: string
+                    $ref: './data/campaigns-id.yaml#'
 
 
         '400':
@@ -498,9 +313,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -537,46 +350,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        amountRaised:
-                          type: integer
-                        avatar:
-                          $ref: '#/components/schemas/Image'
-                        banner:
-                          $ref: '#/components/schemas/Image'
-                        bannerIntro:
-                          type: string
-                        bannerTitle:
-                          type: string
-                        causeId:
-                          type: integer
-                        currency:
-                          type: string
-                        description:
-                          type: string
-                        endsOn:
-                          type: string
-                        goal:
-                          type: integer
-                        id:
-                          type: integer
-                        image:
-                          $ref: '#/components/schemas/Image'
-                        logo:
-                          $ref: '#/components/schemas/Image'
-                        name:
-                          type: string
-                        slug:
-                          type: string
-                        startsOn:
-                          type: string
-                        url:
-                          type: string
-                        video:
-                          $ref: '#/components/schemas/Image'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -613,16 +387,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      individual:
-                        items:
-                          $ref: '#/components/schemas/DonationIndividual'
-                        type: array
-                      team:
-                        items:
-                          $ref: '#/components/schemas/DonationTeam'
-                        type: array
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -656,27 +421,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      donate:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      individual_leaderboard:
-                        properties:
-                          type:
-                            type: string
-                          visible:
-                            type: boolean
-                        type: object
-                      team_leaderboard:
-                        properties:
-                          type:
-                            type: string
-                          visible:
-                            type: boolean
-                        type: object
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -711,7 +456,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -745,78 +490,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      activated:
-                        type: boolean
-                      adminApiEnabled:
-                        type: boolean
-                      adminBrandingColors:
-                        type: boolean
-                      adminBrandingDetails:
-                        type: boolean
-                      adminBrandingEnabled:
-                        type: boolean
-                      adminBrandingImages:
-                        type: boolean
-                      adminEnabled:
-                        type: boolean
-                      adminFinanceEnabled:
-                        type: boolean
-                      adminGeneralEnabled:
-                        type: boolean
-                      adminIntegrationsEnabled:
-                        type: boolean
-                      adminVisibilityEnabled:
-                        type: boolean
-                      causeLeaderboard:
-                        type: boolean
-                      dashboardChart:
-                        type: boolean
-                      dashboardEnabled:
-                        type: boolean
-                      fundraisingEventsEnabled:
-                        type: boolean
-                      fundraisingEventsGeneralColors:
-                        type: boolean
-                      fundraisingEventsGeneralDetails:
-                        type: boolean
-                      fundraisingEventsGeneralEnabled:
-                        type: boolean
-                      fundraisingEventsGeneralImages:
-                        type: boolean
-                      fundraisingEventsIncentives:
-                        type: boolean
-                      fundraisingEventsLeaderboard:
-                        type: boolean
-                      fundraisingEventsRegistrationEnabled:
-                        type: boolean
-                      fundraisingEventsReporting:
-                        type: boolean
-                      fundraisingEventsReportingCampaigns:
-                        type: boolean
-                      fundraisingEventsReportingDonations:
-                        type: boolean
-                      fundraisingEventsReportingFundraisers:
-                        type: boolean
-                      fundraisingEventsSchedule:
-                        type: boolean
-                      fundraisingEventsVisibilityDetails:
-                        type: boolean
-                      fundraisingEventsVisibilityEnabled:
-                        type: boolean
-                      fundraisingEventsVisibilityLeaderboards:
-                        type: boolean
-                      reportingCampaigns:
-                        type: boolean
-                      reportingChart:
-                        type: boolean
-                      reportingDonations:
-                        type: boolean
-                      reportingEnabled:
-                        type: boolean
-                      reportingFundraisers:
-                        type: boolean
+                    $ref: './data/campaigns-id.yaml#'
 
 
         '400':
@@ -845,9 +519,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/FundraisingEvent'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -883,7 +555,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: '#/components/schemas/FundraisingEvent'
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -917,9 +589,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -955,20 +625,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        createdAt:
-                          type: integer
-                        description:
-                          type: string
-                        id:
-                          type: integer
-                        image:
-                          $ref: '#/components/schemas/Image'
-                        title:
-                          type: string
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1004,16 +661,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      individual:
-                        items:
-                          $ref: '#/components/schemas/DonationIndividual'
-                        type: array
-                      team:
-                        items:
-                          $ref: '#/components/schemas/DonationTeam'
-                        type: array
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1049,26 +697,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        address:
-                          $ref: '#/components/schemas/Address'
-                        email:
-                          type: string
-                        id:
-                          type: integer
-                        registeredAt:
-                          type: string
-                        serviceHours:
-                          type: boolean
-                        shirtSize:
-                          type: string
-                        subscribed:
-                          type: boolean
-                        userId:
-                          type: integer
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1104,23 +733,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      address:
-                        properties:
-                          enabled:
-                            type: boolean
-                        type: object
-                      service_hours:
-                        properties:
-                          enabled:
-                            type: boolean
-                        type: object
-                      shirt_size:
-                        properties:
-                          enabled:
-                            type: boolean
-                        type: object
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1156,9 +769,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Schedule'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1194,59 +805,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
-                    properties:
-                      donate:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      donorLeaderboard:
-                        properties:
-                          type:
-                            type: string
-                          visible:
-                            type: boolean
-                        type: object
-                      endsAt:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      fundraiserGoalAmount:
-                        properties:
-                          type:
-                            type: string
-                          visible:
-                            type: boolean
-                        type: object
-                      individualLeaderboard:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      preventDonationsBeforeStart:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      registration:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      startsAt:
-                        properties:
-                          visible:
-                            type: boolean
-                        type: object
-                      teamLeaderboard:
-                        properties:
-                          type:
-                            type: string
-                          visible:
-                            type: boolean
-                        type: object
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1275,9 +834,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Team'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1313,7 +870,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: object
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1347,9 +904,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1391,7 +946,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1418,7 +973,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: '#/components/schemas/User'
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1452,7 +1007,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: '#/components/schemas/User'
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1486,9 +1041,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1530,7 +1083,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    $ref: '#/components/schemas/Campaign'
+                    $ref: './data/campaigns-id.yaml#'
         '400':
           $ref: '#/components/responses/BadRequest'
         '401':
@@ -1564,9 +1117,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Team'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1602,9 +1153,7 @@ paths:
                   meta: 
                     $ref: '#/components/schemas/Meta'
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Team'
+                    $ref: './data/campaigns-id.yaml#'
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':
@@ -1704,265 +1253,3 @@ components:
           description: An object pointing to fields that are incorrect in a submitted model
           type: object
           
-#Stuff Used In Responses.
-
-    Livestream:
-      type: object
-      properties:
-        channel:
-          type: string
-        type:
-          type: string
-    CampaignTeam:
-      type: object  
-      properties:
-        avatar:
-          $ref: "#/components/schemas/Image"
-        id:
-          type: integer
-        slug:
-          type: string
-        url:
-          type: string
-        username:
-          type: string
-    User:
-      type: object
-      properties:
-        about:
-          type: string
-        avatar:
-          $ref: "#/components/schemas/Image"
-        confirmed:
-          type: boolean
-        email:
-          type: string
-        firstName:
-          type: string
-        id:
-          type: integer
-        lastName:
-          type: string
-        newsletter:
-          type: object
-        slug:
-          type: string
-        social:
-          $ref: "#/components/schemas/Social"
-        url:
-          type: string
-        username:
-          type: string
-    Image:
-      type: object
-      properties:
-        alt:
-          type: string
-        height:
-          type: integer
-        src:
-          type: string
-        width:
-          type: integer
-    PollOption:
-      type: array
-      items:
-        type: object
-        properties:
-          createdAt:
-            type: integer
-          id:
-            type: integer
-          name:
-            type: string
-          pollId:
-            type: integer
-          totalAmountRaised:
-            type: integer
-          updatedAt:
-            type: integer
-    Address:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-        region:
-          type: string
-    Social:
-      type: object
-      properties:
-        facebook:
-          type: string
-        instagram:
-          type: string
-        twitter:
-          type: string
-        twitch: 
-          type: string
-        website: 
-          type: string
-        youtube:
-          type: string
-        mixer:
-          type: string
-        discord:
-          type: string
-    FundraisingEvent:
-      type: object
-      properties:
-        amountRaised:
-          type: integer
-        avatar:
-          $ref: '#/components/schemas/Image'
-        banner:
-          $ref: '#/components/schemas/Image'
-        bannerIntro:
-          type: string
-        bannerTitle:
-          type: string
-        causeId:
-          type: integer
-        currency:
-          type: string
-        description:
-          type: string
-        endsOn:
-          type: string
-        goal:
-          type: integer
-        id:
-          type: integer
-        image:
-          $ref: '#/components/schemas/Image'
-        logo:
-          $ref: '#/components/schemas/Image'
-        name:
-          type: string
-        slug:
-          type: string
-        startsOn:
-          type: string
-        url:
-          type: string
-        video:
-          $ref: '#/components/schemas/Image'
-    Campaign:
-      type: object
-      properties:
-        amountRaised:
-          type: integer
-        avatar:
-          $ref: '#/components/schemas/Image'
-        causeId:
-          type: integer
-        currency:
-          type: string
-        description:
-          type: string
-        endsOn:
-          type: string
-        fundraiserGoalAmount:
-          type: integer
-        fundraisingEventId:
-          type: integer
-        goal:
-          type: integer
-        id:
-          type: number
-        livestream:
-          $ref: '#/components/schemas/Livestream'
-        name:
-          type: string
-        originalGoal:
-          type: integer
-        originalGoalAmount:
-          type: integer
-        slug:
-          type: string
-        startsAt:
-          type: string
-        startsOn:
-          type: string  
-        status:
-          type: string
-        supportable:
-          type: boolean
-        supportingAmountRaised:
-          type: integer
-        team:
-          $ref: '#/components/schemas/Team'
-        teamId:
-          type: object
-        thumbnail:
-          $ref: '#/components/schemas/Image'
-        totalAmountRaised:
-          type: integer
-        url:
-          type: string
-        user: 
-          $ref: '#/components/schemas/User'
-        userId:
-          type: integer
-    DonationIndividual:
-      type: object
-      properties:
-        amount_raised:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        userId:
-          type: integer
-    DonationTeam: 
-      type: object
-      properties:
-        amount_raised:
-          type: integer
-        name:
-          type: string
-        teamId:
-          type: integer
-        url:
-          type: string
-    Schedule: 
-      type: object
-      properties:
-        description:
-          type: string
-        id:
-          type: integer
-        name:
-          type: string
-        startsAt:
-          type: integer
-    Team:
-      type: object
-      properties:
-        avatar:
-          $ref: '#/components/schemas/Image'
-        bio:
-          type: string
-        disbanded:
-          type: boolean
-        id:
-          type: integer
-        inviteOnly:
-          type: boolean
-        name:
-          type: string
-        slug:
-          type: string
-        social:
-          $ref: '#/components/schemas/Social'
-        url:
-          type: string
-        
