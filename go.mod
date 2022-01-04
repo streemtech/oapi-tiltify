@@ -5,6 +5,7 @@ go 1.18
 require github.com/getkin/kin-openapi v0.87.0
 
 require (
+	github.com/antzucaro/matchr v0.0.0-20210222213004-b04723ef80f0 // indirect
 	github.com/deepmap/oapi-codegen v1.9.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
