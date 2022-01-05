@@ -2308,21 +2308,36 @@ paths:
             application/json:
               schema:
                 properties:
-                  meta: 
-                    $ref: '#/components/schemas/Meta'
                   data:
                     properties:
+                      about:
+                        type: string
+                      avatar:
+                        $ref: "#/components/schemas/Image"
+                      confirmed:
+                        type: boolean
+                      email:
+                        type: string
+                      firstName:
+                        type: string
                       id:
                         type: integer
+                      lastName:
+                        type: string
+                      newsletter:
+                        type: object
                       slug:
                         type: string
-                      status:
+                      social:
+                        $ref: "#/components/schemas/Social"
+                      url:
                         type: string
-                      thumbnail:
-                        $ref: "#/components/schemas/Image"
                       username:
                         type: string
                     type: object
+                  meta:
+                    $ref: "#/components/schemas/Meta"
+                type: object
 
         '400':
           $ref: '#/components/responses/BadRequest'

@@ -14,10 +14,13 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+func main() {
+	generate()
+}
 func generate() {
 
 	jsonReg := regexp.MustCompile(`.*\.json`)
-	filepath.WalkDir("./data", func(path string, d fs.DirEntry, err error) error {
+	filepath.WalkDir("./examples", func(path string, d fs.DirEntry, err error) error {
 
 		if !jsonReg.MatchString(path) {
 			return nil
@@ -37,8 +40,11 @@ func generate() {
 		if err != nil {
 			fmt.Printf("ERROR CONVERTING FILE: %s", err.Error())
 		}
+		dest := strings.ReplaceAll(path, ".json", ".yaml")
+		dest = strings.ReplaceAll(dest, "examples", "data")
+		fmt.Printf("Creating %s\n", dest)
 
-		f, err = os.Create(strings.ReplaceAll(path, ".json", ".yaml"))
+		f, err = os.Create(dest)
 		if err != nil {
 			fmt.Printf("ERROR CREATING FILE: %s", err.Error())
 		}

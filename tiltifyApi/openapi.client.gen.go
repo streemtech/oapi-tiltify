@@ -4439,11 +4439,18 @@ type GetUserResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data *struct {
-			Id        *int    `json:"id,omitempty"`
-			Slug      *string `json:"slug,omitempty"`
-			Status    *string `json:"status,omitempty"`
-			Thumbnail *Image  `json:"thumbnail,omitempty"`
-			Username  *string `json:"username,omitempty"`
+			About      *string                 `json:"about,omitempty"`
+			Avatar     *Image                  `json:"avatar,omitempty"`
+			Confirmed  *bool                   `json:"confirmed,omitempty"`
+			Email      *string                 `json:"email,omitempty"`
+			FirstName  *string                 `json:"firstName,omitempty"`
+			Id         *int                    `json:"id,omitempty"`
+			LastName   *string                 `json:"lastName,omitempty"`
+			Newsletter *map[string]interface{} `json:"newsletter,omitempty"`
+			Slug       *string                 `json:"slug,omitempty"`
+			Social     *Social                 `json:"social,omitempty"`
+			Url        *string                 `json:"url,omitempty"`
+			Username   *string                 `json:"username,omitempty"`
 		} `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
@@ -7565,11 +7572,18 @@ func ParseGetUserResponse(rsp *http.Response) (*GetUserResponse, error) {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data *struct {
-				Id        *int    `json:"id,omitempty"`
-				Slug      *string `json:"slug,omitempty"`
-				Status    *string `json:"status,omitempty"`
-				Thumbnail *Image  `json:"thumbnail,omitempty"`
-				Username  *string `json:"username,omitempty"`
+				About      *string                 `json:"about,omitempty"`
+				Avatar     *Image                  `json:"avatar,omitempty"`
+				Confirmed  *bool                   `json:"confirmed,omitempty"`
+				Email      *string                 `json:"email,omitempty"`
+				FirstName  *string                 `json:"firstName,omitempty"`
+				Id         *int                    `json:"id,omitempty"`
+				LastName   *string                 `json:"lastName,omitempty"`
+				Newsletter *map[string]interface{} `json:"newsletter,omitempty"`
+				Slug       *string                 `json:"slug,omitempty"`
+				Social     *Social                 `json:"social,omitempty"`
+				Url        *string                 `json:"url,omitempty"`
+				Username   *string                 `json:"username,omitempty"`
 			} `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request

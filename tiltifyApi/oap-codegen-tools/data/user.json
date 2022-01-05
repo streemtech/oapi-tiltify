@@ -1,0 +1,27 @@
+{
+	"id": 6256,
+	"username": "",
+	"slug": "",
+	"url": "",
+	"avatar": {
+		"src": "",
+		"alt": "",
+		"width": 200,
+		"height": 200
+	},
+	"email": "",
+	"about": "",
+	"social": {
+		"facebook": null,
+		"twitch": "streemtech",
+		"twitter": "Streem_tech",
+		"website": "https://streem.tech",
+		"youtube": null,
+		"discord": null,
+		"mixer": null
+	},
+	"firstName": "",
+	"lastName": "",
+	"newsletter": null,
+	"confirmed": true
+}
