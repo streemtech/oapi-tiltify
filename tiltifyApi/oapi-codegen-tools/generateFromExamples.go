@@ -31,7 +31,7 @@ func generate() {
 		if !jsonReg.MatchString(path) {
 			return nil
 		}
-		fmt.Printf("Walking %s\n", path)
+		// fmt.Printf("Walking %s\n", path)
 
 		//open file and read in data.
 		f, err := os.Open(path)
@@ -51,6 +51,10 @@ func generate() {
 
 		name := generateName(path)
 
+		_, ok := t.Components.Schemas[name]
+		if ok {
+			fmt.Printf("Duplicate Name %s", name)
+		}
 		t.Components.Schemas[name] = res
 
 		return nil
@@ -167,10 +171,11 @@ func isIntegral(val float64) bool {
 }
 
 func generateName(path string) (name string) {
-	dest := strings.ReplaceAll(path, ".json", ".yaml")
+	dest := strings.ReplaceAll(path, ".json", "")
 	dest = strings.ReplaceAll(dest, "examples/", "")
-	fmt.Println("%s->%s\n", path, dest)
-	return kebabToCamelCase(dest)
+	dest = kebabToCamelCase(dest)
+	fmt.Printf("%s->%s\n", path, dest)
+	return dest
 }
 
 func kebabToCamelCase(kebab string) (camelCase string) {

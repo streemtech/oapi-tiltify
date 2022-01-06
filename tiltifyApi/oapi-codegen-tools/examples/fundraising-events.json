@@ -38,8 +38,8 @@
     "bannerTitle": "St. Jude PLAY LIVE",
     "bannerIntro": "Play video games and create a fundraising campaign to help kids battling cancer.",
     "currency": "USD",
-    "goal": 10000,
-    "amountRaised": 8923,
+    "goal": 10000.1,
+    "amountRaised": 8923.1,
     "startsOn": "2017-03-24",
     "endsOn": "2017-03-26",
     "causeId": 17

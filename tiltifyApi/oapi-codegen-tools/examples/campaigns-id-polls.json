@@ -10,7 +10,7 @@
           "id": 42,
           "pollId": 47,
           "name":"No",
-          "totalAmountRaised": 50,
+          "totalAmountRaised": 50.1,
           "createdAt": 1498169329000,
           "updatedAt": 1498169329000
         },
@@ -18,7 +18,7 @@
           "id": 44,
           "pollId": 47,
           "name":"Yes",
-          "totalAmountRaised": 50,
+          "totalAmountRaised": 50.1,
           "createdAt": 1498169329000,
           "updatedAt": 1498169329000
         }
