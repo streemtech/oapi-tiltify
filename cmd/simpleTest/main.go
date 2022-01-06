@@ -23,7 +23,7 @@ func main() {
 	}
 
 	// pullDonations(string(testKey))
-	url := "https://tiltify.com/@kiwisong/kiwi-is-loud"
+	url := "https://tiltify.com/@supermcgamer/trgc-2021"
 	getDonationsFromURL(string(testKey), url)
 }
 
@@ -127,11 +127,17 @@ func getDonations(testKey string, campaign int) {
 		panic(err)
 	}
 	if resp.JSON200 != nil && resp.JSON200.Data != nil {
-		for _, v := range *resp.JSON200.Data {
+		d := *resp.JSON200.Data
+		for _, v := range d {
 			if v.Name != nil && v.Comment != nil {
-				fmt.Printf("%50s: $%07.2f | %s\n", *v.Name, *v.Amount, *v.Comment)
+				id := -1
+				if v.RewardId != nil {
+					id = *v.RewardId
+				}
+				fmt.Printf("%50s: $%07.2f | %d | %d\n", *v.Name, *v.Amount, *v.Id, id)
 			}
 		}
+		fmt.Printf("%+v | %+v | %+v\n", tiltifyApi.ParseLinks(resp.JSON200.Links.Prev), tiltifyApi.ParseLinks(resp.JSON200.Links.Self), tiltifyApi.ParseLinks(resp.JSON200.Links.Next))
 	} else {
 		fmt.Printf("data null: %+v\n", resp)
 	}
