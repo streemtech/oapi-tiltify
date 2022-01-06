@@ -19,6 +19,12 @@ func main() {
 }
 func generate() {
 
+	t := &kin.T{
+		Components: kin.Components{
+			Schemas: kin.Schemas{},
+		},
+	}
+
 	jsonReg := regexp.MustCompile(`.*\.json`)
 	filepath.WalkDir("./examples", func(path string, d fs.DirEntry, err error) error {
 
@@ -27,6 +33,7 @@ func generate() {
 		}
 		fmt.Printf("Walking %s\n", path)
 
+		//open file and read in data.
 		f, err := os.Open(path)
 		if err != nil {
 			fmt.Printf("ERROR OPEING FILE: %s", err.Error())
@@ -36,46 +43,43 @@ func generate() {
 		if err != nil {
 			fmt.Printf("ERROR READING FILE: %s", err.Error())
 		}
-		res, err := jsonExampleToYamlProperties(data)
+
+		res, err := jsonToSchema(data)
 		if err != nil {
 			fmt.Printf("ERROR CONVERTING FILE: %s", err.Error())
 		}
-		dest := strings.ReplaceAll(path, ".json", ".yaml")
-		dest = strings.ReplaceAll(dest, "examples", "data")
-		fmt.Printf("Creating %s\n", dest)
 
-		f, err = os.Create(dest)
-		if err != nil {
-			fmt.Printf("ERROR CREATING FILE: %s", err.Error())
-		}
-		_, err = f.Write(res)
-		if err != nil {
-			fmt.Printf("ERROR WRITING FILE: %s", err.Error())
-		}
+		name := generateName(path)
+
+		t.Components.Schemas[name] = res
 
 		return nil
 	})
-}
 
-func jsonExampleToYamlProperties(data []byte) (out []byte, err error) {
-
-	var dest any
-
-	err = json.Unmarshal(data, &dest)
+	dat, err := toYamlData(t)
 	if err != nil {
-		return []byte{}, fmt.Errorf("Unable to unmarshal JSON: %w", err)
+		fmt.Printf("ERROR CREATING FILE: %s", err.Error())
+		return
 	}
 
-	// fmt.Printf("%+v\n", dest)
+	f, err := os.Create("./schemas.yaml")
+	if err != nil {
+		fmt.Printf("ERROR CREATING FILE: %s", err.Error())
+		return
+	}
+	_, err = f.Write(dat)
+	if err != nil {
+		fmt.Printf("ERROR WRITING FILE: %s", err.Error())
+	}
+}
 
-	s := anyToSchema(dest)
-
+func toYamlData(s interface{ MarshalJSON() ([]byte, error) }) ([]byte, error) {
 	d, err := s.MarshalJSON()
 	if err != nil {
 		return []byte{}, fmt.Errorf("Unable to marshal results to JSON: %w", err)
 	}
 
-	dest = *new(any)
+	dest := *new(any)
 	err = json.Unmarshal(d, &dest)
 	if err != nil {
 		return []byte{}, fmt.Errorf("Unable to Unmarshal output json to map: %w", err)
@@ -86,6 +90,21 @@ func jsonExampleToYamlProperties(data []byte) (out []byte, err error) {
 		return []byte{}, fmt.Errorf("Unable to marshal to YAML: %w", err)
 	}
 	return res, nil
+}
+
+func jsonToSchema(data []byte) (*kin.SchemaRef, error) {
+
+	var dest any
+
+	err := json.Unmarshal(data, &dest)
+	if err != nil {
+		return nil, fmt.Errorf("Unable to unmarshal JSON: %w", err)
+	}
+
+	// fmt.Printf("%+v\n", dest)
+
+	return anyToSchema(dest), nil
+
 }
 
 func mapToSchemas(m map[string]any) kin.Schemas {
@@ -129,6 +148,7 @@ func anyToSchema(v any) *kin.SchemaRef {
 		out.Value = &kin.Schema{
 			Type: kin.TypeArray,
 		}
+		//TODO3 merge items in array
 		if len(x) > 0 {
 			out.Value.Items = anyToSchema(x[0])
 		}
@@ -144,4 +164,28 @@ func anyToSchema(v any) *kin.SchemaRef {
 
 func isIntegral(val float64) bool {
 	return val == float64(int64(val))
+}
+
+func generateName(path string) (name string) {
+	dest := strings.ReplaceAll(path, ".json", ".yaml")
+	dest = strings.ReplaceAll(dest, "examples/", "")
+	fmt.Println("%s->%s\n", path, dest)
+	return kebabToCamelCase(dest)
+}
+
+func kebabToCamelCase(kebab string) (camelCase string) {
+	isToUpper := true
+	for _, runeValue := range kebab {
+		if isToUpper {
+			camelCase += strings.ToUpper(string(runeValue))
+			isToUpper = false
+		} else {
+			if runeValue == '-' {
+				isToUpper = true
+			} else {
+				camelCase += string(runeValue)
+			}
+		}
+	}
+	return
 }
