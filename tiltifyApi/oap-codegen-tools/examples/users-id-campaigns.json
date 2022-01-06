@@ -1,26 +1,42 @@
-[
-  {
-    "name": "My Awesome Campaign",
-    "slug": "my-awesome-campaign",
-    "url": "https://tiltify.com/@username/my-awesome-campaign",
-    "description": "My awesome weekend campaign.\n Save the kids.",
-    "thumbnail": {
-      "src": "https://asdf.cloudfront.net/asdf.jpg",
-      "alt": "synthesize distributed solutions",
+{
+  "id": 114159,
+  "name": "The Runaway Guys Colosseum 2021",
+  "slug": "trgc-2021",
+  "startsAt": 1619458680000,
+  "endsAt": 1628384531000,
+  "description": "The Runaway Guys and friends raise money for the charity Direct Relief, in support of their COVID-19 response efforts. Every day will feature new games, crazy incentives, and live musical performances.",
+  "causeId": 65,
+  "originalFundraiserGoal": 150000.1,
+  "fundraiserGoalAmount": 200000.1,
+  "supportingAmountRaised": 0.1,
+  "amountRaised": 434654.95,
+  "supportable": false,
+  "status": "retired",
+  "type": "Event",
+  "avatar": {
+    "src": "https://assets.tiltify.com/uploads/cause/avatar/65/direct-relief-avatar-1588270117181.png",
+    "alt": "",
+    "width": 200,
+    "height": 200
+  },
+  "livestream": {
+    "type": "twitch",
+    "channel": "protonjon"
+  },
+  "causeCurrency": "USD",
+  "totalAmountRaised": 434654.95,
+  "user": {
+    "id": 3634,
+    "username": "SuperMCgamer",
+    "slug": "supermcgamer",
+    "url": "https://tiltify.com/@supermcgamer",
+    "avatar": {
+      "src": "https://assets.tiltify.com/uploads/user/thumbnail/3634/Avatar-Apr2016.png",
+      "alt": "",
       "width": 200,
       "height": 200
-    },
-    "causeId": 17,
-    "userId": 35,
-    "teamId": null,
-    "fundraisingEventId": 39,
-    "currency": "USD",
-    "goal": 10000,
-    "supportingCampaignId": 81,
-    "originalGoal": 5000,
-    "amountRaised": 8923,
-    "totalAmountRaised": 12325,
-    "startsOn": "2017-03-24",
-    "endsOn": "2017-03-26"
-  }
-]
+    }
+  },
+  "regionId": null,
+  "metadata": {}
+}

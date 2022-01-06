@@ -1,17 +1,27 @@
 {
-	"meta": {
-		"status": 200
+	"id": 6256,
+	"username": "",
+	"slug": "",
+	"url": "",
+	"avatar": {
+		"src": "",
+		"alt": "",
+		"width": 200,
+		"height": 200
 	},
-	"data": {
-		"id": 3,
-		"username": "TiltifyUser",
-		"slug": "tiltify-user",
-		"thumbnail": {
-			"src": "https://asdf.cloudfront.net/asdf.jpg",
-			"alt": "synthesize distributed solutions",
-			"width": 200,
-			"height": 200
-		},
-		"status": "completed"
-	}
+	"email": "",
+	"about": "",
+	"social": {
+		"facebook": null,
+		"twitch": "streemtech",
+		"twitter": "Streem_tech",
+		"website": "https://streem.tech",
+		"youtube": null,
+		"discord": null,
+		"mixer": null
+	},
+	"firstName": "",
+	"lastName": "",
+	"newsletter": null,
+	"confirmed": true
 }

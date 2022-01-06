@@ -1,0 +1,50 @@
+properties:
+  about:
+    type: string
+  avatar:
+    properties:
+      alt:
+        type: string
+      height:
+        type: integer
+      src:
+        type: string
+      width:
+        type: integer
+    type: object
+  confirmed:
+    type: boolean
+  email:
+    type: string
+  firstName:
+    type: string
+  id:
+    type: integer
+  lastName:
+    type: string
+  newsletter:
+    type: object
+  slug:
+    type: string
+  social:
+    properties:
+      discord:
+        type: object
+      facebook:
+        type: object
+      mixer:
+        type: object
+      twitch:
+        type: string
+      twitter:
+        type: string
+      website:
+        type: string
+      youtube:
+        type: object
+    type: object
+  url:
+    type: string
+  username:
+    type: string
+type: object

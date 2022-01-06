@@ -687,6 +687,112 @@ paths:
         '422':
           $ref: '#/components/responses/Unprocessable'
         '5XX':
+          $ref: '#/components/responses/ServerError'  
+  /causes/{slug}:
+    get:
+      tags: 
+        - Causes
+      parameters:
+        - name: slug
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    properties:
+                      about:
+                        type: string
+                      address:
+                        properties:
+                          addressLine1:
+                            type: string
+                          addressLine2:
+                            type: string
+                          city:
+                            type: string
+                          country:
+                            type: string
+                          postalCode:
+                            type: string
+                          region:
+                            type: string
+                        type: object
+                      avatar:
+                        $ref: "#/components/schemas/Image"
+                      banner:
+                        $ref: "#/components/schemas/Image"
+                      contactEmail:
+                        type: string
+                      currency:
+                        type: string
+                      id:
+                        type: integer
+                      image:
+                        $ref: "#/components/schemas/Image"
+                      legalName:
+                        type: string
+                      logo:
+                        $ref: "#/components/schemas/Image"
+                      mailchimpConnected:
+                        type: boolean
+                      name:
+                        type: string
+                      paypalCurrencyCode:
+                        type: string
+                      paypalEmail:
+                        type: string
+                      settings:
+                        properties:
+                          colors:
+                            properties:
+                              background:
+                                type: string
+                              highlight:
+                                type: string
+                            type: object
+                          findOutMoreLink:
+                            type: string
+                          footerCopyright:
+                            type: string
+                          headerIntro:
+                            type: string
+                          headerTitle:
+                            type: string
+                        type: object
+                      slug:
+                        type: string
+                      social:
+                        $ref: "#/components/schemas/Social"
+                      status:
+                        type: string
+                      stripeConnected:
+                        type: boolean
+                      video:
+                        type: string
+                    type: object
+
+
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/NotAuthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/Unprocessable'
+        '5XX':
           $ref: '#/components/responses/ServerError'
   /causes/{id}/campaigns:
     get:
@@ -2376,13 +2482,52 @@ paths:
                       about:
                         type: string
                       avatar:
-                        $ref: "#/components/schemas/Image"
+                        $ref: '#/components/schemas/Image'
                       id:
                         type: integer
                       slug:
                         type: string
                       social:
-                        $ref: "#/components/schemas/Social"
+                        $ref: '#/components/schemas/Social'
+                      totalAmountRaised:
+                        type: number
+                      url:
+                        type: string
+                      username:
+                        type: string
+                    type: object
+  /users/{slug}:
+    get:
+      tags: 
+        - Users
+      parameters:
+        - name: slug
+          in: path
+          description: The ID of the user 
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  meta: 
+                    $ref: '#/components/schemas/Meta'
+                  data:
+                    properties:
+                      about:
+                        type: string
+                      avatar:
+                        $ref: '#/components/schemas/Image'
+                      id:
+                        type: integer
+                      slug:
+                        type: string
+                      social:
+                        $ref: '#/components/schemas/Social'
                       totalAmountRaised:
                         type: number
                       url:
@@ -2445,42 +2590,60 @@ paths:
                     items:
                       properties:
                         amountRaised:
-                          type: integer
+                          type: number
+                        avatar:
+                          $ref: '#/components/schemas/Image'
+                        causeCurrency:
+                          type: string
                         causeId:
                           type: integer
-                        currency:
-                          type: string
                         description:
                           type: string
-                        endsOn:
-                          type: string
-                        fundraisingEventId:
+                        endsAt:
                           type: integer
-                        goal:
+                        fundraiserGoalAmount:
+                          type: number
+                        id:
                           type: integer
+                        livestream:
+                          $ref: '#/components/schemas/Livestream'
+                        metadata:
+                          type: object
                         name:
                           type: string
-                        originalGoal:
-                          type: integer
+                        originalFundraiserGoal:
+                          type: number
+                        regionId:
+                          type: object
                         slug:
                           type: string
-                        startsOn:
-                          type: string
-                        supportingCampaignId:
+                        startsAt:
                           type: integer
-                        teamId:
-                          type: object
-                        thumbnail:
-                          $ref: "#/components/schemas/Image"
+                        status:
+                          type: string
+                        supportable:
+                          type: boolean
+                        supportingAmountRaised:
+                          type: number
                         totalAmountRaised:
-                          type: integer
-                        url:
+                          type: number
+                        type:
                           type: string
-                        userId:
-                          type: integer
+                        user:
+                          properties:
+                            avatar:
+                              $ref: '#/components/schemas/Image'
+                            id:
+                              type: integer
+                            slug:
+                              type: string
+                            url:
+                              type: string
+                            username:
+                              type: string
+                          type: object
                       type: object
                     type: array
-
                   links:
                     $ref: '#/components/schemas/Pagination'
         '400':

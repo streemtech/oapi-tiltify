@@ -130,6 +130,9 @@ type ClientInterface interface {
 	// PatchCausesIdVisibilityOptions request
 	PatchCausesIdVisibilityOptions(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error)
 
+	// GetCausesSlug request
+	GetCausesSlug(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*http.Response, error)
+
 	// GetFundraisingEvents request
 	GetFundraisingEvents(ctx context.Context, params *GetFundraisingEventsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
@@ -186,6 +189,9 @@ type ClientInterface interface {
 
 	// GetUsersIdTeams request
 	GetUsersIdTeams(ctx context.Context, id int, params *GetUsersIdTeamsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// GetUsersSlug request
+	GetUsersSlug(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*http.Response, error)
 }
 
 func (c *Client) GetCampaignsId(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
@@ -346,6 +352,18 @@ func (c *Client) GetCausesIdVisibilityOptions(ctx context.Context, id int, param
 
 func (c *Client) PatchCausesIdVisibilityOptions(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewPatchCausesIdVisibilityOptionsRequest(c.Server, id)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetCausesSlug(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetCausesSlugRequest(c.Server, slug)
 	if err != nil {
 		return nil, err
 	}
@@ -574,6 +592,18 @@ func (c *Client) GetUsersIdOwnedTeams(ctx context.Context, id int, params *GetUs
 
 func (c *Client) GetUsersIdTeams(ctx context.Context, id int, params *GetUsersIdTeamsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewGetUsersIdTeamsRequest(c.Server, id, params)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) GetUsersSlug(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetUsersSlugRequest(c.Server, slug)
 	if err != nil {
 		return nil, err
 	}
@@ -1521,6 +1551,40 @@ func NewPatchCausesIdVisibilityOptionsRequest(server string, id int) (*http.Requ
 	}
 
 	req, err := http.NewRequest("PATCH", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetCausesSlugRequest generates requests for GetCausesSlug
+func NewGetCausesSlugRequest(server string, slug string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "slug", runtime.ParamLocationPath, slug)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/causes/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
 	if err != nil {
 		return nil, err
 	}
@@ -2843,6 +2907,40 @@ func NewGetUsersIdTeamsRequest(server string, id int, params *GetUsersIdTeamsPar
 	return req, nil
 }
 
+// NewGetUsersSlugRequest generates requests for GetUsersSlug
+func NewGetUsersSlugRequest(server string, slug string) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "slug", runtime.ParamLocationPath, slug)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/users/%s", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("GET", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
 func (c *Client) applyEditors(ctx context.Context, req *http.Request, additionalEditors []RequestEditorFn) error {
 	for _, r := range c.RequestEditors {
 		if err := r(ctx, req); err != nil {
@@ -2928,6 +3026,9 @@ type ClientWithResponsesInterface interface {
 	// PatchCausesIdVisibilityOptions request
 	PatchCausesIdVisibilityOptionsWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*PatchCausesIdVisibilityOptionsResponse, error)
 
+	// GetCausesSlug request
+	GetCausesSlugWithResponse(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*GetCausesSlugResponse, error)
+
 	// GetFundraisingEvents request
 	GetFundraisingEventsWithResponse(ctx context.Context, params *GetFundraisingEventsParams, reqEditors ...RequestEditorFn) (*GetFundraisingEventsResponse, error)
 
@@ -2984,6 +3085,9 @@ type ClientWithResponsesInterface interface {
 
 	// GetUsersIdTeams request
 	GetUsersIdTeamsWithResponse(ctx context.Context, id int, params *GetUsersIdTeamsParams, reqEditors ...RequestEditorFn) (*GetUsersIdTeamsResponse, error)
+
+	// GetUsersSlug request
+	GetUsersSlugWithResponse(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*GetUsersSlugResponse, error)
 }
 
 type GetCampaignsIdResponse struct {
@@ -3770,6 +3874,76 @@ func (r PatchCausesIdVisibilityOptionsResponse) StatusCode() int {
 	return 0
 }
 
+type GetCausesSlugResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data *struct {
+			About   *string `json:"about,omitempty"`
+			Address *struct {
+				AddressLine1 *string `json:"addressLine1,omitempty"`
+				AddressLine2 *string `json:"addressLine2,omitempty"`
+				City         *string `json:"city,omitempty"`
+				Country      *string `json:"country,omitempty"`
+				PostalCode   *string `json:"postalCode,omitempty"`
+				Region       *string `json:"region,omitempty"`
+			} `json:"address,omitempty"`
+			Avatar             *Image  `json:"avatar,omitempty"`
+			Banner             *Image  `json:"banner,omitempty"`
+			ContactEmail       *string `json:"contactEmail,omitempty"`
+			Currency           *string `json:"currency,omitempty"`
+			Id                 *int    `json:"id,omitempty"`
+			Image              *Image  `json:"image,omitempty"`
+			LegalName          *string `json:"legalName,omitempty"`
+			Logo               *Image  `json:"logo,omitempty"`
+			MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
+			Name               *string `json:"name,omitempty"`
+			PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
+			PaypalEmail        *string `json:"paypalEmail,omitempty"`
+			Settings           *struct {
+				Colors *struct {
+					Background *string `json:"background,omitempty"`
+					Highlight  *string `json:"highlight,omitempty"`
+				} `json:"colors,omitempty"`
+				FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
+				FooterCopyright *string `json:"footerCopyright,omitempty"`
+				HeaderIntro     *string `json:"headerIntro,omitempty"`
+				HeaderTitle     *string `json:"headerTitle,omitempty"`
+			} `json:"settings,omitempty"`
+			Slug            *string `json:"slug,omitempty"`
+			Social          *Social `json:"social,omitempty"`
+			Status          *string `json:"status,omitempty"`
+			StripeConnected *bool   `json:"stripeConnected,omitempty"`
+			Video           *string `json:"video,omitempty"`
+		} `json:"data,omitempty"`
+
+		// This is the HTTP status code that is also sent with the request
+		Meta *Meta `json:"meta,omitempty"`
+	}
+	JSON400 *Error
+	JSON401 *Error
+	JSON403 *Error
+	JSON404 *Error
+	JSON422 *Error
+	JSON5XX *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r GetCausesSlugResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetCausesSlugResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 type GetFundraisingEventsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
@@ -4498,12 +4672,6 @@ type GetUsersIdResponse struct {
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
 	}
-	JSON400 *Error
-	JSON401 *Error
-	JSON403 *Error
-	JSON404 *Error
-	JSON422 *Error
-	JSON5XX *Error
 }
 
 // Status returns HTTPResponse.Status
@@ -4527,23 +4695,33 @@ type GetUsersIdCampaignsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Data *[]struct {
-			AmountRaised         *int                    `json:"amountRaised,omitempty"`
-			CauseId              *int                    `json:"causeId,omitempty"`
-			Currency             *string                 `json:"currency,omitempty"`
-			Description          *string                 `json:"description,omitempty"`
-			EndsOn               *string                 `json:"endsOn,omitempty"`
-			FundraisingEventId   *int                    `json:"fundraisingEventId,omitempty"`
-			Goal                 *int                    `json:"goal,omitempty"`
-			Name                 *string                 `json:"name,omitempty"`
-			OriginalGoal         *int                    `json:"originalGoal,omitempty"`
-			Slug                 *string                 `json:"slug,omitempty"`
-			StartsOn             *string                 `json:"startsOn,omitempty"`
-			SupportingCampaignId *int                    `json:"supportingCampaignId,omitempty"`
-			TeamId               *map[string]interface{} `json:"teamId,omitempty"`
-			Thumbnail            *Image                  `json:"thumbnail,omitempty"`
-			TotalAmountRaised    *int                    `json:"totalAmountRaised,omitempty"`
-			Url                  *string                 `json:"url,omitempty"`
-			UserId               *int                    `json:"userId,omitempty"`
+			AmountRaised           *float32                `json:"amountRaised,omitempty"`
+			Avatar                 *Image                  `json:"avatar,omitempty"`
+			CauseCurrency          *string                 `json:"causeCurrency,omitempty"`
+			CauseId                *int                    `json:"causeId,omitempty"`
+			Description            *string                 `json:"description,omitempty"`
+			EndsAt                 *int                    `json:"endsAt,omitempty"`
+			FundraiserGoalAmount   *float32                `json:"fundraiserGoalAmount,omitempty"`
+			Id                     *int                    `json:"id,omitempty"`
+			Livestream             *Livestream             `json:"livestream,omitempty"`
+			Metadata               *map[string]interface{} `json:"metadata,omitempty"`
+			Name                   *string                 `json:"name,omitempty"`
+			OriginalFundraiserGoal *float32                `json:"originalFundraiserGoal,omitempty"`
+			RegionId               *map[string]interface{} `json:"regionId,omitempty"`
+			Slug                   *string                 `json:"slug,omitempty"`
+			StartsAt               *int                    `json:"startsAt,omitempty"`
+			Status                 *string                 `json:"status,omitempty"`
+			Supportable            *bool                   `json:"supportable,omitempty"`
+			SupportingAmountRaised *float32                `json:"supportingAmountRaised,omitempty"`
+			TotalAmountRaised      *float32                `json:"totalAmountRaised,omitempty"`
+			Type                   *string                 `json:"type,omitempty"`
+			User                   *struct {
+				Avatar   *Image  `json:"avatar,omitempty"`
+				Id       *int    `json:"id,omitempty"`
+				Slug     *string `json:"slug,omitempty"`
+				Url      *string `json:"url,omitempty"`
+				Username *string `json:"username,omitempty"`
+			} `json:"user,omitempty"`
 		} `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
@@ -4730,6 +4908,48 @@ func (r GetUsersIdTeamsResponse) StatusCode() int {
 	return 0
 }
 
+type GetUsersSlugResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+	JSON200      *struct {
+		Data *struct {
+			About             *string  `json:"about,omitempty"`
+			Avatar            *Image   `json:"avatar,omitempty"`
+			Id                *int     `json:"id,omitempty"`
+			Slug              *string  `json:"slug,omitempty"`
+			Social            *Social  `json:"social,omitempty"`
+			TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
+			Url               *string  `json:"url,omitempty"`
+			Username          *string  `json:"username,omitempty"`
+		} `json:"data,omitempty"`
+
+		// This is the HTTP status code that is also sent with the request
+		Meta *Meta `json:"meta,omitempty"`
+	}
+	JSON400 *Error
+	JSON401 *Error
+	JSON403 *Error
+	JSON404 *Error
+	JSON422 *Error
+	JSON5XX *Error
+}
+
+// Status returns HTTPResponse.Status
+func (r GetUsersSlugResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r GetUsersSlugResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
 // GetCampaignsIdWithResponse request returning *GetCampaignsIdResponse
 func (c *ClientWithResponses) GetCampaignsIdWithResponse(ctx context.Context, id int, reqEditors ...RequestEditorFn) (*GetCampaignsIdResponse, error) {
 	rsp, err := c.GetCampaignsId(ctx, id, reqEditors...)
@@ -4854,6 +5074,15 @@ func (c *ClientWithResponses) PatchCausesIdVisibilityOptionsWithResponse(ctx con
 		return nil, err
 	}
 	return ParsePatchCausesIdVisibilityOptionsResponse(rsp)
+}
+
+// GetCausesSlugWithResponse request returning *GetCausesSlugResponse
+func (c *ClientWithResponses) GetCausesSlugWithResponse(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*GetCausesSlugResponse, error) {
+	rsp, err := c.GetCausesSlug(ctx, slug, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetCausesSlugResponse(rsp)
 }
 
 // GetFundraisingEventsWithResponse request returning *GetFundraisingEventsResponse
@@ -5025,6 +5254,15 @@ func (c *ClientWithResponses) GetUsersIdTeamsWithResponse(ctx context.Context, i
 		return nil, err
 	}
 	return ParseGetUsersIdTeamsResponse(rsp)
+}
+
+// GetUsersSlugWithResponse request returning *GetUsersSlugResponse
+func (c *ClientWithResponses) GetUsersSlugWithResponse(ctx context.Context, slug string, reqEditors ...RequestEditorFn) (*GetUsersSlugResponse, error) {
+	rsp, err := c.GetUsersSlug(ctx, slug, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseGetUsersSlugResponse(rsp)
 }
 
 // ParseGetCampaignsIdResponse parses an HTTP response from a GetCampaignsIdWithResponse call
@@ -6314,6 +6552,116 @@ func ParsePatchCausesIdVisibilityOptionsResponse(rsp *http.Response) (*PatchCaus
 					Type    *string `json:"type,omitempty"`
 					Visible *bool   `json:"visible,omitempty"`
 				} `json:"teamLeaderboard,omitempty"`
+			} `json:"data,omitempty"`
+
+			// This is the HTTP status code that is also sent with the request
+			Meta *Meta `json:"meta,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode/100 == 5:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON5XX = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetCausesSlugResponse parses an HTTP response from a GetCausesSlugWithResponse call
+func ParseGetCausesSlugResponse(rsp *http.Response) (*GetCausesSlugResponse, error) {
+	bodyBytes, err := ioutil.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetCausesSlugResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data *struct {
+				About   *string `json:"about,omitempty"`
+				Address *struct {
+					AddressLine1 *string `json:"addressLine1,omitempty"`
+					AddressLine2 *string `json:"addressLine2,omitempty"`
+					City         *string `json:"city,omitempty"`
+					Country      *string `json:"country,omitempty"`
+					PostalCode   *string `json:"postalCode,omitempty"`
+					Region       *string `json:"region,omitempty"`
+				} `json:"address,omitempty"`
+				Avatar             *Image  `json:"avatar,omitempty"`
+				Banner             *Image  `json:"banner,omitempty"`
+				ContactEmail       *string `json:"contactEmail,omitempty"`
+				Currency           *string `json:"currency,omitempty"`
+				Id                 *int    `json:"id,omitempty"`
+				Image              *Image  `json:"image,omitempty"`
+				LegalName          *string `json:"legalName,omitempty"`
+				Logo               *Image  `json:"logo,omitempty"`
+				MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
+				Name               *string `json:"name,omitempty"`
+				PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
+				PaypalEmail        *string `json:"paypalEmail,omitempty"`
+				Settings           *struct {
+					Colors *struct {
+						Background *string `json:"background,omitempty"`
+						Highlight  *string `json:"highlight,omitempty"`
+					} `json:"colors,omitempty"`
+					FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
+					FooterCopyright *string `json:"footerCopyright,omitempty"`
+					HeaderIntro     *string `json:"headerIntro,omitempty"`
+					HeaderTitle     *string `json:"headerTitle,omitempty"`
+				} `json:"settings,omitempty"`
+				Slug            *string `json:"slug,omitempty"`
+				Social          *Social `json:"social,omitempty"`
+				Status          *string `json:"status,omitempty"`
+				StripeConnected *bool   `json:"stripeConnected,omitempty"`
+				Video           *string `json:"video,omitempty"`
 			} `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
@@ -7676,48 +8024,6 @@ func ParseGetUsersIdResponse(rsp *http.Response) (*GetUsersIdResponse, error) {
 		}
 		response.JSON200 = &dest
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON401 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON403 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON422 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode/100 == 5:
-		var dest Error
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON5XX = &dest
-
 	}
 
 	return response, nil
@@ -7740,23 +8046,33 @@ func ParseGetUsersIdCampaignsResponse(rsp *http.Response) (*GetUsersIdCampaignsR
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Data *[]struct {
-				AmountRaised         *int                    `json:"amountRaised,omitempty"`
-				CauseId              *int                    `json:"causeId,omitempty"`
-				Currency             *string                 `json:"currency,omitempty"`
-				Description          *string                 `json:"description,omitempty"`
-				EndsOn               *string                 `json:"endsOn,omitempty"`
-				FundraisingEventId   *int                    `json:"fundraisingEventId,omitempty"`
-				Goal                 *int                    `json:"goal,omitempty"`
-				Name                 *string                 `json:"name,omitempty"`
-				OriginalGoal         *int                    `json:"originalGoal,omitempty"`
-				Slug                 *string                 `json:"slug,omitempty"`
-				StartsOn             *string                 `json:"startsOn,omitempty"`
-				SupportingCampaignId *int                    `json:"supportingCampaignId,omitempty"`
-				TeamId               *map[string]interface{} `json:"teamId,omitempty"`
-				Thumbnail            *Image                  `json:"thumbnail,omitempty"`
-				TotalAmountRaised    *int                    `json:"totalAmountRaised,omitempty"`
-				Url                  *string                 `json:"url,omitempty"`
-				UserId               *int                    `json:"userId,omitempty"`
+				AmountRaised           *float32                `json:"amountRaised,omitempty"`
+				Avatar                 *Image                  `json:"avatar,omitempty"`
+				CauseCurrency          *string                 `json:"causeCurrency,omitempty"`
+				CauseId                *int                    `json:"causeId,omitempty"`
+				Description            *string                 `json:"description,omitempty"`
+				EndsAt                 *int                    `json:"endsAt,omitempty"`
+				FundraiserGoalAmount   *float32                `json:"fundraiserGoalAmount,omitempty"`
+				Id                     *int                    `json:"id,omitempty"`
+				Livestream             *Livestream             `json:"livestream,omitempty"`
+				Metadata               *map[string]interface{} `json:"metadata,omitempty"`
+				Name                   *string                 `json:"name,omitempty"`
+				OriginalFundraiserGoal *float32                `json:"originalFundraiserGoal,omitempty"`
+				RegionId               *map[string]interface{} `json:"regionId,omitempty"`
+				Slug                   *string                 `json:"slug,omitempty"`
+				StartsAt               *int                    `json:"startsAt,omitempty"`
+				Status                 *string                 `json:"status,omitempty"`
+				Supportable            *bool                   `json:"supportable,omitempty"`
+				SupportingAmountRaised *float32                `json:"supportingAmountRaised,omitempty"`
+				TotalAmountRaised      *float32                `json:"totalAmountRaised,omitempty"`
+				Type                   *string                 `json:"type,omitempty"`
+				User                   *struct {
+					Avatar   *Image  `json:"avatar,omitempty"`
+					Id       *int    `json:"id,omitempty"`
+					Slug     *string `json:"slug,omitempty"`
+					Url      *string `json:"url,omitempty"`
+					Username *string `json:"username,omitempty"`
+				} `json:"user,omitempty"`
 			} `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
@@ -8035,6 +8351,88 @@ func ParseGetUsersIdTeamsResponse(rsp *http.Response) (*GetUsersIdTeamsResponse,
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
+
+			// This is the HTTP status code that is also sent with the request
+			Meta *Meta `json:"meta,omitempty"`
+		}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 401:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON401 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 403:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON403 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 422:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON422 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode/100 == 5:
+		var dest Error
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON5XX = &dest
+
+	}
+
+	return response, nil
+}
+
+// ParseGetUsersSlugResponse parses an HTTP response from a GetUsersSlugWithResponse call
+func ParseGetUsersSlugResponse(rsp *http.Response) (*GetUsersSlugResponse, error) {
+	bodyBytes, err := ioutil.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &GetUsersSlugResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
+	}
+
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest struct {
+			Data *struct {
+				About             *string  `json:"about,omitempty"`
+				Avatar            *Image   `json:"avatar,omitempty"`
+				Id                *int     `json:"id,omitempty"`
+				Slug              *string  `json:"slug,omitempty"`
+				Social            *Social  `json:"social,omitempty"`
+				TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
+				Url               *string  `json:"url,omitempty"`
+				Username          *string  `json:"username,omitempty"`
+			} `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
