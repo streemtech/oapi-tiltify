@@ -3094,40 +3094,7 @@ type GetCampaignsIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			AmountRaised           *int        `json:"amountRaised,omitempty"`
-			Avatar                 *Image      `json:"avatar,omitempty"`
-			CauseId                *int        `json:"causeId,omitempty"`
-			Description            *string     `json:"description,omitempty"`
-			EndsAt                 *int        `json:"endsAt,omitempty"`
-			FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-			FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-			Id                     *int        `json:"id,omitempty"`
-			Livestream             *Livestream `json:"livestream,omitempty"`
-			Name                   *string     `json:"name,omitempty"`
-			OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-			Slug                   *string     `json:"slug,omitempty"`
-			StartsAt               *int        `json:"startsAt,omitempty"`
-			Status                 *string     `json:"status,omitempty"`
-			Supportable            *bool       `json:"supportable,omitempty"`
-			SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-			Team                   *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"team,omitempty"`
-			TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-			Url               *string `json:"url,omitempty"`
-			User              *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"user,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CampaignsId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3160,18 +3127,7 @@ type GetCampaignsIdChallengesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			ActivatesOn       *int    `json:"activatesOn,omitempty"`
-			Active            *bool   `json:"active,omitempty"`
-			Amount            *int    `json:"amount,omitempty"`
-			CampaignId        *int    `json:"campaignId,omitempty"`
-			CreatedAt         *int    `json:"createdAt,omitempty"`
-			EndsAt            *int    `json:"endsAt,omitempty"`
-			Id                *int    `json:"id,omitempty"`
-			Name              *string `json:"name,omitempty"`
-			TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-			UpdatedAt         *int    `json:"updatedAt,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CampaignsIdChallenges `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3207,14 +3163,7 @@ type GetCampaignsIdDonationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Amount      *float32 `json:"amount,omitempty"`
-			Comment     *string  `json:"comment,omitempty"`
-			CompletedAt *int     `json:"completedAt,omitempty"`
-			Id          *int     `json:"id,omitempty"`
-			Name        *string  `json:"name,omitempty"`
-			RewardId    *int     `json:"rewardId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CampaignsIdDonations `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3250,22 +3199,7 @@ type GetCampaignsIdPollsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Active     *bool   `json:"active,omitempty"`
-			CampaignId *int    `json:"campaignId,omitempty"`
-			CreatedAt  *int    `json:"createdAt,omitempty"`
-			Id         *int    `json:"id,omitempty"`
-			Name       *string `json:"name,omitempty"`
-			Options    *[]struct {
-				CreatedAt         *int    `json:"createdAt,omitempty"`
-				Id                *int    `json:"id,omitempty"`
-				Name              *string `json:"name,omitempty"`
-				PollId            *int    `json:"pollId,omitempty"`
-				TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-				UpdatedAt         *int    `json:"updatedAt,omitempty"`
-			} `json:"options,omitempty"`
-			UpdatedAt *int `json:"updatedAt,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CampaignsIdPolls `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3301,24 +3235,7 @@ type GetCampaignsIdRewardsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Active                  *bool                   `json:"active,omitempty"`
-			Amount                  *int                    `json:"amount,omitempty"`
-			CreatedAt               *int                    `json:"createdAt,omitempty"`
-			Currency                *string                 `json:"currency,omitempty"`
-			Description             *string                 `json:"description,omitempty"`
-			FairMarketValue         *int                    `json:"fairMarketValue,omitempty"`
-			Id                      *int                    `json:"id,omitempty"`
-			Image                   *Image                  `json:"image,omitempty"`
-			Kind                    *string                 `json:"kind,omitempty"`
-			Name                    *string                 `json:"name,omitempty"`
-			Quantity                *map[string]interface{} `json:"quantity,omitempty"`
-			Remaining               *map[string]interface{} `json:"remaining,omitempty"`
-			ShippingAddressRequired *bool                   `json:"shippingAddressRequired,omitempty"`
-			ShippingNote            *map[string]interface{} `json:"shippingNote,omitempty"`
-			StartsAt                *int                    `json:"startsAt,omitempty"`
-			UpdatedAt               *int                    `json:"updatedAt,omitempty"`
-		} `json:"data,omitempty"`
+		Data *interface{} `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3354,12 +3271,7 @@ type GetCampaignsIdScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Description *string `json:"description,omitempty"`
-			Id          *int    `json:"id,omitempty"`
-			Name        *string `json:"name,omitempty"`
-			StartsAt    *int    `json:"startsAt,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CampaignsIdSchedule `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3395,24 +3307,7 @@ type GetCampaignsIdSupportingCampaignsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised       *int                    `json:"amountRaised,omitempty"`
-			CauseId            *int                    `json:"causeId,omitempty"`
-			Description        *string                 `json:"description,omitempty"`
-			EndsOn             *string                 `json:"endsOn,omitempty"`
-			FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-			Goal               *int                    `json:"goal,omitempty"`
-			Id                 *int                    `json:"id,omitempty"`
-			Name               *string                 `json:"name,omitempty"`
-			OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-			Slug               *string                 `json:"slug,omitempty"`
-			StartsOn           *string                 `json:"startsOn,omitempty"`
-			TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-			Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-			TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-			Url                *string                 `json:"url,omitempty"`
-			UserId             *int                    `json:"userId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CampaignsIdSupportingCampaigns `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3448,44 +3343,7 @@ type GetCausesIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			About   *string `json:"about,omitempty"`
-			Address *struct {
-				AddressLine1 *string `json:"addressLine1,omitempty"`
-				AddressLine2 *string `json:"addressLine2,omitempty"`
-				City         *string `json:"city,omitempty"`
-				Country      *string `json:"country,omitempty"`
-				PostalCode   *string `json:"postalCode,omitempty"`
-				Region       *string `json:"region,omitempty"`
-			} `json:"address,omitempty"`
-			Avatar             *Image  `json:"avatar,omitempty"`
-			Banner             *Image  `json:"banner,omitempty"`
-			ContactEmail       *string `json:"contactEmail,omitempty"`
-			Currency           *string `json:"currency,omitempty"`
-			Id                 *int    `json:"id,omitempty"`
-			Image              *Image  `json:"image,omitempty"`
-			LegalName          *string `json:"legalName,omitempty"`
-			Logo               *Image  `json:"logo,omitempty"`
-			MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
-			Name               *string `json:"name,omitempty"`
-			PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
-			PaypalEmail        *string `json:"paypalEmail,omitempty"`
-			Settings           *struct {
-				Colors *struct {
-					Background *string `json:"background,omitempty"`
-					Highlight  *string `json:"highlight,omitempty"`
-				} `json:"colors,omitempty"`
-				FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
-				FooterCopyright *string `json:"footerCopyright,omitempty"`
-				HeaderIntro     *string `json:"headerIntro,omitempty"`
-				HeaderTitle     *string `json:"headerTitle,omitempty"`
-			} `json:"settings,omitempty"`
-			Slug            *string `json:"slug,omitempty"`
-			Social          *Social `json:"social,omitempty"`
-			Status          *string `json:"status,omitempty"`
-			StripeConnected *bool   `json:"stripeConnected,omitempty"`
-			Video           *string `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CausesId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3518,24 +3376,7 @@ type GetCausesIdCampaignsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised       *int                    `json:"amountRaised,omitempty"`
-			CauseId            *int                    `json:"causeId,omitempty"`
-			Currency           *string                 `json:"currency,omitempty"`
-			Description        *string                 `json:"description,omitempty"`
-			EndsOn             *string                 `json:"endsOn,omitempty"`
-			FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-			Goal               *int                    `json:"goal,omitempty"`
-			Name               *string                 `json:"name,omitempty"`
-			OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-			Slug               *string                 `json:"slug,omitempty"`
-			StartsOn           *string                 `json:"startsOn,omitempty"`
-			TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-			Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-			TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-			Url                *string                 `json:"url,omitempty"`
-			UserId             *int                    `json:"userId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CausesIdCampaigns `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3571,26 +3412,7 @@ type GetCausesIdFundraisingEventsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised *int    `json:"amountRaised,omitempty"`
-			Avatar       *Image  `json:"avatar,omitempty"`
-			Banner       *Image  `json:"banner,omitempty"`
-			BannerIntro  *string `json:"bannerIntro,omitempty"`
-			BannerTitle  *string `json:"bannerTitle,omitempty"`
-			CauseId      *int    `json:"causeId,omitempty"`
-			Currency     *string `json:"currency,omitempty"`
-			Description  *string `json:"description,omitempty"`
-			EndsOn       *string `json:"endsOn,omitempty"`
-			Goal         *int    `json:"goal,omitempty"`
-			Id           *int    `json:"id,omitempty"`
-			Image        *Image  `json:"image,omitempty"`
-			Logo         *Image  `json:"logo,omitempty"`
-			Name         *string `json:"name,omitempty"`
-			Slug         *string `json:"slug,omitempty"`
-			StartsOn     *string `json:"startsOn,omitempty"`
-			Url          *string `json:"url,omitempty"`
-			Video        *Image  `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CausesIdFundraisingEvents `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3626,26 +3448,7 @@ type GetCausesIdLeaderboardsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised *int    `json:"amountRaised,omitempty"`
-			Avatar       *Image  `json:"avatar,omitempty"`
-			Banner       *Image  `json:"banner,omitempty"`
-			BannerIntro  *string `json:"bannerIntro,omitempty"`
-			BannerTitle  *string `json:"bannerTitle,omitempty"`
-			CauseId      *int    `json:"causeId,omitempty"`
-			Currency     *string `json:"currency,omitempty"`
-			Description  *string `json:"description,omitempty"`
-			EndsOn       *string `json:"endsOn,omitempty"`
-			Goal         *int    `json:"goal,omitempty"`
-			Id           *int    `json:"id,omitempty"`
-			Image        *Image  `json:"image,omitempty"`
-			Logo         *Image  `json:"logo,omitempty"`
-			Name         *string `json:"name,omitempty"`
-			Slug         *string `json:"slug,omitempty"`
-			StartsOn     *string `json:"startsOn,omitempty"`
-			Url          *string `json:"url,omitempty"`
-			Video        *Image  `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]CausesIdLeaderboards `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3678,43 +3481,7 @@ type GetCausesIdPermissionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Activated                               *bool `json:"activated,omitempty"`
-			AdminApiEnabled                         *bool `json:"adminApiEnabled,omitempty"`
-			AdminBrandingColors                     *bool `json:"adminBrandingColors,omitempty"`
-			AdminBrandingDetails                    *bool `json:"adminBrandingDetails,omitempty"`
-			AdminBrandingEnabled                    *bool `json:"adminBrandingEnabled,omitempty"`
-			AdminBrandingImages                     *bool `json:"adminBrandingImages,omitempty"`
-			AdminEnabled                            *bool `json:"adminEnabled,omitempty"`
-			AdminFinanceEnabled                     *bool `json:"adminFinanceEnabled,omitempty"`
-			AdminGeneralEnabled                     *bool `json:"adminGeneralEnabled,omitempty"`
-			AdminIntegrationsEnabled                *bool `json:"adminIntegrationsEnabled,omitempty"`
-			AdminVisibilityEnabled                  *bool `json:"adminVisibilityEnabled,omitempty"`
-			CauseLeaderboard                        *bool `json:"causeLeaderboard,omitempty"`
-			DashboardChart                          *bool `json:"dashboardChart,omitempty"`
-			DashboardEnabled                        *bool `json:"dashboardEnabled,omitempty"`
-			FundraisingEventsEnabled                *bool `json:"fundraisingEventsEnabled,omitempty"`
-			FundraisingEventsGeneralColors          *bool `json:"fundraisingEventsGeneralColors,omitempty"`
-			FundraisingEventsGeneralDetails         *bool `json:"fundraisingEventsGeneralDetails,omitempty"`
-			FundraisingEventsGeneralEnabled         *bool `json:"fundraisingEventsGeneralEnabled,omitempty"`
-			FundraisingEventsGeneralImages          *bool `json:"fundraisingEventsGeneralImages,omitempty"`
-			FundraisingEventsIncentives             *bool `json:"fundraisingEventsIncentives,omitempty"`
-			FundraisingEventsLeaderboard            *bool `json:"fundraisingEventsLeaderboard,omitempty"`
-			FundraisingEventsRegistrationEnabled    *bool `json:"fundraisingEventsRegistrationEnabled,omitempty"`
-			FundraisingEventsReporting              *bool `json:"fundraisingEventsReporting,omitempty"`
-			FundraisingEventsReportingCampaigns     *bool `json:"fundraisingEventsReportingCampaigns,omitempty"`
-			FundraisingEventsReportingDonations     *bool `json:"fundraisingEventsReportingDonations,omitempty"`
-			FundraisingEventsReportingFundraisers   *bool `json:"fundraisingEventsReportingFundraisers,omitempty"`
-			FundraisingEventsSchedule               *bool `json:"fundraisingEventsSchedule,omitempty"`
-			FundraisingEventsVisibilityDetails      *bool `json:"fundraisingEventsVisibilityDetails,omitempty"`
-			FundraisingEventsVisibilityEnabled      *bool `json:"fundraisingEventsVisibilityEnabled,omitempty"`
-			FundraisingEventsVisibilityLeaderboards *bool `json:"fundraisingEventsVisibilityLeaderboards,omitempty"`
-			ReportingCampaigns                      *bool `json:"reportingCampaigns,omitempty"`
-			ReportingChart                          *bool `json:"reportingChart,omitempty"`
-			ReportingDonations                      *bool `json:"reportingDonations,omitempty"`
-			ReportingEnabled                        *bool `json:"reportingEnabled,omitempty"`
-			ReportingFundraisers                    *bool `json:"reportingFundraisers,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CausesIdPermissions `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3747,38 +3514,7 @@ type GetCausesIdVisibilityOptionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Donate *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"donate,omitempty"`
-			DonorLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"donorLeaderboard,omitempty"`
-			EndsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"endsAt,omitempty"`
-			FundraiserGoalAmount *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"fundraiserGoalAmount,omitempty"`
-			IndividualLeaderboard *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"individualLeaderboard,omitempty"`
-			PreventDonationsBeforeStart *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"preventDonationsBeforeStart,omitempty"`
-			Registration *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"registration,omitempty"`
-			StartsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"startsAt,omitempty"`
-			TeamLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"teamLeaderboard,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CausesIdVisibilityOptions `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -3814,38 +3550,7 @@ type PatchCausesIdVisibilityOptionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Donate *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"donate,omitempty"`
-			DonorLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"donorLeaderboard,omitempty"`
-			EndsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"endsAt,omitempty"`
-			FundraiserGoalAmount *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"fundraiserGoalAmount,omitempty"`
-			IndividualLeaderboard *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"individualLeaderboard,omitempty"`
-			PreventDonationsBeforeStart *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"preventDonationsBeforeStart,omitempty"`
-			Registration *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"registration,omitempty"`
-			StartsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"startsAt,omitempty"`
-			TeamLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"teamLeaderboard,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CausesIdVisibilityOptions `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3878,44 +3583,7 @@ type GetCausesSlugResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			About   *string `json:"about,omitempty"`
-			Address *struct {
-				AddressLine1 *string `json:"addressLine1,omitempty"`
-				AddressLine2 *string `json:"addressLine2,omitempty"`
-				City         *string `json:"city,omitempty"`
-				Country      *string `json:"country,omitempty"`
-				PostalCode   *string `json:"postalCode,omitempty"`
-				Region       *string `json:"region,omitempty"`
-			} `json:"address,omitempty"`
-			Avatar             *Image  `json:"avatar,omitempty"`
-			Banner             *Image  `json:"banner,omitempty"`
-			ContactEmail       *string `json:"contactEmail,omitempty"`
-			Currency           *string `json:"currency,omitempty"`
-			Id                 *int    `json:"id,omitempty"`
-			Image              *Image  `json:"image,omitempty"`
-			LegalName          *string `json:"legalName,omitempty"`
-			Logo               *Image  `json:"logo,omitempty"`
-			MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
-			Name               *string `json:"name,omitempty"`
-			PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
-			PaypalEmail        *string `json:"paypalEmail,omitempty"`
-			Settings           *struct {
-				Colors *struct {
-					Background *string `json:"background,omitempty"`
-					Highlight  *string `json:"highlight,omitempty"`
-				} `json:"colors,omitempty"`
-				FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
-				FooterCopyright *string `json:"footerCopyright,omitempty"`
-				HeaderIntro     *string `json:"headerIntro,omitempty"`
-				HeaderTitle     *string `json:"headerTitle,omitempty"`
-			} `json:"settings,omitempty"`
-			Slug            *string `json:"slug,omitempty"`
-			Social          *Social `json:"social,omitempty"`
-			Status          *string `json:"status,omitempty"`
-			StripeConnected *bool   `json:"stripeConnected,omitempty"`
-			Video           *string `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *CausesId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -3948,26 +3616,7 @@ type GetFundraisingEventsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised *int    `json:"amountRaised,omitempty"`
-			Avatar       *Image  `json:"avatar,omitempty"`
-			Banner       *Image  `json:"banner,omitempty"`
-			BannerIntro  *string `json:"bannerIntro,omitempty"`
-			BannerTitle  *string `json:"bannerTitle,omitempty"`
-			CauseId      *int    `json:"causeId,omitempty"`
-			Currency     *string `json:"currency,omitempty"`
-			Description  *string `json:"description,omitempty"`
-			EndsOn       *string `json:"endsOn,omitempty"`
-			Goal         *int    `json:"goal,omitempty"`
-			Id           *int    `json:"id,omitempty"`
-			Image        *Image  `json:"image,omitempty"`
-			Logo         *Image  `json:"logo,omitempty"`
-			Name         *string `json:"name,omitempty"`
-			Slug         *string `json:"slug,omitempty"`
-			StartsOn     *string `json:"startsOn,omitempty"`
-			Url          *string `json:"url,omitempty"`
-			Video        *Image  `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]FundraisingEvents `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4003,26 +3652,7 @@ type GetFundraisingEventsIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			AmountRaised *int    `json:"amountRaised,omitempty"`
-			Avatar       *Image  `json:"avatar,omitempty"`
-			Banner       *Image  `json:"banner,omitempty"`
-			BannerIntro  *string `json:"bannerIntro,omitempty"`
-			BannerTitle  *string `json:"bannerTitle,omitempty"`
-			CauseId      *int    `json:"causeId,omitempty"`
-			Currency     *string `json:"currency,omitempty"`
-			Description  *string `json:"description,omitempty"`
-			EndsOn       *string `json:"endsOn,omitempty"`
-			Goal         *int    `json:"goal,omitempty"`
-			Id           *int    `json:"id,omitempty"`
-			Image        *Image  `json:"image,omitempty"`
-			Logo         *Image  `json:"logo,omitempty"`
-			Name         *string `json:"name,omitempty"`
-			Slug         *string `json:"slug,omitempty"`
-			StartsOn     *string `json:"startsOn,omitempty"`
-			Url          *string `json:"url,omitempty"`
-			Video        *Image  `json:"video,omitempty"`
-		} `json:"data,omitempty"`
+		Data *FundraisingEventsId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4055,24 +3685,7 @@ type GetFundraisingEventsIdCampaignsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised       *int                    `json:"amountRaised,omitempty"`
-			CauseId            *int                    `json:"causeId,omitempty"`
-			Currency           *string                 `json:"currency,omitempty"`
-			Description        *string                 `json:"description,omitempty"`
-			EndsOn             *string                 `json:"endsOn,omitempty"`
-			FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-			Goal               *int                    `json:"goal,omitempty"`
-			Name               *string                 `json:"name,omitempty"`
-			OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-			Slug               *string                 `json:"slug,omitempty"`
-			StartsOn           *string                 `json:"startsOn,omitempty"`
-			TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-			Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-			TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-			Url                *string                 `json:"url,omitempty"`
-			UserId             *int                    `json:"userId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]FundraisingEventsIdCampaigns `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4108,13 +3721,7 @@ type GetFundraisingEventsIdIncentivesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			CreatedAt   *int    `json:"createdAt,omitempty"`
-			Description *string `json:"description,omitempty"`
-			Id          *int    `json:"id,omitempty"`
-			Image       *Image  `json:"image,omitempty"`
-			Title       *string `json:"title,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]FundraisingEventsIdIncentives `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4150,20 +3757,7 @@ type GetFundraisingEventsIdLeaderboardsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Individual *[]struct {
-				AmountRaised *int    `json:"amount_raised,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				Url          *string `json:"url,omitempty"`
-				UserId       *int    `json:"userId,omitempty"`
-			} `json:"individual,omitempty"`
-			Team *[]struct {
-				AmountRaised *int    `json:"amount_raised,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				TeamId       *int    `json:"teamId,omitempty"`
-				Url          *string `json:"url,omitempty"`
-			} `json:"team,omitempty"`
-		} `json:"data,omitempty"`
+		Data *FundraisingEventsIdLeaderboards `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4199,17 +3793,7 @@ type GetFundraisingEventsIdRegistrationFieldsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Address *struct {
-				Enabled *bool `json:"enabled,omitempty"`
-			} `json:"address,omitempty"`
-			ServiceHours *struct {
-				Enabled *bool `json:"enabled,omitempty"`
-			} `json:"service_hours,omitempty"`
-			ShirtSize *struct {
-				Enabled *bool `json:"enabled,omitempty"`
-			} `json:"shirt_size,omitempty"`
-		} `json:"data,omitempty"`
+		Data *FundraisingEventsIdRegistrationFields `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4245,22 +3829,7 @@ type GetFundraisingEventsIdRegistrationsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Address *struct {
-				AddressLine1 *string `json:"addressLine1,omitempty"`
-				AddressLine2 *string `json:"addressLine2,omitempty"`
-				City         *string `json:"city,omitempty"`
-				PostalCode   *string `json:"postalCode,omitempty"`
-				State        *string `json:"state,omitempty"`
-			} `json:"address,omitempty"`
-			Email        *string `json:"email,omitempty"`
-			Id           *int    `json:"id,omitempty"`
-			RegisteredAt *string `json:"registeredAt,omitempty"`
-			ServiceHours *bool   `json:"serviceHours,omitempty"`
-			ShirtSize    *string `json:"shirtSize,omitempty"`
-			Subscribed   *bool   `json:"subscribed,omitempty"`
-			UserId       *int    `json:"userId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]FundraisingEventsIdRegistrations `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4296,12 +3865,7 @@ type GetFundraisingEventsIdScheduleResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Description *string `json:"description,omitempty"`
-			Id          *int    `json:"id,omitempty"`
-			Name        *string `json:"name,omitempty"`
-			StartsAt    *int    `json:"startsAt,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]FundraisingEventsIdSchedule `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4337,38 +3901,7 @@ type GetFundraisingEventsIdVisibilityOptionsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Donate *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"donate,omitempty"`
-			DonorLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"donorLeaderboard,omitempty"`
-			EndsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"endsAt,omitempty"`
-			FundraiserGoalAmount *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"fundraiserGoalAmount,omitempty"`
-			IndividualLeaderboard *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"individualLeaderboard,omitempty"`
-			PreventDonationsBeforeStart *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"preventDonationsBeforeStart,omitempty"`
-			Registration *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"registration,omitempty"`
-			StartsAt *struct {
-				Visible *bool `json:"visible,omitempty"`
-			} `json:"startsAt,omitempty"`
-			TeamLeaderboard *struct {
-				Type    *string `json:"type,omitempty"`
-				Visible *bool   `json:"visible,omitempty"`
-			} `json:"teamLeaderboard,omitempty"`
-		} `json:"data,omitempty"`
+		Data *FundraisingEventsIdVisibilityOptions `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4404,17 +3937,7 @@ type GetTeamsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Avatar     *Image  `json:"avatar,omitempty"`
-			Bio        *string `json:"bio,omitempty"`
-			Disbanded  *bool   `json:"disbanded,omitempty"`
-			Id         *int    `json:"id,omitempty"`
-			InviteOnly *bool   `json:"inviteOnly,omitempty"`
-			Name       *string `json:"name,omitempty"`
-			Slug       *string `json:"slug,omitempty"`
-			Social     *Social `json:"social,omitempty"`
-			Url        *string `json:"url,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]Teams `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4450,17 +3973,7 @@ type GetTeamsIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			Avatar     *Image  `json:"avatar,omitempty"`
-			Bio        *string `json:"bio,omitempty"`
-			Disbanded  *bool   `json:"disbanded,omitempty"`
-			Id         *int    `json:"id,omitempty"`
-			InviteOnly *bool   `json:"inviteOnly,omitempty"`
-			Name       *string `json:"name,omitempty"`
-			Slug       *string `json:"slug,omitempty"`
-			Social     *Social `json:"social,omitempty"`
-			Url        *string `json:"url,omitempty"`
-		} `json:"data,omitempty"`
+		Data *TeamsId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4493,24 +4006,7 @@ type GetTeamsIdCampaignsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised       *int    `json:"amountRaised,omitempty"`
-			CauseId            *int    `json:"causeId,omitempty"`
-			Currency           *string `json:"currency,omitempty"`
-			Description        *string `json:"description,omitempty"`
-			EndsOn             *string `json:"endsOn,omitempty"`
-			FundraisingEventId *int    `json:"fundraisingEventId,omitempty"`
-			Goal               *int    `json:"goal,omitempty"`
-			Name               *string `json:"name,omitempty"`
-			OriginalGoal       *int    `json:"originalGoal,omitempty"`
-			Slug               *string `json:"slug,omitempty"`
-			StartsOn           *string `json:"startsOn,omitempty"`
-			TeamId             *int    `json:"teamId,omitempty"`
-			Thumbnail          *Image  `json:"thumbnail,omitempty"`
-			TotalAmountRaised  *int    `json:"totalAmountRaised,omitempty"`
-			Url                *string `json:"url,omitempty"`
-			UserId             *int    `json:"userId,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]TeamsIdCampaigns `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4546,40 +4042,7 @@ type GetTeamsIdCampaignsCidResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			AmountRaised           *int        `json:"amountRaised,omitempty"`
-			Avatar                 *Image      `json:"avatar,omitempty"`
-			CauseId                *int        `json:"causeId,omitempty"`
-			Description            *string     `json:"description,omitempty"`
-			EndsAt                 *int        `json:"endsAt,omitempty"`
-			FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-			FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-			Id                     *int        `json:"id,omitempty"`
-			Livestream             *Livestream `json:"livestream,omitempty"`
-			Name                   *string     `json:"name,omitempty"`
-			OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-			Slug                   *string     `json:"slug,omitempty"`
-			StartsAt               *int        `json:"startsAt,omitempty"`
-			Status                 *string     `json:"status,omitempty"`
-			Supportable            *bool       `json:"supportable,omitempty"`
-			SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-			Team                   *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"team,omitempty"`
-			TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-			Url               *string `json:"url,omitempty"`
-			User              *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"user,omitempty"`
-		} `json:"data,omitempty"`
+		Data *TeamsIdCampaignsId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4612,20 +4075,7 @@ type GetUserResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			About      *string                 `json:"about,omitempty"`
-			Avatar     *Image                  `json:"avatar,omitempty"`
-			Confirmed  *bool                   `json:"confirmed,omitempty"`
-			Email      *string                 `json:"email,omitempty"`
-			FirstName  *string                 `json:"firstName,omitempty"`
-			Id         *int                    `json:"id,omitempty"`
-			LastName   *string                 `json:"lastName,omitempty"`
-			Newsletter *map[string]interface{} `json:"newsletter,omitempty"`
-			Slug       *string                 `json:"slug,omitempty"`
-			Social     *Social                 `json:"social,omitempty"`
-			Url        *string                 `json:"url,omitempty"`
-			Username   *string                 `json:"username,omitempty"`
-		} `json:"data,omitempty"`
+		Data *User `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4658,16 +4108,7 @@ type GetUsersIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			About             *string  `json:"about,omitempty"`
-			Avatar            *Image   `json:"avatar,omitempty"`
-			Id                *int     `json:"id,omitempty"`
-			Slug              *string  `json:"slug,omitempty"`
-			Social            *Social  `json:"social,omitempty"`
-			TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
-			Url               *string  `json:"url,omitempty"`
-			Username          *string  `json:"username,omitempty"`
-		} `json:"data,omitempty"`
+		Data *UsersId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4694,35 +4135,7 @@ type GetUsersIdCampaignsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			AmountRaised           *float32                `json:"amountRaised,omitempty"`
-			Avatar                 *Image                  `json:"avatar,omitempty"`
-			CauseCurrency          *string                 `json:"causeCurrency,omitempty"`
-			CauseId                *int                    `json:"causeId,omitempty"`
-			Description            *string                 `json:"description,omitempty"`
-			EndsAt                 *int                    `json:"endsAt,omitempty"`
-			FundraiserGoalAmount   *float32                `json:"fundraiserGoalAmount,omitempty"`
-			Id                     *int                    `json:"id,omitempty"`
-			Livestream             *Livestream             `json:"livestream,omitempty"`
-			Metadata               *map[string]interface{} `json:"metadata,omitempty"`
-			Name                   *string                 `json:"name,omitempty"`
-			OriginalFundraiserGoal *float32                `json:"originalFundraiserGoal,omitempty"`
-			RegionId               *map[string]interface{} `json:"regionId,omitempty"`
-			Slug                   *string                 `json:"slug,omitempty"`
-			StartsAt               *int                    `json:"startsAt,omitempty"`
-			Status                 *string                 `json:"status,omitempty"`
-			Supportable            *bool                   `json:"supportable,omitempty"`
-			SupportingAmountRaised *float32                `json:"supportingAmountRaised,omitempty"`
-			TotalAmountRaised      *float32                `json:"totalAmountRaised,omitempty"`
-			Type                   *string                 `json:"type,omitempty"`
-			User                   *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"user,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]UsersIdCampaigns `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4758,40 +4171,7 @@ type GetUsersIdCampaignsCidResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			AmountRaised           *int        `json:"amountRaised,omitempty"`
-			Avatar                 *Image      `json:"avatar,omitempty"`
-			CauseId                *int        `json:"causeId,omitempty"`
-			Description            *string     `json:"description,omitempty"`
-			EndsAt                 *int        `json:"endsAt,omitempty"`
-			FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-			FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-			Id                     *int        `json:"id,omitempty"`
-			Livestream             *Livestream `json:"livestream,omitempty"`
-			Name                   *string     `json:"name,omitempty"`
-			OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-			Slug                   *string     `json:"slug,omitempty"`
-			StartsAt               *int        `json:"startsAt,omitempty"`
-			Status                 *string     `json:"status,omitempty"`
-			Supportable            *bool       `json:"supportable,omitempty"`
-			SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-			Team                   *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"team,omitempty"`
-			TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-			Url               *string `json:"url,omitempty"`
-			User              *struct {
-				Avatar   *Image  `json:"avatar,omitempty"`
-				Id       *int    `json:"id,omitempty"`
-				Slug     *string `json:"slug,omitempty"`
-				Url      *string `json:"url,omitempty"`
-				Username *string `json:"username,omitempty"`
-			} `json:"user,omitempty"`
-		} `json:"data,omitempty"`
+		Data *UsersIdCampaignsId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -4824,17 +4204,7 @@ type GetUsersIdOwnedTeamsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Avatar     *Image  `json:"avatar,omitempty"`
-			Bio        *string `json:"bio,omitempty"`
-			Disbanded  *bool   `json:"disbanded,omitempty"`
-			Id         *int    `json:"id,omitempty"`
-			InviteOnly *bool   `json:"inviteOnly,omitempty"`
-			Name       *string `json:"name,omitempty"`
-			Slug       *string `json:"slug,omitempty"`
-			Social     *Social `json:"social,omitempty"`
-			Url        *string `json:"url,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]UsersIdOwnedTeams `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4870,13 +4240,7 @@ type GetUsersIdTeamsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *[]struct {
-			Avatar *Image  `json:"avatar,omitempty"`
-			Id     *int    `json:"id,omitempty"`
-			Name   *string `json:"name,omitempty"`
-			Slug   *string `json:"slug,omitempty"`
-			Url    *string `json:"url,omitempty"`
-		} `json:"data,omitempty"`
+		Data *[]UsersIdTeams `json:"data,omitempty"`
 
 		// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 		Links *Pagination `json:"links,omitempty"`
@@ -4912,16 +4276,7 @@ type GetUsersSlugResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		Data *struct {
-			About             *string  `json:"about,omitempty"`
-			Avatar            *Image   `json:"avatar,omitempty"`
-			Id                *int     `json:"id,omitempty"`
-			Slug              *string  `json:"slug,omitempty"`
-			Social            *Social  `json:"social,omitempty"`
-			TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
-			Url               *string  `json:"url,omitempty"`
-			Username          *string  `json:"username,omitempty"`
-		} `json:"data,omitempty"`
+		Data *UsersId `json:"data,omitempty"`
 
 		// This is the HTTP status code that is also sent with the request
 		Meta *Meta `json:"meta,omitempty"`
@@ -5281,40 +4636,7 @@ func ParseGetCampaignsIdResponse(rsp *http.Response) (*GetCampaignsIdResponse, e
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				AmountRaised           *int        `json:"amountRaised,omitempty"`
-				Avatar                 *Image      `json:"avatar,omitempty"`
-				CauseId                *int        `json:"causeId,omitempty"`
-				Description            *string     `json:"description,omitempty"`
-				EndsAt                 *int        `json:"endsAt,omitempty"`
-				FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-				FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-				Id                     *int        `json:"id,omitempty"`
-				Livestream             *Livestream `json:"livestream,omitempty"`
-				Name                   *string     `json:"name,omitempty"`
-				OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-				Slug                   *string     `json:"slug,omitempty"`
-				StartsAt               *int        `json:"startsAt,omitempty"`
-				Status                 *string     `json:"status,omitempty"`
-				Supportable            *bool       `json:"supportable,omitempty"`
-				SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-				Team                   *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"team,omitempty"`
-				TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-				Url               *string `json:"url,omitempty"`
-				User              *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"user,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CampaignsId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -5387,18 +4709,7 @@ func ParseGetCampaignsIdChallengesResponse(rsp *http.Response) (*GetCampaignsIdC
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				ActivatesOn       *int    `json:"activatesOn,omitempty"`
-				Active            *bool   `json:"active,omitempty"`
-				Amount            *int    `json:"amount,omitempty"`
-				CampaignId        *int    `json:"campaignId,omitempty"`
-				CreatedAt         *int    `json:"createdAt,omitempty"`
-				EndsAt            *int    `json:"endsAt,omitempty"`
-				Id                *int    `json:"id,omitempty"`
-				Name              *string `json:"name,omitempty"`
-				TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-				UpdatedAt         *int    `json:"updatedAt,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CampaignsIdChallenges `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5474,14 +4785,7 @@ func ParseGetCampaignsIdDonationsResponse(rsp *http.Response) (*GetCampaignsIdDo
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Amount      *float32 `json:"amount,omitempty"`
-				Comment     *string  `json:"comment,omitempty"`
-				CompletedAt *int     `json:"completedAt,omitempty"`
-				Id          *int     `json:"id,omitempty"`
-				Name        *string  `json:"name,omitempty"`
-				RewardId    *int     `json:"rewardId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CampaignsIdDonations `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5557,22 +4861,7 @@ func ParseGetCampaignsIdPollsResponse(rsp *http.Response) (*GetCampaignsIdPollsR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Active     *bool   `json:"active,omitempty"`
-				CampaignId *int    `json:"campaignId,omitempty"`
-				CreatedAt  *int    `json:"createdAt,omitempty"`
-				Id         *int    `json:"id,omitempty"`
-				Name       *string `json:"name,omitempty"`
-				Options    *[]struct {
-					CreatedAt         *int    `json:"createdAt,omitempty"`
-					Id                *int    `json:"id,omitempty"`
-					Name              *string `json:"name,omitempty"`
-					PollId            *int    `json:"pollId,omitempty"`
-					TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-					UpdatedAt         *int    `json:"updatedAt,omitempty"`
-				} `json:"options,omitempty"`
-				UpdatedAt *int `json:"updatedAt,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CampaignsIdPolls `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5648,24 +4937,7 @@ func ParseGetCampaignsIdRewardsResponse(rsp *http.Response) (*GetCampaignsIdRewa
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Active                  *bool                   `json:"active,omitempty"`
-				Amount                  *int                    `json:"amount,omitempty"`
-				CreatedAt               *int                    `json:"createdAt,omitempty"`
-				Currency                *string                 `json:"currency,omitempty"`
-				Description             *string                 `json:"description,omitempty"`
-				FairMarketValue         *int                    `json:"fairMarketValue,omitempty"`
-				Id                      *int                    `json:"id,omitempty"`
-				Image                   *Image                  `json:"image,omitempty"`
-				Kind                    *string                 `json:"kind,omitempty"`
-				Name                    *string                 `json:"name,omitempty"`
-				Quantity                *map[string]interface{} `json:"quantity,omitempty"`
-				Remaining               *map[string]interface{} `json:"remaining,omitempty"`
-				ShippingAddressRequired *bool                   `json:"shippingAddressRequired,omitempty"`
-				ShippingNote            *map[string]interface{} `json:"shippingNote,omitempty"`
-				StartsAt                *int                    `json:"startsAt,omitempty"`
-				UpdatedAt               *int                    `json:"updatedAt,omitempty"`
-			} `json:"data,omitempty"`
+			Data *interface{} `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5741,12 +5013,7 @@ func ParseGetCampaignsIdScheduleResponse(rsp *http.Response) (*GetCampaignsIdSch
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Description *string `json:"description,omitempty"`
-				Id          *int    `json:"id,omitempty"`
-				Name        *string `json:"name,omitempty"`
-				StartsAt    *int    `json:"startsAt,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CampaignsIdSchedule `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5822,24 +5089,7 @@ func ParseGetCampaignsIdSupportingCampaignsResponse(rsp *http.Response) (*GetCam
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised       *int                    `json:"amountRaised,omitempty"`
-				CauseId            *int                    `json:"causeId,omitempty"`
-				Description        *string                 `json:"description,omitempty"`
-				EndsOn             *string                 `json:"endsOn,omitempty"`
-				FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-				Goal               *int                    `json:"goal,omitempty"`
-				Id                 *int                    `json:"id,omitempty"`
-				Name               *string                 `json:"name,omitempty"`
-				OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-				Slug               *string                 `json:"slug,omitempty"`
-				StartsOn           *string                 `json:"startsOn,omitempty"`
-				TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-				Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-				TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-				Url                *string                 `json:"url,omitempty"`
-				UserId             *int                    `json:"userId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CampaignsIdSupportingCampaigns `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -5915,44 +5165,7 @@ func ParseGetCausesIdResponse(rsp *http.Response) (*GetCausesIdResponse, error) 
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				About   *string `json:"about,omitempty"`
-				Address *struct {
-					AddressLine1 *string `json:"addressLine1,omitempty"`
-					AddressLine2 *string `json:"addressLine2,omitempty"`
-					City         *string `json:"city,omitempty"`
-					Country      *string `json:"country,omitempty"`
-					PostalCode   *string `json:"postalCode,omitempty"`
-					Region       *string `json:"region,omitempty"`
-				} `json:"address,omitempty"`
-				Avatar             *Image  `json:"avatar,omitempty"`
-				Banner             *Image  `json:"banner,omitempty"`
-				ContactEmail       *string `json:"contactEmail,omitempty"`
-				Currency           *string `json:"currency,omitempty"`
-				Id                 *int    `json:"id,omitempty"`
-				Image              *Image  `json:"image,omitempty"`
-				LegalName          *string `json:"legalName,omitempty"`
-				Logo               *Image  `json:"logo,omitempty"`
-				MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
-				Name               *string `json:"name,omitempty"`
-				PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
-				PaypalEmail        *string `json:"paypalEmail,omitempty"`
-				Settings           *struct {
-					Colors *struct {
-						Background *string `json:"background,omitempty"`
-						Highlight  *string `json:"highlight,omitempty"`
-					} `json:"colors,omitempty"`
-					FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
-					FooterCopyright *string `json:"footerCopyright,omitempty"`
-					HeaderIntro     *string `json:"headerIntro,omitempty"`
-					HeaderTitle     *string `json:"headerTitle,omitempty"`
-				} `json:"settings,omitempty"`
-				Slug            *string `json:"slug,omitempty"`
-				Social          *Social `json:"social,omitempty"`
-				Status          *string `json:"status,omitempty"`
-				StripeConnected *bool   `json:"stripeConnected,omitempty"`
-				Video           *string `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CausesId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6025,24 +5238,7 @@ func ParseGetCausesIdCampaignsResponse(rsp *http.Response) (*GetCausesIdCampaign
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised       *int                    `json:"amountRaised,omitempty"`
-				CauseId            *int                    `json:"causeId,omitempty"`
-				Currency           *string                 `json:"currency,omitempty"`
-				Description        *string                 `json:"description,omitempty"`
-				EndsOn             *string                 `json:"endsOn,omitempty"`
-				FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-				Goal               *int                    `json:"goal,omitempty"`
-				Name               *string                 `json:"name,omitempty"`
-				OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-				Slug               *string                 `json:"slug,omitempty"`
-				StartsOn           *string                 `json:"startsOn,omitempty"`
-				TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-				Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-				TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-				Url                *string                 `json:"url,omitempty"`
-				UserId             *int                    `json:"userId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CausesIdCampaigns `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -6118,26 +5314,7 @@ func ParseGetCausesIdFundraisingEventsResponse(rsp *http.Response) (*GetCausesId
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised *int    `json:"amountRaised,omitempty"`
-				Avatar       *Image  `json:"avatar,omitempty"`
-				Banner       *Image  `json:"banner,omitempty"`
-				BannerIntro  *string `json:"bannerIntro,omitempty"`
-				BannerTitle  *string `json:"bannerTitle,omitempty"`
-				CauseId      *int    `json:"causeId,omitempty"`
-				Currency     *string `json:"currency,omitempty"`
-				Description  *string `json:"description,omitempty"`
-				EndsOn       *string `json:"endsOn,omitempty"`
-				Goal         *int    `json:"goal,omitempty"`
-				Id           *int    `json:"id,omitempty"`
-				Image        *Image  `json:"image,omitempty"`
-				Logo         *Image  `json:"logo,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				Slug         *string `json:"slug,omitempty"`
-				StartsOn     *string `json:"startsOn,omitempty"`
-				Url          *string `json:"url,omitempty"`
-				Video        *Image  `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CausesIdFundraisingEvents `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -6213,26 +5390,7 @@ func ParseGetCausesIdLeaderboardsResponse(rsp *http.Response) (*GetCausesIdLeade
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised *int    `json:"amountRaised,omitempty"`
-				Avatar       *Image  `json:"avatar,omitempty"`
-				Banner       *Image  `json:"banner,omitempty"`
-				BannerIntro  *string `json:"bannerIntro,omitempty"`
-				BannerTitle  *string `json:"bannerTitle,omitempty"`
-				CauseId      *int    `json:"causeId,omitempty"`
-				Currency     *string `json:"currency,omitempty"`
-				Description  *string `json:"description,omitempty"`
-				EndsOn       *string `json:"endsOn,omitempty"`
-				Goal         *int    `json:"goal,omitempty"`
-				Id           *int    `json:"id,omitempty"`
-				Image        *Image  `json:"image,omitempty"`
-				Logo         *Image  `json:"logo,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				Slug         *string `json:"slug,omitempty"`
-				StartsOn     *string `json:"startsOn,omitempty"`
-				Url          *string `json:"url,omitempty"`
-				Video        *Image  `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]CausesIdLeaderboards `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6305,43 +5463,7 @@ func ParseGetCausesIdPermissionsResponse(rsp *http.Response) (*GetCausesIdPermis
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Activated                               *bool `json:"activated,omitempty"`
-				AdminApiEnabled                         *bool `json:"adminApiEnabled,omitempty"`
-				AdminBrandingColors                     *bool `json:"adminBrandingColors,omitempty"`
-				AdminBrandingDetails                    *bool `json:"adminBrandingDetails,omitempty"`
-				AdminBrandingEnabled                    *bool `json:"adminBrandingEnabled,omitempty"`
-				AdminBrandingImages                     *bool `json:"adminBrandingImages,omitempty"`
-				AdminEnabled                            *bool `json:"adminEnabled,omitempty"`
-				AdminFinanceEnabled                     *bool `json:"adminFinanceEnabled,omitempty"`
-				AdminGeneralEnabled                     *bool `json:"adminGeneralEnabled,omitempty"`
-				AdminIntegrationsEnabled                *bool `json:"adminIntegrationsEnabled,omitempty"`
-				AdminVisibilityEnabled                  *bool `json:"adminVisibilityEnabled,omitempty"`
-				CauseLeaderboard                        *bool `json:"causeLeaderboard,omitempty"`
-				DashboardChart                          *bool `json:"dashboardChart,omitempty"`
-				DashboardEnabled                        *bool `json:"dashboardEnabled,omitempty"`
-				FundraisingEventsEnabled                *bool `json:"fundraisingEventsEnabled,omitempty"`
-				FundraisingEventsGeneralColors          *bool `json:"fundraisingEventsGeneralColors,omitempty"`
-				FundraisingEventsGeneralDetails         *bool `json:"fundraisingEventsGeneralDetails,omitempty"`
-				FundraisingEventsGeneralEnabled         *bool `json:"fundraisingEventsGeneralEnabled,omitempty"`
-				FundraisingEventsGeneralImages          *bool `json:"fundraisingEventsGeneralImages,omitempty"`
-				FundraisingEventsIncentives             *bool `json:"fundraisingEventsIncentives,omitempty"`
-				FundraisingEventsLeaderboard            *bool `json:"fundraisingEventsLeaderboard,omitempty"`
-				FundraisingEventsRegistrationEnabled    *bool `json:"fundraisingEventsRegistrationEnabled,omitempty"`
-				FundraisingEventsReporting              *bool `json:"fundraisingEventsReporting,omitempty"`
-				FundraisingEventsReportingCampaigns     *bool `json:"fundraisingEventsReportingCampaigns,omitempty"`
-				FundraisingEventsReportingDonations     *bool `json:"fundraisingEventsReportingDonations,omitempty"`
-				FundraisingEventsReportingFundraisers   *bool `json:"fundraisingEventsReportingFundraisers,omitempty"`
-				FundraisingEventsSchedule               *bool `json:"fundraisingEventsSchedule,omitempty"`
-				FundraisingEventsVisibilityDetails      *bool `json:"fundraisingEventsVisibilityDetails,omitempty"`
-				FundraisingEventsVisibilityEnabled      *bool `json:"fundraisingEventsVisibilityEnabled,omitempty"`
-				FundraisingEventsVisibilityLeaderboards *bool `json:"fundraisingEventsVisibilityLeaderboards,omitempty"`
-				ReportingCampaigns                      *bool `json:"reportingCampaigns,omitempty"`
-				ReportingChart                          *bool `json:"reportingChart,omitempty"`
-				ReportingDonations                      *bool `json:"reportingDonations,omitempty"`
-				ReportingEnabled                        *bool `json:"reportingEnabled,omitempty"`
-				ReportingFundraisers                    *bool `json:"reportingFundraisers,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CausesIdPermissions `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6414,38 +5536,7 @@ func ParseGetCausesIdVisibilityOptionsResponse(rsp *http.Response) (*GetCausesId
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Donate *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"donate,omitempty"`
-				DonorLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"donorLeaderboard,omitempty"`
-				EndsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"endsAt,omitempty"`
-				FundraiserGoalAmount *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"fundraiserGoalAmount,omitempty"`
-				IndividualLeaderboard *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"individualLeaderboard,omitempty"`
-				PreventDonationsBeforeStart *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"preventDonationsBeforeStart,omitempty"`
-				Registration *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"registration,omitempty"`
-				StartsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"startsAt,omitempty"`
-				TeamLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"teamLeaderboard,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CausesIdVisibilityOptions `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -6521,38 +5612,7 @@ func ParsePatchCausesIdVisibilityOptionsResponse(rsp *http.Response) (*PatchCaus
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Donate *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"donate,omitempty"`
-				DonorLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"donorLeaderboard,omitempty"`
-				EndsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"endsAt,omitempty"`
-				FundraiserGoalAmount *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"fundraiserGoalAmount,omitempty"`
-				IndividualLeaderboard *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"individualLeaderboard,omitempty"`
-				PreventDonationsBeforeStart *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"preventDonationsBeforeStart,omitempty"`
-				Registration *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"registration,omitempty"`
-				StartsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"startsAt,omitempty"`
-				TeamLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"teamLeaderboard,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CausesIdVisibilityOptions `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6625,44 +5685,7 @@ func ParseGetCausesSlugResponse(rsp *http.Response) (*GetCausesSlugResponse, err
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				About   *string `json:"about,omitempty"`
-				Address *struct {
-					AddressLine1 *string `json:"addressLine1,omitempty"`
-					AddressLine2 *string `json:"addressLine2,omitempty"`
-					City         *string `json:"city,omitempty"`
-					Country      *string `json:"country,omitempty"`
-					PostalCode   *string `json:"postalCode,omitempty"`
-					Region       *string `json:"region,omitempty"`
-				} `json:"address,omitempty"`
-				Avatar             *Image  `json:"avatar,omitempty"`
-				Banner             *Image  `json:"banner,omitempty"`
-				ContactEmail       *string `json:"contactEmail,omitempty"`
-				Currency           *string `json:"currency,omitempty"`
-				Id                 *int    `json:"id,omitempty"`
-				Image              *Image  `json:"image,omitempty"`
-				LegalName          *string `json:"legalName,omitempty"`
-				Logo               *Image  `json:"logo,omitempty"`
-				MailchimpConnected *bool   `json:"mailchimpConnected,omitempty"`
-				Name               *string `json:"name,omitempty"`
-				PaypalCurrencyCode *string `json:"paypalCurrencyCode,omitempty"`
-				PaypalEmail        *string `json:"paypalEmail,omitempty"`
-				Settings           *struct {
-					Colors *struct {
-						Background *string `json:"background,omitempty"`
-						Highlight  *string `json:"highlight,omitempty"`
-					} `json:"colors,omitempty"`
-					FindOutMoreLink *string `json:"findOutMoreLink,omitempty"`
-					FooterCopyright *string `json:"footerCopyright,omitempty"`
-					HeaderIntro     *string `json:"headerIntro,omitempty"`
-					HeaderTitle     *string `json:"headerTitle,omitempty"`
-				} `json:"settings,omitempty"`
-				Slug            *string `json:"slug,omitempty"`
-				Social          *Social `json:"social,omitempty"`
-				Status          *string `json:"status,omitempty"`
-				StripeConnected *bool   `json:"stripeConnected,omitempty"`
-				Video           *string `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *CausesId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6735,26 +5758,7 @@ func ParseGetFundraisingEventsResponse(rsp *http.Response) (*GetFundraisingEvent
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised *int    `json:"amountRaised,omitempty"`
-				Avatar       *Image  `json:"avatar,omitempty"`
-				Banner       *Image  `json:"banner,omitempty"`
-				BannerIntro  *string `json:"bannerIntro,omitempty"`
-				BannerTitle  *string `json:"bannerTitle,omitempty"`
-				CauseId      *int    `json:"causeId,omitempty"`
-				Currency     *string `json:"currency,omitempty"`
-				Description  *string `json:"description,omitempty"`
-				EndsOn       *string `json:"endsOn,omitempty"`
-				Goal         *int    `json:"goal,omitempty"`
-				Id           *int    `json:"id,omitempty"`
-				Image        *Image  `json:"image,omitempty"`
-				Logo         *Image  `json:"logo,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				Slug         *string `json:"slug,omitempty"`
-				StartsOn     *string `json:"startsOn,omitempty"`
-				Url          *string `json:"url,omitempty"`
-				Video        *Image  `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]FundraisingEvents `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -6830,26 +5834,7 @@ func ParseGetFundraisingEventsIdResponse(rsp *http.Response) (*GetFundraisingEve
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				AmountRaised *int    `json:"amountRaised,omitempty"`
-				Avatar       *Image  `json:"avatar,omitempty"`
-				Banner       *Image  `json:"banner,omitempty"`
-				BannerIntro  *string `json:"bannerIntro,omitempty"`
-				BannerTitle  *string `json:"bannerTitle,omitempty"`
-				CauseId      *int    `json:"causeId,omitempty"`
-				Currency     *string `json:"currency,omitempty"`
-				Description  *string `json:"description,omitempty"`
-				EndsOn       *string `json:"endsOn,omitempty"`
-				Goal         *int    `json:"goal,omitempty"`
-				Id           *int    `json:"id,omitempty"`
-				Image        *Image  `json:"image,omitempty"`
-				Logo         *Image  `json:"logo,omitempty"`
-				Name         *string `json:"name,omitempty"`
-				Slug         *string `json:"slug,omitempty"`
-				StartsOn     *string `json:"startsOn,omitempty"`
-				Url          *string `json:"url,omitempty"`
-				Video        *Image  `json:"video,omitempty"`
-			} `json:"data,omitempty"`
+			Data *FundraisingEventsId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -6922,24 +5907,7 @@ func ParseGetFundraisingEventsIdCampaignsResponse(rsp *http.Response) (*GetFundr
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised       *int                    `json:"amountRaised,omitempty"`
-				CauseId            *int                    `json:"causeId,omitempty"`
-				Currency           *string                 `json:"currency,omitempty"`
-				Description        *string                 `json:"description,omitempty"`
-				EndsOn             *string                 `json:"endsOn,omitempty"`
-				FundraisingEventId *int                    `json:"fundraisingEventId,omitempty"`
-				Goal               *int                    `json:"goal,omitempty"`
-				Name               *string                 `json:"name,omitempty"`
-				OriginalGoal       *int                    `json:"originalGoal,omitempty"`
-				Slug               *string                 `json:"slug,omitempty"`
-				StartsOn           *string                 `json:"startsOn,omitempty"`
-				TeamId             *map[string]interface{} `json:"teamId,omitempty"`
-				Thumbnail          *Image                  `json:"thumbnail,omitempty"`
-				TotalAmountRaised  *int                    `json:"totalAmountRaised,omitempty"`
-				Url                *string                 `json:"url,omitempty"`
-				UserId             *int                    `json:"userId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]FundraisingEventsIdCampaigns `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7015,13 +5983,7 @@ func ParseGetFundraisingEventsIdIncentivesResponse(rsp *http.Response) (*GetFund
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				CreatedAt   *int    `json:"createdAt,omitempty"`
-				Description *string `json:"description,omitempty"`
-				Id          *int    `json:"id,omitempty"`
-				Image       *Image  `json:"image,omitempty"`
-				Title       *string `json:"title,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]FundraisingEventsIdIncentives `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7097,20 +6059,7 @@ func ParseGetFundraisingEventsIdLeaderboardsResponse(rsp *http.Response) (*GetFu
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Individual *[]struct {
-					AmountRaised *int    `json:"amount_raised,omitempty"`
-					Name         *string `json:"name,omitempty"`
-					Url          *string `json:"url,omitempty"`
-					UserId       *int    `json:"userId,omitempty"`
-				} `json:"individual,omitempty"`
-				Team *[]struct {
-					AmountRaised *int    `json:"amount_raised,omitempty"`
-					Name         *string `json:"name,omitempty"`
-					TeamId       *int    `json:"teamId,omitempty"`
-					Url          *string `json:"url,omitempty"`
-				} `json:"team,omitempty"`
-			} `json:"data,omitempty"`
+			Data *FundraisingEventsIdLeaderboards `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7186,17 +6135,7 @@ func ParseGetFundraisingEventsIdRegistrationFieldsResponse(rsp *http.Response) (
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Address *struct {
-					Enabled *bool `json:"enabled,omitempty"`
-				} `json:"address,omitempty"`
-				ServiceHours *struct {
-					Enabled *bool `json:"enabled,omitempty"`
-				} `json:"service_hours,omitempty"`
-				ShirtSize *struct {
-					Enabled *bool `json:"enabled,omitempty"`
-				} `json:"shirt_size,omitempty"`
-			} `json:"data,omitempty"`
+			Data *FundraisingEventsIdRegistrationFields `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7272,22 +6211,7 @@ func ParseGetFundraisingEventsIdRegistrationsResponse(rsp *http.Response) (*GetF
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Address *struct {
-					AddressLine1 *string `json:"addressLine1,omitempty"`
-					AddressLine2 *string `json:"addressLine2,omitempty"`
-					City         *string `json:"city,omitempty"`
-					PostalCode   *string `json:"postalCode,omitempty"`
-					State        *string `json:"state,omitempty"`
-				} `json:"address,omitempty"`
-				Email        *string `json:"email,omitempty"`
-				Id           *int    `json:"id,omitempty"`
-				RegisteredAt *string `json:"registeredAt,omitempty"`
-				ServiceHours *bool   `json:"serviceHours,omitempty"`
-				ShirtSize    *string `json:"shirtSize,omitempty"`
-				Subscribed   *bool   `json:"subscribed,omitempty"`
-				UserId       *int    `json:"userId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]FundraisingEventsIdRegistrations `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7363,12 +6287,7 @@ func ParseGetFundraisingEventsIdScheduleResponse(rsp *http.Response) (*GetFundra
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Description *string `json:"description,omitempty"`
-				Id          *int    `json:"id,omitempty"`
-				Name        *string `json:"name,omitempty"`
-				StartsAt    *int    `json:"startsAt,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]FundraisingEventsIdSchedule `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7444,38 +6363,7 @@ func ParseGetFundraisingEventsIdVisibilityOptionsResponse(rsp *http.Response) (*
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Donate *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"donate,omitempty"`
-				DonorLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"donorLeaderboard,omitempty"`
-				EndsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"endsAt,omitempty"`
-				FundraiserGoalAmount *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"fundraiserGoalAmount,omitempty"`
-				IndividualLeaderboard *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"individualLeaderboard,omitempty"`
-				PreventDonationsBeforeStart *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"preventDonationsBeforeStart,omitempty"`
-				Registration *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"registration,omitempty"`
-				StartsAt *struct {
-					Visible *bool `json:"visible,omitempty"`
-				} `json:"startsAt,omitempty"`
-				TeamLeaderboard *struct {
-					Type    *string `json:"type,omitempty"`
-					Visible *bool   `json:"visible,omitempty"`
-				} `json:"teamLeaderboard,omitempty"`
-			} `json:"data,omitempty"`
+			Data *FundraisingEventsIdVisibilityOptions `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7551,17 +6439,7 @@ func ParseGetTeamsResponse(rsp *http.Response) (*GetTeamsResponse, error) {
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Avatar     *Image  `json:"avatar,omitempty"`
-				Bio        *string `json:"bio,omitempty"`
-				Disbanded  *bool   `json:"disbanded,omitempty"`
-				Id         *int    `json:"id,omitempty"`
-				InviteOnly *bool   `json:"inviteOnly,omitempty"`
-				Name       *string `json:"name,omitempty"`
-				Slug       *string `json:"slug,omitempty"`
-				Social     *Social `json:"social,omitempty"`
-				Url        *string `json:"url,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]Teams `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7637,17 +6515,7 @@ func ParseGetTeamsIdResponse(rsp *http.Response) (*GetTeamsIdResponse, error) {
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				Avatar     *Image  `json:"avatar,omitempty"`
-				Bio        *string `json:"bio,omitempty"`
-				Disbanded  *bool   `json:"disbanded,omitempty"`
-				Id         *int    `json:"id,omitempty"`
-				InviteOnly *bool   `json:"inviteOnly,omitempty"`
-				Name       *string `json:"name,omitempty"`
-				Slug       *string `json:"slug,omitempty"`
-				Social     *Social `json:"social,omitempty"`
-				Url        *string `json:"url,omitempty"`
-			} `json:"data,omitempty"`
+			Data *TeamsId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -7720,24 +6588,7 @@ func ParseGetTeamsIdCampaignsResponse(rsp *http.Response) (*GetTeamsIdCampaignsR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised       *int    `json:"amountRaised,omitempty"`
-				CauseId            *int    `json:"causeId,omitempty"`
-				Currency           *string `json:"currency,omitempty"`
-				Description        *string `json:"description,omitempty"`
-				EndsOn             *string `json:"endsOn,omitempty"`
-				FundraisingEventId *int    `json:"fundraisingEventId,omitempty"`
-				Goal               *int    `json:"goal,omitempty"`
-				Name               *string `json:"name,omitempty"`
-				OriginalGoal       *int    `json:"originalGoal,omitempty"`
-				Slug               *string `json:"slug,omitempty"`
-				StartsOn           *string `json:"startsOn,omitempty"`
-				TeamId             *int    `json:"teamId,omitempty"`
-				Thumbnail          *Image  `json:"thumbnail,omitempty"`
-				TotalAmountRaised  *int    `json:"totalAmountRaised,omitempty"`
-				Url                *string `json:"url,omitempty"`
-				UserId             *int    `json:"userId,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]TeamsIdCampaigns `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -7813,40 +6664,7 @@ func ParseGetTeamsIdCampaignsCidResponse(rsp *http.Response) (*GetTeamsIdCampaig
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				AmountRaised           *int        `json:"amountRaised,omitempty"`
-				Avatar                 *Image      `json:"avatar,omitempty"`
-				CauseId                *int        `json:"causeId,omitempty"`
-				Description            *string     `json:"description,omitempty"`
-				EndsAt                 *int        `json:"endsAt,omitempty"`
-				FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-				FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-				Id                     *int        `json:"id,omitempty"`
-				Livestream             *Livestream `json:"livestream,omitempty"`
-				Name                   *string     `json:"name,omitempty"`
-				OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-				Slug                   *string     `json:"slug,omitempty"`
-				StartsAt               *int        `json:"startsAt,omitempty"`
-				Status                 *string     `json:"status,omitempty"`
-				Supportable            *bool       `json:"supportable,omitempty"`
-				SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-				Team                   *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"team,omitempty"`
-				TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-				Url               *string `json:"url,omitempty"`
-				User              *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"user,omitempty"`
-			} `json:"data,omitempty"`
+			Data *TeamsIdCampaignsId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -7919,20 +6737,7 @@ func ParseGetUserResponse(rsp *http.Response) (*GetUserResponse, error) {
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				About      *string                 `json:"about,omitempty"`
-				Avatar     *Image                  `json:"avatar,omitempty"`
-				Confirmed  *bool                   `json:"confirmed,omitempty"`
-				Email      *string                 `json:"email,omitempty"`
-				FirstName  *string                 `json:"firstName,omitempty"`
-				Id         *int                    `json:"id,omitempty"`
-				LastName   *string                 `json:"lastName,omitempty"`
-				Newsletter *map[string]interface{} `json:"newsletter,omitempty"`
-				Slug       *string                 `json:"slug,omitempty"`
-				Social     *Social                 `json:"social,omitempty"`
-				Url        *string                 `json:"url,omitempty"`
-				Username   *string                 `json:"username,omitempty"`
-			} `json:"data,omitempty"`
+			Data *User `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -8005,16 +6810,7 @@ func ParseGetUsersIdResponse(rsp *http.Response) (*GetUsersIdResponse, error) {
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				About             *string  `json:"about,omitempty"`
-				Avatar            *Image   `json:"avatar,omitempty"`
-				Id                *int     `json:"id,omitempty"`
-				Slug              *string  `json:"slug,omitempty"`
-				Social            *Social  `json:"social,omitempty"`
-				TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
-				Url               *string  `json:"url,omitempty"`
-				Username          *string  `json:"username,omitempty"`
-			} `json:"data,omitempty"`
+			Data *UsersId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -8045,35 +6841,7 @@ func ParseGetUsersIdCampaignsResponse(rsp *http.Response) (*GetUsersIdCampaignsR
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				AmountRaised           *float32                `json:"amountRaised,omitempty"`
-				Avatar                 *Image                  `json:"avatar,omitempty"`
-				CauseCurrency          *string                 `json:"causeCurrency,omitempty"`
-				CauseId                *int                    `json:"causeId,omitempty"`
-				Description            *string                 `json:"description,omitempty"`
-				EndsAt                 *int                    `json:"endsAt,omitempty"`
-				FundraiserGoalAmount   *float32                `json:"fundraiserGoalAmount,omitempty"`
-				Id                     *int                    `json:"id,omitempty"`
-				Livestream             *Livestream             `json:"livestream,omitempty"`
-				Metadata               *map[string]interface{} `json:"metadata,omitempty"`
-				Name                   *string                 `json:"name,omitempty"`
-				OriginalFundraiserGoal *float32                `json:"originalFundraiserGoal,omitempty"`
-				RegionId               *map[string]interface{} `json:"regionId,omitempty"`
-				Slug                   *string                 `json:"slug,omitempty"`
-				StartsAt               *int                    `json:"startsAt,omitempty"`
-				Status                 *string                 `json:"status,omitempty"`
-				Supportable            *bool                   `json:"supportable,omitempty"`
-				SupportingAmountRaised *float32                `json:"supportingAmountRaised,omitempty"`
-				TotalAmountRaised      *float32                `json:"totalAmountRaised,omitempty"`
-				Type                   *string                 `json:"type,omitempty"`
-				User                   *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"user,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]UsersIdCampaigns `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -8149,40 +6917,7 @@ func ParseGetUsersIdCampaignsCidResponse(rsp *http.Response) (*GetUsersIdCampaig
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				AmountRaised           *int        `json:"amountRaised,omitempty"`
-				Avatar                 *Image      `json:"avatar,omitempty"`
-				CauseId                *int        `json:"causeId,omitempty"`
-				Description            *string     `json:"description,omitempty"`
-				EndsAt                 *int        `json:"endsAt,omitempty"`
-				FundraiserGoalAmount   *int        `json:"fundraiserGoalAmount,omitempty"`
-				FundraisingEventId     *int        `json:"fundraisingEventId,omitempty"`
-				Id                     *int        `json:"id,omitempty"`
-				Livestream             *Livestream `json:"livestream,omitempty"`
-				Name                   *string     `json:"name,omitempty"`
-				OriginalGoalAmount     *int        `json:"originalGoalAmount,omitempty"`
-				Slug                   *string     `json:"slug,omitempty"`
-				StartsAt               *int        `json:"startsAt,omitempty"`
-				Status                 *string     `json:"status,omitempty"`
-				Supportable            *bool       `json:"supportable,omitempty"`
-				SupportingAmountRaised *int        `json:"supportingAmountRaised,omitempty"`
-				Team                   *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"team,omitempty"`
-				TotalAmountRaised *int    `json:"totalAmountRaised,omitempty"`
-				Url               *string `json:"url,omitempty"`
-				User              *struct {
-					Avatar   *Image  `json:"avatar,omitempty"`
-					Id       *int    `json:"id,omitempty"`
-					Slug     *string `json:"slug,omitempty"`
-					Url      *string `json:"url,omitempty"`
-					Username *string `json:"username,omitempty"`
-				} `json:"user,omitempty"`
-			} `json:"data,omitempty"`
+			Data *UsersIdCampaignsId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
@@ -8255,17 +6990,7 @@ func ParseGetUsersIdOwnedTeamsResponse(rsp *http.Response) (*GetUsersIdOwnedTeam
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Avatar     *Image  `json:"avatar,omitempty"`
-				Bio        *string `json:"bio,omitempty"`
-				Disbanded  *bool   `json:"disbanded,omitempty"`
-				Id         *int    `json:"id,omitempty"`
-				InviteOnly *bool   `json:"inviteOnly,omitempty"`
-				Name       *string `json:"name,omitempty"`
-				Slug       *string `json:"slug,omitempty"`
-				Social     *Social `json:"social,omitempty"`
-				Url        *string `json:"url,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]UsersIdOwnedTeams `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -8341,13 +7066,7 @@ func ParseGetUsersIdTeamsResponse(rsp *http.Response) (*GetUsersIdTeamsResponse,
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *[]struct {
-				Avatar *Image  `json:"avatar,omitempty"`
-				Id     *int    `json:"id,omitempty"`
-				Name   *string `json:"name,omitempty"`
-				Slug   *string `json:"slug,omitempty"`
-				Url    *string `json:"url,omitempty"`
-			} `json:"data,omitempty"`
+			Data *[]UsersIdTeams `json:"data,omitempty"`
 
 			// We use cursor based pagination for our donations and this information is embeded in the response under the links key. You will find a prev and next link that point to the next pages of the paginated response. You may submit an optional count field of up to 100.
 			Links *Pagination `json:"links,omitempty"`
@@ -8423,16 +7142,7 @@ func ParseGetUsersSlugResponse(rsp *http.Response) (*GetUsersSlugResponse, error
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			Data *struct {
-				About             *string  `json:"about,omitempty"`
-				Avatar            *Image   `json:"avatar,omitempty"`
-				Id                *int     `json:"id,omitempty"`
-				Slug              *string  `json:"slug,omitempty"`
-				Social            *Social  `json:"social,omitempty"`
-				TotalAmountRaised *float32 `json:"totalAmountRaised,omitempty"`
-				Url               *string  `json:"url,omitempty"`
-				Username          *string  `json:"username,omitempty"`
-			} `json:"data,omitempty"`
+			Data *UsersId `json:"data,omitempty"`
 
 			// This is the HTTP status code that is also sent with the request
 			Meta *Meta `json:"meta,omitempty"`
