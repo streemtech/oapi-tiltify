@@ -3,6 +3,8 @@ package tiltifyApi
 import (
 	"net/url"
 	"strconv"
+
+	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
 )
 
 type LinkParams struct {
@@ -46,4 +48,14 @@ func ParseLinks(linkString string) (params LinkParams) {
 		Count:  count,
 		After:  after,
 	}
+}
+
+func GetClientWithKey(key string) (*ClientWithResponses, error) {
+	sp, err := securityprovider.NewSecurityProviderBearerToken(key)
+	if err != nil {
+		return nil, err
+	}
+
+	return NewClientWithResponses("https://tiltify.com/api/v3", WithRequestEditorFn(sp.Intercept))
+
 }
