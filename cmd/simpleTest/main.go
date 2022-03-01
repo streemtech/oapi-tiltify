@@ -4,13 +4,16 @@ import (
 	"context"
 	"fmt"
 	"io/ioutil"
-	"net/url"
+	"net/http/httputil"
 	"os"
-	"strings"
+	"time"
 
 	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
+	"github.com/rabbitmq/amqp091-go"
 	"github.com/streemtech/oapi-tiltify/tiltifyApi"
 )
+
+var ch *amqp091.Channel
 
 func main() {
 	f, err := os.Open("./test.key")
@@ -22,123 +25,144 @@ func main() {
 		panic(err)
 	}
 
+	config := "amqp://admin:@192.168.100.101:30820"
+	// config := "amqp://guest:guest@localhost:5672"
+	rabbit, err := amqp091.DialConfig(config, amqp091.Config{
+		Heartbeat: time.Second * 10,
+		Locale:    "en_US",
+		Vhost:     "qa",
+		// Vhost: "dev",
+
+		Properties: amqp091.Table{
+			"product":         "https://github.com/rabbitmq/amqp091-go",
+			"version":         "β",
+			"connection_name": "test-connection",
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	ch, err = rabbit.Channel()
+	if err != nil {
+		panic(err)
+	}
+
+	// db, err = gorm.Open(postgres.Open("host=localhost port=5432 user=admin dbname=tiltify password=password sslmode=disable application_name=tiltify_loader"), &gorm.Config{
+	// 	PrepareStmt: true,
+	// })
+
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// err = db.AutoMigrate(&Donation{})
+
+	// if err != nil {
+	// 	panic(err.Error())
+	// }
 	// pullDonations(string(testKey))
-	url := "https://tiltify.com/@supermcgamer/trgc-2021"
-	getDonationsFromURL(string(testKey), url)
+	// url := "https://tiltify.com/@supermcgamer/trgc-2021"
+	getDonationsFromURL(string(testKey))
 }
 
-func getDonationsFromURL(key, url string) {
-
-	user, campaignSlug, err := convertUrlToUserCampaignSlug(url)
-	if err != nil {
-		panic(err)
-	}
-	userID, err := getUserIDFromUsername(key, user)
-	if err != nil {
-		panic(err)
-	}
-	campaignID, err := getCampaignFromUserIDAndSlug(key, campaignSlug, userID)
-	if err != nil {
-		panic(err)
-	}
-	getDonations(key, campaignID)
-}
-
-func convertUrlToUserCampaignSlug(in string) (username, slug string, err error) {
-
-	u, err := url.Parse(in)
-	if err != nil {
-		return "", "", err
-	}
-	p := u.Path
-	spl := strings.Split(p, "/")
-	if len(spl) != 3 {
-		return "", "", fmt.Errorf("unable to split path %s. Got %d components", p, len(spl))
-	}
-	username = strings.ReplaceAll(spl[1], "@", "")
-	slug = spl[2]
-	return username, slug, nil
-}
-
-func getUserIDFromUsername(testKey, username string) (id int, err error) {
-	sp, err := securityprovider.NewSecurityProviderBearerToken(testKey)
-	if err != nil {
-		return 0, err
-	}
-
-	client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
-
-	resp, err := client.GetUsersSlugWithResponse(context.Background(), username)
-	if err != nil {
-		return 0, err
-	}
-	if resp.JSON200 != nil && resp.JSON200.Data != nil {
-		d := resp.JSON200.Data
-		if d.Id != nil {
-			return *d.Id, nil
-		}
-	}
-	return 0, fmt.Errorf("data not 200")
-}
-
-func getCampaignFromUserIDAndSlug(key, campaignSlug string, userID int) (campaignID int, err error) {
+func getDonationsFromURL(key string) {
 	sp, err := securityprovider.NewSecurityProviderBearerToken(key)
 	if err != nil {
-		return 0, err
+		panic(err)
 	}
 
 	client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
 
-	c := 100
-	resp, err := client.GetUsersIdCampaignsWithResponse(context.Background(), userID, &tiltifyApi.GetUsersIdCampaignsParams{
-		Count: &c,
-	})
 	if err != nil {
-		return 0, err
+		panic(err)
 	}
+	total := 0
+	divider := 500
+	newTotal, err := getTotal(client, 157301)
+	fmt.Printf("%f\n", newTotal)
+	total = int(newTotal)
 
-	if resp.JSON200 != nil && resp.JSON200.Data != nil {
-		for _, v := range *resp.JSON200.Data {
-			if *v.Slug == campaignSlug {
-				return *v.Id, nil
-			}
+	total = total / divider
+	total = total * divider
+
+	fmt.Printf("%d\n", total)
+	for {
+
+		client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
+		if err != nil {
+			fmt.Printf("ERROR ENCOUNTERED CREATING CLIENT: %s\n", err.Error())
+			time.Sleep(time.Second * 1)
+			continue
 		}
-		return 0, fmt.Errorf("campaign %s not found in data", campaignSlug)
+
+		newTotal, err := getTotal(client, 157301)
+
+		if err == nil {
+			if int(newTotal) >= total+divider {
+				total += divider
+				fmt.Printf("New Total %d\n", total)
+				go sendRush()
+			}
+		} else {
+
+			fmt.Printf("ERROR ENCOUNTERED: %s\n", err.Error())
+		}
+
+		time.Sleep(time.Second * 5)
+
+		// err := db.Clauses(clause.OnConflict{
+		// 	UpdateAll: true,
+		// }).Create(data).Error
+
 	}
-	return 0, fmt.Errorf("data not 200")
 }
 
-func getDonations(testKey string, campaign int) {
-	sp, err := securityprovider.NewSecurityProviderBearerToken(testKey)
+func getTotal(client *tiltifyApi.ClientWithResponses, campaign int) (total float32, err error) {
+
+	resp, err := client.GetCampaignsIdWithResponse(context.Background(), campaign)
 	if err != nil {
-		panic(err)
+		return 0, fmt.Errorf("error from tiltify: Error making request: %s", err.Error())
 	}
 
-	client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
-
-	if err != nil {
-		panic(err)
-	}
-	i := 100
-	resp, err := client.GetCampaignsIdDonationsWithResponse(context.Background(), campaign, &tiltifyApi.GetCampaignsIdDonationsParams{
-		Count: &i,
-	})
-	if err != nil {
-		panic(err)
-	}
 	if resp.JSON200 != nil && resp.JSON200.Data != nil {
 		d := *resp.JSON200.Data
-		for _, v := range d {
-			if v.Name != nil && v.Comment != nil {
-				id := -1
-				if v.RewardId != nil {
-					id = *v.RewardId
-				}
-				fmt.Printf("%50s: $%07.2f | %d | %d\n", *v.Name, *v.Amount, *v.Id, id)
-			}
-		}
-		fmt.Printf("%+v | %+v | %+v\n", tiltifyApi.ParseLinks(resp.JSON200.Links.Prev), tiltifyApi.ParseLinks(resp.JSON200.Links.Self), tiltifyApi.ParseLinks(resp.JSON200.Links.Next))
-	} else {
-		fmt.Printf("data null: %+v\n", resp)
+		return *d.AmountRaised, nil
 	}
+
+	dump, err := httputil.DumpResponse(resp.HTTPResponse, true)
+	if err != nil {
+		return 0, fmt.Errorf("error from tiltify: Error getting response dump: %s", err.Error())
+	}
+	return 0, fmt.Errorf("received non 200 from tiltify: %s", dump)
+
+}
+
+var message = `{
+    "TypeKey": "PARALLEL",
+    "Actions": [
+        {
+            "TypeKey": "MEDIA_VIDEO",
+            "Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/21183535-8718-4daa-bd50-f2e85361ec04"
+        },
+		{
+			"TypeKey": "MEDIA_AUDIO",
+			"Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/64a6fe5d-fa85-4ccc-9a76-b34f03b5b89e"
+		}
+    ]
+}`
+
+const FANFARE_BOARD_INPUT_EXCHANGE = "Fanfare.Boards.Input"
+
+func sendRush() {
+
+	ch.Publish(FANFARE_BOARD_INPUT_EXCHANGE, "", false, false, amqp091.Publishing{
+		ContentType:  "text/text",
+		Body:         []byte(message),
+		DeliveryMode: amqp091.Persistent,
+		Timestamp:    time.Now(),
+		Headers: amqp091.Table{
+			"table": "413f2ae4-1710-4f2d-a56f-e7f8c1658693",
+		},
+	})
 }
