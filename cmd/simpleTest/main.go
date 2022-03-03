@@ -11,9 +11,12 @@ import (
 	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
 	"github.com/rabbitmq/amqp091-go"
 	"github.com/streemtech/oapi-tiltify/tiltifyApi"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 var ch *amqp091.Channel
+var db *gorm.DB
 
 func main() {
 	f, err := os.Open("./test.key")
@@ -25,49 +28,69 @@ func main() {
 		panic(err)
 	}
 
-	config := "amqp://admin:@192.168.100.101:30820"
-	// config := "amqp://guest:guest@localhost:5672"
-	rabbit, err := amqp091.DialConfig(config, amqp091.Config{
-		Heartbeat: time.Second * 10,
-		Locale:    "en_US",
-		Vhost:     "qa",
-		// Vhost: "dev",
-
-		Properties: amqp091.Table{
-			"product":         "https://github.com/rabbitmq/amqp091-go",
-			"version":         "β",
-			"connection_name": "test-connection",
-		},
+	db, err = gorm.Open(postgres.Open("host=localhost port=5432 user=admin dbname=tiltify password=password sslmode=disable application_name=tiltify_loader"), &gorm.Config{
+		PrepareStmt: true,
 	})
+
 	if err != nil {
 		panic(err)
 	}
 
-	ch, err = rabbit.Channel()
+	err = db.Exec("drop table if exists donations").Error
 	if err != nil {
 		panic(err)
 	}
-
-	// db, err = gorm.Open(postgres.Open("host=localhost port=5432 user=admin dbname=tiltify password=password sslmode=disable application_name=tiltify_loader"), &gorm.Config{
-	// 	PrepareStmt: true,
-	// })
-
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// err = db.AutoMigrate(&Donation{})
-
+	err = db.AutoMigrate(&Donation{})
+	if err != nil {
+		panic(err)
+	}
 	// if err != nil {
 	// 	panic(err.Error())
 	// }
 	// pullDonations(string(testKey))
 	// url := "https://tiltify.com/@supermcgamer/trgc-2021"
-	getDonationsFromURL(string(testKey))
+	donos := getDonationsFromURL(string(testKey))
+
+	message := ""
+	name := ""
+	amount := 0.0
+	createdAt := time.Now()
+	id := 0
+
+	for _, v := range donos {
+		if v.Amount != nil {
+			amount = float64(*v.Amount)
+		}
+		if v.Comment != nil {
+			message = *v.Comment
+		}
+		if v.Id != nil {
+			id = *v.Id
+		}
+		if v.Name != nil {
+			name = *v.Name
+		}
+		if v.CompletedAt != nil {
+			createdAt = time.UnixMilli(int64(*v.CompletedAt))
+		}
+
+		err = db.Create(&Donation{
+			Message: message,
+			Donator: name,
+			Amount:  amount,
+			Time:    createdAt,
+			ID:      id,
+		}).Error
+
+		if err != nil {
+			fmt.Printf("error creating donation %+v\n", v)
+		}
+	}
 }
 
-func getDonationsFromURL(key string) {
+func getDonationsFromURL(key string) []tiltifyApi.CampaignsIdDonations {
 	sp, err := securityprovider.NewSecurityProviderBearerToken(key)
+
 	if err != nil {
 		panic(err)
 	}
@@ -77,64 +100,77 @@ func getDonationsFromURL(key string) {
 	if err != nil {
 		panic(err)
 	}
-	total := 0
-	divider := 500
-	newTotal, err := getTotal(client, 157301)
-	fmt.Printf("%f\n", newTotal)
-	total = int(newTotal)
 
-	total = total / divider
-	total = total * divider
+	prev := -1
+	donations, links, err := getTotal(client, 157301, prev)
 
-	fmt.Printf("%d\n", total)
+	allDonations := make([]tiltifyApi.CampaignsIdDonations, 0)
 	for {
 
+		//load in the donations.
+		if err == nil {
+			if len(donations) <= 0 {
+				break
+			}
+			allDonations = append(allDonations, donations...)
+			fmt.Printf("Added %d donations. total: %d\n", len(donations), len(allDonations))
+
+		} else {
+			fmt.Printf("ERROR ENCOUNTERED: %s\n", err.Error())
+		}
+
+		//update next.
+		prev = tiltifyApi.ParseLinks(links.Prev).Before
+
+		//sleep.
+		time.Sleep(time.Millisecond * 100)
+
+		//create new client and load in next donations.
 		client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
 		if err != nil {
 			fmt.Printf("ERROR ENCOUNTERED CREATING CLIENT: %s\n", err.Error())
 			time.Sleep(time.Second * 1)
 			continue
 		}
-
-		newTotal, err := getTotal(client, 157301)
-
-		if err == nil {
-			if int(newTotal) >= total+divider {
-				total += divider
-				fmt.Printf("New Total %d\n", total)
-				go sendRush()
-			}
-		} else {
-
-			fmt.Printf("ERROR ENCOUNTERED: %s\n", err.Error())
-		}
-
-		time.Sleep(time.Second * 5)
+		donations, links, err = getTotal(client, 157301, prev)
 
 		// err := db.Clauses(clause.OnConflict{
 		// 	UpdateAll: true,
 		// }).Create(data).Error
 
 	}
+	fmt.Printf("Total Donations: %d\n", len(allDonations))
+
+	return allDonations
 }
 
-func getTotal(client *tiltifyApi.ClientWithResponses, campaign int) (total float32, err error) {
+func getTotal(client *tiltifyApi.ClientWithResponses, campaign int, Before int) (donations []tiltifyApi.CampaignsIdDonations, links *tiltifyApi.Pagination, err error) {
 
-	resp, err := client.GetCampaignsIdWithResponse(context.Background(), campaign)
-	if err != nil {
-		return 0, fmt.Errorf("error from tiltify: Error making request: %s", err.Error())
+	count := 100
+	params := &tiltifyApi.GetCampaignsIdDonationsParams{
+		Count: &count,
 	}
 
+	if Before > 0 {
+		params.Before = &Before
+
+	}
+	resp, err := client.GetCampaignsIdDonationsWithResponse(context.Background(), campaign, params)
+	if err != nil {
+		return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error making request: %s", err.Error())
+	}
+
+	// fmt.Printf("Response Dump: %s\n", dump)
 	if resp.JSON200 != nil && resp.JSON200.Data != nil {
-		d := *resp.JSON200.Data
-		return *d.AmountRaised, nil
+		donations := *resp.JSON200.Data
+		return donations, resp.JSON200.Links, nil
 	}
 
 	dump, err := httputil.DumpResponse(resp.HTTPResponse, true)
 	if err != nil {
-		return 0, fmt.Errorf("error from tiltify: Error getting response dump: %s", err.Error())
+		return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error getting response dump: %s", err.Error())
 	}
-	return 0, fmt.Errorf("received non 200 from tiltify: %s", dump)
+	return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("received non 200 from tiltify: %s", dump)
 
 }
 
@@ -165,4 +201,12 @@ func sendRush() {
 			"table": "413f2ae4-1710-4f2d-a56f-e7f8c1658693",
 		},
 	})
+}
+
+type Donation struct {
+	Message string
+	Donator string
+	Amount  float64
+	Time    time.Time
+	ID      int
 }
