@@ -1,4 +1,4 @@
-package tiltifyApi
+package api
 
 import (
 	"net/url"
@@ -50,12 +50,12 @@ func ParseLinks(linkString string) (params LinkParams) {
 	}
 }
 
-func GetClientWithKey(key string) (*ClientWithResponses, error) {
+func GetClientWithKey(key string, opts ...ClientOption) (*ClientWithResponses, error) {
 	sp, err := securityprovider.NewSecurityProviderBearerToken(key)
 	if err != nil {
 		return nil, err
 	}
 
-	return NewClientWithResponses("https://tiltify.com/api/v3", WithRequestEditorFn(sp.Intercept))
+	return NewClientWithResponses("https://tiltify.com/api/v3", append(opts, WithRequestEditorFn(sp.Intercept))...)
 
 }

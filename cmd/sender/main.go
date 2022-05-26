@@ -6,7 +6,7 @@ import (
 	"time"
 
 	amqp091 "github.com/rabbitmq/amqp091-go"
-	"github.com/streemtech/oapi-tiltify/tiltifyApi"
+	"github.com/streemtech/oapi-tiltify/api"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -90,13 +90,14 @@ func main() {
 
 		f := float32(d.Amount)
 
-		t := tiltifyApi.CampaignsIdDonations{
+		t := api.CampaignsIdDonations{
 			Id:      &d.ID,
 			Comment: &d.Message,
 			Name:    &d.Donator,
 			Amount:  &f,
 		}
-		data, err := json.Marshal(t)
+		var data []byte
+		data, err = json.Marshal(t)
 		if err != nil {
 			fmt.Printf("Error marshaling: %s\n", err.Error())
 			return

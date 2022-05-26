@@ -1,0 +1,4 @@
+output: openapi.client.gen.go
+package: api
+generate:
+  - client

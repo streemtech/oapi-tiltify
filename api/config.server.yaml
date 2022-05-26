@@ -1,0 +1,4 @@
+output: openapi.server.gen.go
+package: api
+generate:
+  - server

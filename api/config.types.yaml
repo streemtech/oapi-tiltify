@@ -1,0 +1,4 @@
+output: openapi.types.gen.go
+package: api
+generate:
+  - types

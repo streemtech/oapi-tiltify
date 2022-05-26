@@ -1,5 +1,0 @@
-output:
-  openapi.types.gen.go
-package: tiltifyApi
-generate:
-  - types

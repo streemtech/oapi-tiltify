@@ -1,4 +1,4 @@
-openapi: '3.0.2'
+openapi: "3.0"
 info:
   title: Tiltify API
   version: '1.0'

@@ -26,8 +26,11 @@ func generate() {
 	}
 
 	jsonReg := regexp.MustCompile(`.*\.json`)
-	filepath.WalkDir("./examples", func(path string, d fs.DirEntry, err error) error {
+	err := filepath.WalkDir("./examples", func(path string, d fs.DirEntry, err error) error {
 
+		if err != nil {
+			return err
+		}
 		if !jsonReg.MatchString(path) {
 			return nil
 		}
@@ -60,6 +63,11 @@ func generate() {
 		return nil
 	})
 
+	if err != nil {
+		fmt.Printf("ERROR WALKING: %s", err.Error())
+		return
+	}
+
 	dat, err := toYamlData(t)
 	if err != nil {
 		fmt.Printf("ERROR CREATING FILE: %s", err.Error())
@@ -80,18 +88,18 @@ func generate() {
 func toYamlData(s interface{ MarshalJSON() ([]byte, error) }) ([]byte, error) {
 	d, err := s.MarshalJSON()
 	if err != nil {
-		return []byte{}, fmt.Errorf("Unable to marshal results to JSON: %w", err)
+		return []byte{}, fmt.Errorf("unable to marshal results to JSON: %w", err)
 	}
 
 	dest := *new(any)
 	err = json.Unmarshal(d, &dest)
 	if err != nil {
-		return []byte{}, fmt.Errorf("Unable to Unmarshal output json to map: %w", err)
+		return []byte{}, fmt.Errorf("unable to Unmarshal output json to map: %w", err)
 	}
 
 	res, err := yaml.Marshal(&dest)
 	if err != nil {
-		return []byte{}, fmt.Errorf("Unable to marshal to YAML: %w", err)
+		return []byte{}, fmt.Errorf("unable to marshal to YAML: %w", err)
 	}
 	return res, nil
 }
@@ -102,7 +110,7 @@ func jsonToSchema(data []byte) (*kin.SchemaRef, error) {
 
 	err := json.Unmarshal(data, &dest)
 	if err != nil {
-		return nil, fmt.Errorf("Unable to unmarshal JSON: %w", err)
+		return nil, fmt.Errorf("unable to unmarshal JSON: %w", err)
 	}
 
 	// fmt.Printf("%+v\n", dest)

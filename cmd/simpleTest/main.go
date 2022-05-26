@@ -8,14 +8,13 @@ import (
 	"os"
 	"time"
 
+	_ "github.com/deepmap/oapi-codegen/pkg/codegen"
 	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
-	"github.com/rabbitmq/amqp091-go"
-	"github.com/streemtech/oapi-tiltify/tiltifyApi"
+	"github.com/streemtech/oapi-tiltify/api"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
-var ch *amqp091.Channel
 var db *gorm.DB
 
 func main() {
@@ -88,14 +87,14 @@ func main() {
 	}
 }
 
-func getDonationsFromURL(key string) []tiltifyApi.CampaignsIdDonations {
+func getDonationsFromURL(key string) []api.CampaignsIdDonations {
 	sp, err := securityprovider.NewSecurityProviderBearerToken(key)
 
 	if err != nil {
 		panic(err)
 	}
 
-	client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
+	client, err := api.NewClientWithResponses("https://tiltify.com/api/v3", api.WithRequestEditorFn(sp.Intercept))
 
 	if err != nil {
 		panic(err)
@@ -104,7 +103,7 @@ func getDonationsFromURL(key string) []tiltifyApi.CampaignsIdDonations {
 	prev := -1
 	donations, links, err := getTotal(client, 157301, prev)
 
-	allDonations := make([]tiltifyApi.CampaignsIdDonations, 0)
+	allDonations := make([]api.CampaignsIdDonations, 0)
 	for {
 
 		//load in the donations.
@@ -120,13 +119,13 @@ func getDonationsFromURL(key string) []tiltifyApi.CampaignsIdDonations {
 		}
 
 		//update next.
-		prev = tiltifyApi.ParseLinks(links.Prev).Before
+		prev = api.ParseLinks(links.Prev).Before
 
 		//sleep.
 		time.Sleep(time.Millisecond * 100)
 
 		//create new client and load in next donations.
-		client, err := tiltifyApi.NewClientWithResponses("https://tiltify.com/api/v3", tiltifyApi.WithRequestEditorFn(sp.Intercept))
+		client, err = api.NewClientWithResponses("https://tiltify.com/api/v3", api.WithRequestEditorFn(sp.Intercept))
 		if err != nil {
 			fmt.Printf("ERROR ENCOUNTERED CREATING CLIENT: %s\n", err.Error())
 			time.Sleep(time.Second * 1)
@@ -144,10 +143,10 @@ func getDonationsFromURL(key string) []tiltifyApi.CampaignsIdDonations {
 	return allDonations
 }
 
-func getTotal(client *tiltifyApi.ClientWithResponses, campaign int, Before int) (donations []tiltifyApi.CampaignsIdDonations, links *tiltifyApi.Pagination, err error) {
+func getTotal(client *api.ClientWithResponses, campaign int, Before int) (donations []api.CampaignsIdDonations, links *api.Pagination, err error) {
 
 	count := 100
-	params := &tiltifyApi.GetCampaignsIdDonationsParams{
+	params := &api.GetCampaignsIdDonationsParams{
 		Count: &count,
 	}
 
@@ -157,51 +156,48 @@ func getTotal(client *tiltifyApi.ClientWithResponses, campaign int, Before int) 
 	}
 	resp, err := client.GetCampaignsIdDonationsWithResponse(context.Background(), campaign, params)
 	if err != nil {
-		return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error making request: %s", err.Error())
+		return []api.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error making request: %s", err.Error())
 	}
 
 	// fmt.Printf("Response Dump: %s\n", dump)
 	if resp.JSON200 != nil && resp.JSON200.Data != nil {
-		donations := *resp.JSON200.Data
+		donations = *resp.JSON200.Data
 		return donations, resp.JSON200.Links, nil
 	}
 
 	dump, err := httputil.DumpResponse(resp.HTTPResponse, true)
 	if err != nil {
-		return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error getting response dump: %s", err.Error())
+		return []api.CampaignsIdDonations{}, nil, fmt.Errorf("error from tiltify: Error getting response dump: %s", err.Error())
 	}
-	return []tiltifyApi.CampaignsIdDonations{}, nil, fmt.Errorf("received non 200 from tiltify: %s", dump)
+	return []api.CampaignsIdDonations{}, nil, fmt.Errorf("received non 200 from tiltify: %s", dump)
 
 }
 
-var message = `{
-    "TypeKey": "PARALLEL",
-    "Actions": [
-        {
-            "TypeKey": "MEDIA_VIDEO",
-            "Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/21183535-8718-4daa-bd50-f2e85361ec04"
-        },
-		{
-			"TypeKey": "MEDIA_AUDIO",
-			"Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/64a6fe5d-fa85-4ccc-9a76-b34f03b5b89e"
-		}
-    ]
-}`
+// func sendRush() {
 
-const FANFARE_BOARD_INPUT_EXCHANGE = "Fanfare.Boards.Input"
-
-func sendRush() {
-
-	ch.Publish(FANFARE_BOARD_INPUT_EXCHANGE, "", false, false, amqp091.Publishing{
-		ContentType:  "text/text",
-		Body:         []byte(message),
-		DeliveryMode: amqp091.Persistent,
-		Timestamp:    time.Now(),
-		Headers: amqp091.Table{
-			"table": "413f2ae4-1710-4f2d-a56f-e7f8c1658693",
-		},
-	})
-}
+// 	var ch *amqp091.Channel
+// 	ch.Publish("Fanfare.Boards.Input", "", false, false, amqp091.Publishing{
+// 		ContentType: "text/text",
+// 		Body: []byte(`{
+// 			"TypeKey": "PARALLEL",
+// 			"Actions": [
+// 				{
+// 					"TypeKey": "MEDIA_VIDEO",
+// 					"Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/21183535-8718-4daa-bd50-f2e85361ec04"
+// 				},
+// 				{
+// 					"TypeKey": "MEDIA_AUDIO",
+// 					"Media": "https://api-qa.streem.tech/hostr/file/c70fc458-2a20-44a3-bef2-41c7346c1278/64a6fe5d-fa85-4ccc-9a76-b34f03b5b89e"
+// 				}
+// 			]
+// 		}`),
+// 		DeliveryMode: amqp091.Persistent,
+// 		Timestamp:    time.Now(),
+// 		Headers: amqp091.Table{
+// 			"table": "413f2ae4-1710-4f2d-a56f-e7f8c1658693",
+// 		},
+// 	})
+// }
 
 type Donation struct {
 	Message string
