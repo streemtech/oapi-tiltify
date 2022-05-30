@@ -8,7 +8,7 @@ require (
 	github.com/labstack/echo/v4 v4.7.2
 	github.com/rabbitmq/amqp091-go v1.3.4
 	gopkg.in/yaml.v2 v2.4.0
-	gorm.io/driver/postgres v1.3.6
+	gorm.io/driver/postgres v1.3.7
 	gorm.io/gorm v1.23.5
 )
 
