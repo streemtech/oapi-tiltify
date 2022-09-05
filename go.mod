@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/deepmap/oapi-codegen v1.11.0
 	github.com/getkin/kin-openapi v0.94.0
-	github.com/labstack/echo/v4 v4.7.2
+	github.com/labstack/echo/v4 v4.9.0
 	github.com/rabbitmq/amqp091-go v1.3.4
 	gopkg.in/yaml.v2 v2.4.0
 	gorm.io/driver/postgres v1.3.6
