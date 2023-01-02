@@ -9,7 +9,7 @@ require (
 	github.com/rabbitmq/amqp091-go v1.3.4
 	gopkg.in/yaml.v2 v2.4.0
 	gorm.io/driver/postgres v1.3.6
-	gorm.io/gorm v1.23.5
+	gorm.io/gorm v1.24.3
 )
 
 require (
