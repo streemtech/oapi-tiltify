@@ -8,10 +8,10 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/k0kubun/pp/v3"
-	"github.com/streemtech/oapi-tiltify/api"
+	"github.com/streemtech/oapi-tiltify/v5/api"
 )
 
-var Token = "06d77c25dbeb2a0cd831547f7960bfa47c7b459fd53b6a07dd9c65f4db4d9b00"
+var Token = ""
 
 func main() {
 	cmd, err := api.NewClientWithResponses("https://v5api.tiltify.com", true, api.WithRequestEditorFn(ref))

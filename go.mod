@@ -1,4 +1,4 @@
-module github.com/streemtech/oapi-tiltify
+module github.com/streemtech/oapi-tiltify/v5
 
 go 1.18
 
