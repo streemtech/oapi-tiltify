@@ -1,4 +1,4 @@
-module github.com/streemtech/oapi-tiltify/v2
+module github.com/streemtech/oapi-tiltify/v6
 
 go 1.20
 
@@ -8,7 +8,6 @@ require (
 	github.com/k0kubun/pp/v3 v3.2.0
 	github.com/twitchtv/circuitgen v1.2.3
 )
-
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect

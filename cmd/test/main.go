@@ -8,7 +8,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/k0kubun/pp/v3"
-	"github.com/streemtech/oapi-tiltify/v5/api"
+	"github.com/streemtech/oapi-tiltify/v6/api"
 )
 
 var Token = ""
